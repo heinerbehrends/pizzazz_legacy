@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
 var letterDistribution = {e:12, a:9, i:9, o:8, n:6, r:6, t:6, l:4, s:4, u:4, d:4, g:3, b:2,
@@ -15,8 +14,6 @@ function makeBagOfLetters (letterDistribution) {
   return bagOfLettersArray;
 }
 
-const bagOfLetters = makeBagOfLetters(letterDistribution);
-
 function makeRandomLetters(bagOfLetters, nrOfLetters) {
   let randomString = "";
   for (let i = 0; i < nrOfLetters; i++) {
@@ -25,6 +22,22 @@ function makeRandomLetters(bagOfLetters, nrOfLetters) {
   }
   return randomString.toUpperCase();
 }
+
+function makeRandomLettersVowels(nrOfVowels, nrOfLetters) {
+  let randomString = "";
+  let vowels = 'aeiou';
+  let consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+  for (let i = 0; i < nrOfVowels; i++) {
+    randomString += vowels[Math.floor(Math.random() * vowels.length)];
+  }
+  for (let i = 0; i < nrOfLetters - nrOfVowels; i++) {
+    randomString += consonants[Math.floor(Math.random() * consonants.length)]
+  }
+  return randomString.toUpperCase();
+}
+
+const bagOfLetters = makeBagOfLetters(letterDistribution);
+
 const randomLetters = makeRandomLetters(bagOfLetters, 7);
 
 function Letter(props) {
