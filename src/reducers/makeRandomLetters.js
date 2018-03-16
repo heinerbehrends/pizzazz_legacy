@@ -41,20 +41,20 @@ function makeRandomLettersVowels(nrOfVowels, nrOfLetters) {
   for (let i = 0; i < nrOfLetters - nrOfVowels; i++) {
     randomString += consonants[Math.floor(Math.random() * consonants.length)]
   }
-  return randomString.shuffle().toUpperCase();
+  return shuffle(randomString.toUpperCase());
 }
 
-String.prototype.shuffle = function () {
-  var a = this.split(""),
-  n = a.length;
+function shuffle(string) {
+  var array = string.split(""),
+  n = array.length;
 
   for(var i = n - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    var tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+    var tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
   }
-  return a.join("");
+  return array.join("");
 }
 
 export default makeRandomLettersReducer

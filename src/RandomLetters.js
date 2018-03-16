@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 const Letter = (props) =>   {
-  return <img style={{width: 66 + 'px'}} src={'images/' + props.string + '.jpg'}/>
+  return <img style={{width: 66 + 'px'}} src={'images/' + props.string + '.jpg'} alt={'letter' + props.string}/>
 }
 
 const RandomLetters = (props) => {
