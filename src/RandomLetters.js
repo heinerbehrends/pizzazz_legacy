@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {connect} from 'react-redux';
 
 const Letter = (props) =>   {
@@ -21,8 +20,8 @@ const RandomLetters = (props) => {
   );
 }
 const mapStateToProps = (state) => {
-  console.log(state.randomLetters);
   return { randomLetters: state.randomLetters };
 }
 
+export { Letter };
 export default connect(mapStateToProps)(RandomLetters);
