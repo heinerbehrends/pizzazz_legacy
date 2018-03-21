@@ -1,18 +1,18 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { makeRandomLettersVowelsAction } from './actions'
 
 const MakeRandomLettersButton = ({makeRandomLetters}) => {
-  console.log(makeRandomLetters);
   return (
-    <button className="btn btn-outline-secondary mt-5" onClick={makeRandomLetters}>Make Random Letters</button>
+    <button className="btn btn-outline-secondary mt-5" onClick={makeRandomLetters}>
+      Make Random Letters
+    </button>
   )
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    makeRandomLetters: () => dispatch({
-      type: 'makeRandomLetters'
-    })
+    makeRandomLetters: () => dispatch(makeRandomLettersVowelsAction())
   }
 }
 

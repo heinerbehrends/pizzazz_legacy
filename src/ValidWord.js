@@ -1,23 +1,28 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Letter} from './RandomLetters'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Letter from './Letter'
+  
+class ValidWord extends Component {
+  render() {
+    const sevenLetters = [];
+    for (let i = 0; i < 7; i++) {
+      sevenLetters.push(
+        <Letter string={ this.props.validWord }
+        index={i} parent="validWord" key={i}
+        replaceLetter={ this.props.replaceLetter } />
+      )
+    }
 
-const ValidWord = (props) => {
-  return (
-    <div className="border-bottom mt-5">
-      <Letter string={ props.validWord[0] } />
-      <Letter string={ props.validWord[1] } />
-      <Letter string={ props.validWord[2] } />
-      <Letter string={ props.validWord[3] } />
-      <Letter string={ props.validWord[4] } />
-      <Letter string={ props.validWord[5] } />
-      <Letter string={ props.validWord[6] } />
-    </div>
-  );
+    return (
+      <div className="border-bottom mt-5">
+          {sevenLetters}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
   return { validWord: state.validWord }
 }
 
- export default connect(mapStateToProps)(ValidWord);
+export default connect(mapStateToProps)(ValidWord);
