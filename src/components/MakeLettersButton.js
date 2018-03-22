@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { makeRandomLettersVowelsAction } from './actions'
+import { makeRandomLettersVowelsAction } from '../actions'
 
 const MakeRandomLettersButton = ({makeRandomLetters}) => {
   return (

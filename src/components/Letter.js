@@ -9,6 +9,7 @@ class Letter extends Component {
     return connectDragSource(
               connectDropTarget(
                 <img style={{width: 66 + 'px'}}
+                className="is-valid"
                 src={'images/' + string[index] + '.jpg'}
                 alt={string[index]}/>
               )
@@ -24,10 +25,12 @@ const letterSource = {
     }
   },
   endDrag(props, monitor) {
-    const { string, index, parent, replaceLetter } = props;
-    const { targetLetter, targetIndex, targetParent } = monitor.getDropResult();
-    props.dispatch(replaceLetter(string[index], targetParent, targetIndex));
-    props.dispatch(replaceLetter(targetLetter, parent, index));
+    if (monitor.didDrop()) {
+      const { string, index, parent, replaceLetter } = props;
+      const { targetLetter, targetIndex, targetParent } = monitor.getDropResult();
+      props.dispatch(replaceLetter(string[index], targetParent, targetIndex));
+      props.dispatch(replaceLetter(targetLetter, parent, index));
+    }
   }
 }
 

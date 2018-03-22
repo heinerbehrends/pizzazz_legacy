@@ -4,7 +4,7 @@ import MakeRandomLettersButton from './MakeLettersButton'
 import ValidWord from './ValidWord'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { replaceLetterAction } from './actions'
+import { replaceLetterAction } from '../actions'
 
 class App extends Component {
   render() {
