@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Letter from './Letter'
-  
+import { replaceLetter } from '../scrabbleLogic/gameLogic'
+import { replaceLetterAction, showValidAction } from '../actions'
+
+
 class ValidWord extends Component {
   render() {
     const sevenLetters = [];
     for (let i = 0; i < 7; i++) {
       sevenLetters.push(
         <Letter string={ this.props.validWord }
-        index={i} parent="validWord" key={i}
-        replaceLetter={ this.props.replaceLetter } />
+        index={i} parent="validWord" key={i} showValid={ this.props.showValid > i }
+        replaceLetter={ replaceLetter } replaceLetterAction={ replaceLetterAction }
+        showValidAction={ showValidAction }/>
       )
     }
 
@@ -22,7 +26,8 @@ class ValidWord extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { validWord: state.validWord }
+  return { validWord: state.validWord,
+           showValid: state.showValid}
 }
 
 export default connect(mapStateToProps)(ValidWord);

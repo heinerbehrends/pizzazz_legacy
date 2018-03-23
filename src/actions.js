@@ -15,6 +15,13 @@ export const replaceLetterAction = (letter, target, index) => {
     type: 'replaceLetter',
     letter: letter,
     target: target,
-    index: index
+    index: index,
+  }
+}
+
+export const showValidAction = (index, score) => {
+  return {
+    type: 'showValid',
+    index: index,
   }
 }

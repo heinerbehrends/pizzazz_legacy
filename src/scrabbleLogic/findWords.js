@@ -1,16 +1,19 @@
 import { wordScoreDict, wordScoreString } from '../Constants'
 
 export function findValidWord(string, wordScoreDict) {
-  var validWords = [];
+  var string = string.toLowerCase();
+  var validWordIndexes = [];
   for (let i = 1; i <= string.length; i++) {
     if (wordScoreDict.hasOwnProperty(string.substring(0, i))) {
-      validWords.push(i);
+      validWordIndexes.push(i);
     }
   }
-  return string.substring(0, Math.max(...validWords))
+  const longestValidWord = string.substring(0, Math.max(...validWordIndexes));
+  return [longestValidWord, wordScoreDict[longestValidWord]]
 }
 
 export function findValidWordWildcard(string, wordScoreString) {
+  var string = string.toLowerCase();
   var validWords = [];
   for (let i = 1; i <= string.length; i++) {
     let substring = string.substring(0, i);
@@ -24,14 +27,15 @@ export function findValidWordWildcard(string, wordScoreString) {
       validWords.push(result);
     }
   }
-  return validWords;
+  if (validWords.length != 0) {
+    return [validWords[validWords.length - 1][1], validWords[validWords.length - 1][2]];
+  }
 }
 
 export function findValidSubstrings(string, wordScoreDict) {
   var validWordIndexes = [];
   for (let i = 0; i < string.length; i++) {
     for (let j = i + 1; j <= string.length; j++) {
-      console.log(string.substring(i, j));
       if (wordScoreDict.hasOwnProperty(string.substring(i, j))) {
         validWordIndexes.push([i, j]);
       }
@@ -52,10 +56,19 @@ export function findValidSubstringsWildcard(string, wordScoreString) {
                  .join('[a-z]?') +
         ')["]:(\\d*)');
       let result = wordScoreString.match(regEx);
-      if (result != null) {
+      if (result !== null) {
         validWords.push(result);
       }
     }
   }
   return validWords;
+}
+
+export function getScoreWildcard(word, letterValues) {
+  var wordWithoutWildcard = word.split('8').join('').toLowerCase();
+  var score = 0;
+  for (let letter of wordWithoutWildcard) {
+    score += letterValues[letter];
+  }
+  return score;
 }

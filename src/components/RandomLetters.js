@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Letter from './Letter'
+import { replaceLetter } from '../scrabbleLogic/gameLogic'
+import { replaceLetterAction, showValidAction } from '../actions'
+
 
 class RandomLetters extends Component {
   render() {
@@ -9,7 +12,9 @@ class RandomLetters extends Component {
       sevenLetters.push(
         <Letter string={ this.props.randomLetters }
         index={i} parent='randomLetters' key={i}
-        replaceLetter={ this.props.replaceLetter } />)
+        replaceLetter={ replaceLetter } replaceLetterAction={ replaceLetterAction }
+        showValidAction={ showValidAction } />
+        )
     }
     return (
       <div className="border-bottom">
@@ -18,6 +23,7 @@ class RandomLetters extends Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return { randomLetters: state.randomLetters };
 }

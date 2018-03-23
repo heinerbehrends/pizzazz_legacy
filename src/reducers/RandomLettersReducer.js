@@ -1,5 +1,6 @@
 import { bagOfLetters } from '../Constants'
 import { makeRandomLetters, makeRandomLettersVowels } from '../scrabbleLogic/makeRandomLetters'
+import { replaceLetter } from '../scrabbleLogic/gameLogic'
 
 const RandomLettersReducer = (state = '0000000', action) => {
   switch (action.type) {
@@ -9,9 +10,7 @@ const RandomLettersReducer = (state = '0000000', action) => {
       return makeRandomLettersVowels(2, 7);
     case 'replaceLetter':
       if (action.target === 'randomLetters') {
-        return state.substring(0, action.index)
-                    .concat(action.letter)
-                    .concat(state.substring(action.index + 1));
+        return replaceLetter(state, action.letter, action.index);
       }
       else {
         return state;
