@@ -1,4 +1,4 @@
-import { SHOW_VALID } from '../actionTypes'
+import { SHOW_VALID, MAKE_MOVE } from '../actionTypes'
 
 const showValidReducer = (state = 0, action) => {
   switch (action.type){
@@ -9,6 +9,8 @@ const showValidReducer = (state = 0, action) => {
       else {
         return state;
       }
+    case MAKE_MOVE:
+      return 0;
     default:
       return state;
  }

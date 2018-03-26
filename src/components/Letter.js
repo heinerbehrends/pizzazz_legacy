@@ -12,7 +12,7 @@ class Letter extends Component {
     return connectDragSource(
               connectDropTarget(
                 <img style={{width: 66 + 'px'}}
-                className={this.props.showValid ? "is-valid" : ""}
+                className={showValid ? "is-valid" : ""}
                 src={'images/' + string[index] + '.jpg'}
                 alt={string[index]}/>
               )

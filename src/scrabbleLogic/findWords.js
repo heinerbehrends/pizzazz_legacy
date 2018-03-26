@@ -11,7 +11,7 @@ export function findValidWord(string, wordScoreDict) {
 }
 
 export function findValidWordWildcard(string, wordScoreString) {
-  var string = string.toLowerCase();
+  string = string.toLowerCase();
   var validWords = [];
   for (let i = 1; i <= string.length; i++) {
     let substring = string.substring(0, i);

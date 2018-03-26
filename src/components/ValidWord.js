@@ -27,7 +27,8 @@ class ValidWord extends Component {
 
 const mapStateToProps = (state) => {
   return { validWord: state.validWord,
-           showValid: state.showValid}
+           showValid: state.showValid,
+           potentialScore: state.potentialScore }
 }
 
 export default connect(mapStateToProps)(ValidWord);
