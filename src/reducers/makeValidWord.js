@@ -1,6 +1,8 @@
+import { REPLACE_LETTER } from '../actionTypes'
+
 const validWordReducer = (state = "0000000", action) => {
   switch(action.type) {
-    case 'replaceLetter':
+    case REPLACE_LETTER:
     if (action.target === 'validWord') {
       return state.substring(0, action.index)
                   .concat(action.letter)

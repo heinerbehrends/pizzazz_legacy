@@ -1,10 +1,12 @@
+import { MAKE_RANDOM_LETTERS, MAKE_RANDOM_LETTERS_VOWELS, SHOW_VALID } from '../actionTypes'
+
 const buttonStateReducer = (state='init', action) => {
   switch (action.type) {
-    case 'makeRandomLetters':
+    case MAKE_RANDOM_LETTERS:
       return 'disabled';
-    case 'makeRandomLettersVowels':
+    case MAKE_RANDOM_LETTERS_VOWELS:
       return 'disabled';
-    case 'showValid':
+    case SHOW_VALID:
       if (action.index !== 0) {
         return 'play';
       }

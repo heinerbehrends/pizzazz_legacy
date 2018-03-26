@@ -9,7 +9,6 @@ import { wordScoreDict, wordScoreString } from '../Constants'
 class Letter extends Component {
   render() {
     const { string, index, connectDragSource, connectDropTarget, showValid } = this.props;
-    console.log(showValid);
     return connectDragSource(
               connectDropTarget(
                 <img style={{width: 66 + 'px'}}
@@ -30,30 +29,32 @@ const letterSource = {
   },
   endDrag(props, monitor) {
     if (monitor.didDrop()) {
+      const target = monitor.getDropResult();
       const { string, index, parent, replaceLetter, replaceLetterAction } = props;
-      const { targetLetter, targetIndex, targetParent, targetString, showValidAction } = monitor.getDropResult();
+      const { targetLetter, targetIndex, targetParent, targetString, showValidAction } = target;
       const letter = string[index];
 
       props.dispatch(replaceLetterAction(letter, targetParent, targetIndex));
       props.dispatch(replaceLetterAction(targetLetter, parent, index));
 
-      if (targetParent === 'validWord' | parent === 'validWord') {
+
+
+      if (targetParent === 'validWord' || parent === 'validWord') {
         const word = 0;
         const score = 1;
-        const validWordString = updateValidWord(
-          replaceLetter,
-          string, letter, index, parent,
-          targetString, targetLetter, targetIndex, targetParent);
-
+        const validWordString = updateValidWord(props, target);
+        console.log(['validWordString: ', validWordString]);
         if (validWordString.indexOf('8') !== -1) {
-          var longestValidWord = findValidWordWildcard(validWordString, wordScoreString)[word];
-          var longestValidWordScore = findValidWordWildcard(validWordString, wordScoreString)[score];
+          var validWords = findValidWordWildcard(validWordString, wordScoreString);
+          if (validWords){
+            var longestValidWord = validWords[word];
+            var longestValidWordScore = validWords[score];
+          }
         }
         else {
           var longestValidWord = findValidWord(validWordString, wordScoreDict)[word];
           var longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
         }
-        console.log([longestValidWord, longestValidWordScore]);
         if (longestValidWord) {
           props.dispatch(showValidAction(longestValidWord.length))
         }

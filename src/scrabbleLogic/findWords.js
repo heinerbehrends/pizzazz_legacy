@@ -1,7 +1,5 @@
-import { wordScoreDict, wordScoreString } from '../Constants'
-
 export function findValidWord(string, wordScoreDict) {
-  var string = string.toLowerCase();
+  string = string.toLowerCase();
   var validWordIndexes = [];
   for (let i = 1; i <= string.length; i++) {
     if (wordScoreDict.hasOwnProperty(string.substring(0, i))) {
@@ -23,11 +21,13 @@ export function findValidWordWildcard(string, wordScoreString) {
                .join('[a-z]?') +
       ')["]:(\\d*)');
     let result = wordScoreString.match(regEx);
+    console.log('regEx', 'result');
+    console.log([regEx, result]);
     if (result != null) {
       validWords.push(result);
     }
   }
-  if (validWords.length != 0) {
+  if (validWords.length !== 0) {
     return [validWords[validWords.length - 1][1], validWords[validWords.length - 1][2]];
   }
 }

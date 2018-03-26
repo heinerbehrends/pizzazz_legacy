@@ -5,23 +5,26 @@ export function replaceLetter(string, letter, index) {
   return newString;
 }
 
-export function updateValidWord(replaceLetter,
-                                  propString, propLetter, propIndex, propParent,
-                                  targetString, targetLetter, targetIndex, targetParent)
-{
+export function updateValidWord(props, target) {
+  console.log(props);
+  const { string, index, parent, replaceLetter, replaceLetterAction } = props;
+  const { targetLetter, targetIndex, targetParent, targetString, showValidAction } = target;
+  const letter = string[index];
+  console.log(props, target);
   if (targetParent === 'validWord') {
-    if (propParent === 'validWord') {
-      let firstMutation = replaceLetter(targetString, propLetter, targetIndex);
-      let secondMutation = replaceLetter(firstMutation, targetLetter, propIndex);
+    if (parent === 'validWord') {
+      let firstMutation = replaceLetter(targetString, letter, targetIndex);
+      console.log(['first mutation', firstMutation]);
+      let secondMutation = replaceLetter(firstMutation, targetLetter, targetIndex);
       return secondMutation;
     }
     else {
-      return replaceLetter(targetString, propLetter, targetIndex);
+      return replaceLetter(targetString, letter, targetIndex);
     }
   }
   else {
-    if (propParent === 'validWord') {
-      return replaceLetter(propString, targetLetter, propIndex)
+    if (parent === 'validWord') {
+      return replaceLetter(string, targetLetter, index)
     }
   }
 }
