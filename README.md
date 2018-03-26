@@ -8,7 +8,11 @@ live @ https://pizzazz.vps.codegorilla.nl
 Clone project and run npm install and npm start.
 Uses react-dnd for drag and drop funcionality.
 
-The user can drag and drop characters to form words. The app indicates if the string starts with a valid word and gives feedback. Button state changes. Playing a word is not possible yet.
+The user can drag and drop characters to form words. 
+The app indicates if the string starts with a valid word and gives feedback.
+Button state changes. Playing a word is not possible yet.
+
+Known bug: wildcard letter disappears when dropping on itself.
 
 ## Week 1:
 - Monday: sick
