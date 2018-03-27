@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import RandomLetters from './RandomLetters'
 import MakeRandomLettersButton from './MakeLettersButton'
 import ValidWord from './ValidWord'
+import StatusDisplay from './StatusDisplay'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
@@ -12,6 +13,7 @@ class App extends Component {
         <RandomLetters />
         <ValidWord />
         <MakeRandomLettersButton />
+        <StatusDisplay />
       </div>
     )
   }

@@ -33,11 +33,12 @@ export const showValidAction = (index) => {
   }
 }
 
-export const makeMoveAction = (word, score, index) => {
+export const makeMoveAction = (word, score, index, player) => {
   return {
     type: MAKE_MOVE,
     word: word,
     score: score,
     index: index,
+    player: 'local'
   }
 }
