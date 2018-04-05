@@ -14,9 +14,7 @@ class MakeRandomLettersButton extends Component {
 
     if (buttonState === 'init') {
       return (
-        <button className = "btn btn-outline-secondary my-5" onClick={ this.props.makeRandomLetters } >
-          Make Random Letters
-        </button>
+        <div></div>
       )
     } else if (buttonState === 'disabled') {
       return (

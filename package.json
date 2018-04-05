@@ -1,14 +1,20 @@
 {
   "name": "pizzazz",
   "version": "0.1.0",
+  "proxy": "http://laravel.localhost:80/",
   "private": true,
   "dependencies": {
     "ajv": "^6.2.1",
+    "axios": "^0.18.0",
+    "laravel-echo": "^1.3.5",
+    "pusher-js": "^4.2.2",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.2.0",
+    "react-pusher": "^0.2.0",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"

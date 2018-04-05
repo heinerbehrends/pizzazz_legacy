@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Letter from './Letter'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { replaceLetterAction, showValidAction } from '../actions'
+import { randomLettersAction } from '../actions'
 
 
 class RandomLetters extends Component {
@@ -28,4 +29,8 @@ const mapStateToProps = (state) => {
   return { randomLetters: state.randomLetters };
 }
 
-export default connect(mapStateToProps)(RandomLetters);
+const mapDispatchToProps = dispatch => {
+  return { newRandomLetters: (string) => dispatch(randomLettersAction(string))   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomLetters);

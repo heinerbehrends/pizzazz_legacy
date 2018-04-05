@@ -17,6 +17,13 @@ export const makeRandomLettersVowelsAction = () => {
   }
 }
 
+export const randomLettersAction = (string) => {
+  return {
+    type: randomLettersAction,
+    string: string
+  }
+}
+
 export const replaceLetterAction = (letter, target, index) => {
   return {
     type: REPLACE_LETTER,
