@@ -26,6 +26,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "jest": "^23.0.0-alpha.0"
+    "jest": "^23.0.0-alpha.0",
+    "redux-devtools-extension": "^2.13.2"
   }
 }

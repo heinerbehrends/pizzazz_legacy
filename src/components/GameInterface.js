@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { makeRandomLettersVowelsAction } from '../actions'
 import { makeMoveAction } from '../actions'
 import { getScoreWildcard } from '../scrabbleLogic/findWords'
 import { letterValues } from '../Constants'
+import ScreenName from './ScreenName'
 
-class MakeRandomLettersButton extends Component {
+class GameInterface extends Component {
   render() {
     var validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     var potentialScore = getScoreWildcard(validWord, letterValues);
     var index = this.props.index;
-    var buttonState = this.props.buttonState;
+    var gameState = this.props.gameState;
 
-    if (buttonState === 'init') {
+    if (gameState === 'init') {
       return (
-        <div></div>
+        <ScreenName />
       )
-    } else if (buttonState === 'disabled') {
+    } else if (gameState === 'disabled') {
       return (
         <div className="my-5 pt-2">
-          <span className = "text-secondary border-bottom pb-2">
+          <span className = "text-secondary border-bottom px-3 pb-2">
             Move Letters To Form A Word
           </span>
         </div>
@@ -39,16 +39,15 @@ const mapStateToProps = state => {
   return {
     validWord: state.validWord,
     isValidIndex: state.showValid,
-    buttonState: state.buttonState,
+    gameState: state.gameState,
     index: state.showValid
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    makeRandomLetters: () => dispatch(makeRandomLettersVowelsAction()),
     makeMove: (word, score, index) => dispatch(makeMoveAction(word, score, index)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MakeRandomLettersButton)
+export default connect(mapStateToProps, mapDispatchToProps)(GameInterface)

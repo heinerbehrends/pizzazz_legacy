@@ -5,7 +5,6 @@ import StatusItem from './StatusItem'
 class StatusDisplay extends Component {
   render() {
     const moves = this.props.moves;
-    console.log(typeof moves);
     const statusUpdates = [];
     if (this.props.moves !== undefined) {
       for (let i = 0; i < moves.length; i++) {

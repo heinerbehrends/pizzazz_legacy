@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { newGameAction, sendNameAction } from '../actions'
 
 class ScreenName extends Component {
   constructor(props) {
@@ -16,16 +17,9 @@ class ScreenName extends Component {
   sendScreenName(event) {
     event.preventDefault();
     const screenName = this.state.screenName;
-    console.log(this.state);
-    axios.post('/api/screenName', {
-      screenName
-    })
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    console.log(this.props);
+    this.props.sendName(screenName);
+    // this.props.newGame(window.game)
   }
   render() {
     return (
@@ -42,4 +36,11 @@ class ScreenName extends Component {
   }
 }
 
-export default ScreenName
+const mapDispatchToProps = dispatch => {
+  return {
+    newGame: gameObject => dispatch(newGameAction(gameObject)),
+    sendName: name => dispatch(sendNameAction(name))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ScreenName)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RandomLetters from './RandomLetters'
-import MakeRandomLettersButton from './MakeLettersButton'
+import GameInterface from './GameInterface'
 import ValidWord from './ValidWord'
 import StatusDisplay from './StatusDisplay'
 import ScreenName from './ScreenName'
@@ -13,9 +13,8 @@ class App extends Component {
       <div className="text-center m-5">
         <RandomLetters />
         <ValidWord />
-        <MakeRandomLettersButton />
+        <GameInterface />
         <StatusDisplay />
-        <ScreenName />
       </div>
     )
   }

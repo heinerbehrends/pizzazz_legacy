@@ -10,13 +10,17 @@ class ValidWord extends Component {
     const sevenLetters = [];
     for (let i = 0; i < 7; i++) {
       sevenLetters.push(
-        <Letter string={ this.props.validWord }
-        index={i} parent="validWord" key={i.toString()} showValid={ this.props.showValid > i }
-        replaceLetter={ replaceLetter } replaceLetterAction={ replaceLetterAction }
-        showValidAction={ showValidAction }/>
+        <Letter
+          string={ this.props.validWord }
+          index={i} parent="validWord" key={i.toString()}
+          showValid={ this.props.showValid > i }
+          replaceLetter={ replaceLetter }
+          replaceLetterAction={ replaceLetterAction }
+          showValidAction={ showValidAction }
+        />
       )
     }
-    console.log(sevenLetters);
+
     return (
       <div className="border-bottom mt-5">
           {sevenLetters}

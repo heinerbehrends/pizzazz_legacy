@@ -1,25 +1,10 @@
-import { MAKE_RANDOM_LETTERS, MAKE_RANDOM_LETTERS_VOWELS, REPLACE_LETTER,
-        SHOW_VALID, MAKE_MOVE } from './actionTypes'
-import { makeRandomLetters, makeRandomLettersVowels } from './scrabbleLogic/makeRandomLetters'
-import { bagOfLetters } from './Constants'
+import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID,
+         MAKE_MOVE, NEW_GAME } from './actionTypes'
+import axios from 'axios'
 
-export const makeRandomLettersAction = () => {
+export const randomLettersAction = string => {
   return {
-    type: MAKE_RANDOM_LETTERS,
-    string: makeRandomLetters(7, bagOfLetters)
-  }
-}
-
-export const makeRandomLettersVowelsAction = () => {
-  return {
-    type: MAKE_RANDOM_LETTERS_VOWELS,
-    string: makeRandomLettersVowels(2, 7)
-  }
-}
-
-export const randomLettersAction = (string) => {
-  return {
-    type: randomLettersAction,
+    type: RANDOM_LETTERS,
     string: string
   }
 }
@@ -33,7 +18,7 @@ export const replaceLetterAction = (letter, target, index) => {
   }
 }
 
-export const showValidAction = (index) => {
+export const showValidAction = index => {
   return {
     type: SHOW_VALID,
     index: index,
@@ -47,5 +32,32 @@ export const makeMoveAction = (word, score, index, player) => {
     score: score,
     index: index,
     player: 'local'
+  }
+}
+
+export const newGameAction = id => {
+  return {
+    type: NEW_GAME,
+    id,
+  }
+}
+
+export function sendNameAction(name) {
+  return function(dispatch) {
+    axios.post('/api/screenName', {
+      screenName: name
+    })
+    .then(function(response) {
+      let gameId = response.data.game.id;
+      dispatch(newGameAction(gameId))
+      window.Echo.channel('pizzazz' + gameId)
+          .listen('StartGame', (event) => {
+              console.log(event.randomLetters);
+              dispatch(randomLettersAction(event.randomLetters));
+          });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }

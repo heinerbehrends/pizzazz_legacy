@@ -4,7 +4,6 @@ const makeMoveReducer = (state = [], action) => {
   console.log(action.type);
   switch(action.type) {
     case MAKE_MOVE:
-      console.log(state);
       let newState = state.slice(0);
       let { word, score, index } = action;
       let move = [word, score, index, 'local'];

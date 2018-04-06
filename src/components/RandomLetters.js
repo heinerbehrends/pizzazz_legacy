@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Letter from './Letter'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
-import { replaceLetterAction, showValidAction } from '../actions'
-import { randomLettersAction } from '../actions'
+import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions'
 
 
 class RandomLetters extends Component {

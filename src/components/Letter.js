@@ -30,8 +30,8 @@ const letterSource = {
   endDrag(props, monitor) {
     if (monitor.didDrop()) {
       const target = monitor.getDropResult();
-      const { string, index, parent, replaceLetter, replaceLetterAction } = props;
-      const { targetLetter, targetIndex, targetParent, targetString, showValidAction } = target;
+      const { string, index, parent, replaceLetterAction } = props;
+      const { targetLetter, targetIndex, targetParent, showValidAction } = target;
       const letter = string[index];
 
       props.dispatch(replaceLetterAction(letter, targetParent, targetIndex));
@@ -52,8 +52,8 @@ const letterSource = {
           }
         }
         else {
-          var longestValidWord = findValidWord(validWordString, wordScoreDict)[word];
-          var longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
+          longestValidWord = findValidWord(validWordString, wordScoreDict)[word];
+          longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
         }
         if (longestValidWord) {
           props.dispatch(showValidAction(longestValidWord.length))

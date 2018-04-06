@@ -4,8 +4,10 @@ import './index.css';
 import rootReducer  from './reducers/rootReducer';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension'
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 
@@ -23,8 +25,12 @@ window.Echo.channel('pizzazz')
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
 );
+
+console.log(store.getState());
 
 render(
   <Provider store={store}>
