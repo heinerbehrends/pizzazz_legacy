@@ -4,6 +4,7 @@ import GameInterface from './GameInterface'
 import ValidWord from './ValidWord'
 import StatusDisplay from './StatusDisplay'
 import ScreenName from './ScreenName'
+import SendSolution from './SendSolution'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 

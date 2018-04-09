@@ -1,7 +1,6 @@
 import { MAKE_MOVE } from '../actionTypes'
 
 const makeMoveReducer = (state = [], action) => {
-  console.log(action.type);
   switch(action.type) {
     case MAKE_MOVE:
       let newState = state.slice(0);

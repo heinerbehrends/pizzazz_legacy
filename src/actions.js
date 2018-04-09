@@ -1,5 +1,5 @@
 import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID,
-         MAKE_MOVE, NEW_GAME } from './actionTypes'
+         MAKE_MOVE, FIRST_PLAYER, START_GAME, END_GAME, SHOW_WINNER } from './actionTypes'
 import axios from 'axios'
 
 export const randomLettersAction = string => {
@@ -35,29 +35,58 @@ export const makeMoveAction = (word, score, index, player) => {
   }
 }
 
-export const newGameAction = id => {
+export const firstPlayerAction = boolean => {
   return {
-    type: NEW_GAME,
-    id,
+    type: FIRST_PLAYER,
+    firstPlayer: boolean,
+  }
+}
+
+export const StartGame = boolean => {
+  return {
+    type: START_GAME,
+    firstPlayer: boolean,
   }
 }
 
 export function sendNameAction(name) {
   return function(dispatch) {
+    window.Echo.channel('pizzazz')
+    .listen('StartGame', (event) => {
+      dispatch(randomLettersAction(event.game.randomLetters));
+    })
+
+    window.Echo.channel('pizzazz')
+    .listen('EndGame', (event) => {
+      console.log(event.game);
+      dispatch(showWinnerAction(event.game));
+    });
+
     axios.post('/api/screenName', {
       screenName: name
     })
-    .then(function(response) {
-      let gameId = response.data.game.id;
-      dispatch(newGameAction(gameId))
-      window.Echo.channel('pizzazz' + gameId)
-          .listen('StartGame', (event) => {
-              console.log(event.randomLetters);
-              dispatch(randomLettersAction(event.randomLetters));
-          });
-    })
-    .catch(function(error) {
-      console.log(error);
+    .then((response) => {
+      dispatch(firstPlayerAction(response.data.firstPlayer));
     });
+  }
+}
+
+export function endGameAction(firstPlayer, makeMove) {
+  return function(dispatch) {
+    axios.post('/api/endGame', {
+      firstPlayer: firstPlayer,
+      makeMove: makeMove,
+    })
+    .then((response) => {
+      console.log('');
+    });
+  }
+}
+
+export const showWinnerAction = (game) => {
+  console.log(game);
+  return {
+    type: SHOW_WINNER,
+    game: game,
   }
 }

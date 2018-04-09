@@ -4,6 +4,9 @@ import { makeMoveAction } from '../actions'
 import { getScoreWildcard } from '../scrabbleLogic/findWords'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
+import SendSolution from './SendSolution'
+import Winner from './Winner'
+
 
 class GameInterface extends Component {
   render() {
@@ -12,25 +15,49 @@ class GameInterface extends Component {
     var index = this.props.index;
     var gameState = this.props.gameState;
 
-    if (gameState === 'init') {
-      return (
-        <ScreenName />
-      )
-    } else if (gameState === 'disabled') {
-      return (
-        <div className="my-5 pt-2">
-          <span className = "text-secondary border-bottom px-3 pb-2">
-            Move Letters To Form A Word
-          </span>
-        </div>
-      )
-    } else {
-      return (
-        <button className = "btn btn-outline-secondary my-5" word = { validWord }
-         score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, index) } >
-          { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
-        </button>
-      )
+    switch(gameState) {
+      case 'init':
+        return (
+          <ScreenName />
+        )
+      case 'waiting':
+        return (
+          <div className="my-5 pt-2">
+            <span className = "text-secondary border-bottom px-3 pb-2">
+              Waiting for an opponent
+            </span>
+          </div>
+        )
+      case 'makeWord':
+        return (
+          <div className="my-5 pt-2">
+            <span className = "text-secondary border-bottom px-3 pb-2">
+              Move Letters To Form A Word
+            </span>
+          </div>
+        )
+      case 'makeWordEnd':
+        return (
+          <div>
+            <div className="my-5 pt-2">
+              <span className = "text-secondary border-bottom px-3 pb-2">
+              Move Letters To Form A Word
+              </span>
+            </div>
+            <SendSolution />
+          </div>
+        )
+      case 'play':
+        return (
+          <button className = "btn btn-outline-secondary my-5" word = { validWord }
+           score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, index) } >
+            { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
+          </button>
+        )
+      case 'showWinner':
+        return (
+          <Winner />
+        )
     }
   }
 }

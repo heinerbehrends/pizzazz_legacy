@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { newGameAction, sendNameAction } from '../actions'
+import { firstPlayerAction, sendNameAction } from '../actions'
 
 class ScreenName extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class ScreenName extends Component {
     const screenName = this.state.screenName;
     console.log(this.props);
     this.props.sendName(screenName);
-    // this.props.newGame(window.game)
   }
   render() {
     return (
@@ -38,7 +37,7 @@ class ScreenName extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newGame: gameObject => dispatch(newGameAction(gameObject)),
+    firstPlayer: boolean => dispatch(firstPlayerAction(boolean)),
     sendName: name => dispatch(sendNameAction(name))
   }
 }
