@@ -22,9 +22,9 @@ class ValidWord extends Component {
     }
 
     return (
-      <div className="border-bottom mt-5">
+      <span className="border-bottom border-secondary mt-5 d-inline-block">
           {sevenLetters}
-      </div>
+      </span>
     );
   }
 }

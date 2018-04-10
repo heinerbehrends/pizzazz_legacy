@@ -20,7 +20,6 @@ class StatusDisplay extends Component {
       )
     }
     if (statusUpdates.length > 0) {
-      console.log(statusUpdates);
       return (
         <div>
           {statusUpdates}

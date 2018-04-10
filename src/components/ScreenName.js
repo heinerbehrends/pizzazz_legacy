@@ -17,7 +17,6 @@ class ScreenName extends Component {
   sendScreenName(event) {
     event.preventDefault();
     const screenName = this.state.screenName;
-    console.log(this.props);
     this.props.sendName(screenName);
   }
   render() {

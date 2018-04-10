@@ -6,7 +6,7 @@ class SendSolution extends Component {
   render() {
     console.log(this.props);
     return (
-      <button className = "btn btn-outline-secondary my-5"
+      <button className = "btn btn-outline-secondary mb-5 mt-3"
       // firstPlayer={ this.props.firstPlayer } makeMove={ this.props.makeMove }
       onClick={ () => this.props.endGame(this.props.firstPlayer, this.props.makeMove) } >
       End Game

@@ -17,9 +17,9 @@ class RandomLetters extends Component {
         )
     }
     return (
-      <div className="border-bottom">
+      <span className="border-bottom border-secondary d-inline-block">
         {sevenLetters}
-      </div>
+      </span>
     );
   }
 }
