@@ -10,10 +10,9 @@ import Winner from './Winner'
 
 class GameInterface extends Component {
   render() {
-    var validWord = this.props.validWord.substring(0, this.props.isValidIndex);
-    var potentialScore = getScoreWildcard(validWord, letterValues);
-    var index = this.props.index;
-    var gameState = this.props.gameState;
+    const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
+    const potentialScore = getScoreWildcard(validWord, letterValues);
+    const { index, gameState, gameEnd, firstPlayer } = this.props;
 
     switch(gameState) {
       case 'init':
@@ -29,11 +28,26 @@ class GameInterface extends Component {
           </div>
         )
       case 'makeWord':
+        var opponent = '';
+        if (firstPlayer) {
+          opponent = gameEnd.player2Name;
+        }
+        else {
+          opponent = gameEnd.player1Name;
+        }
+
         return (
-          <div className="my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              Move Letters To Form A Word
-            </span>
+          <div>
+            <div className="my-5 pt-2">
+              <span className = "text-secondary border-bottom px-3 pb-2">
+                Move Letters To Form A Word
+              </span>
+            </div>
+            <div>
+              <span className = "text-secondary border-bottom px-3 pb-2">
+                {'You play against ' + opponent}
+              </span>
+            </div>
           </div>
         )
       case 'makeWordEnd':
@@ -67,7 +81,9 @@ const mapStateToProps = state => {
     validWord: state.validWord,
     isValidIndex: state.showValid,
     gameState: state.gameState,
-    index: state.showValid
+    index: state.showValid,
+    firstPlayer: state.firstPlayer,
+    gameEnd: state.gameEnd
   }
 }
 

@@ -1,4 +1,5 @@
-import { RANDOM_LETTERS, SHOW_VALID, MAKE_MOVE, FIRST_PLAYER, SHOW_WINNER } from '../actionTypes'
+import { RANDOM_LETTERS, START_GAME, SHOW_VALID, MAKE_MOVE,
+  FIRST_PLAYER, SHOW_WINNER, OPPONENT } from '../actionTypes'
 
 const gameStateReducer = (state='init', action) => {
   switch (action.type) {
@@ -9,7 +10,7 @@ const gameStateReducer = (state='init', action) => {
       else {
         return 'makeWord';
       }
-    case RANDOM_LETTERS:
+    case OPPONENT:
       return 'makeWord';
     case SHOW_VALID:
       if (action.index !== 0) {

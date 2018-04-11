@@ -3,39 +3,54 @@ import { connect } from 'react-redux'
 
 class Winner extends Component {
   render() {
-    const { player1Score, player2Score } = this.props.game;
+    const { player1Score, player2Score, player1Solution, player2Solution } = this.props.game;
     const firstPlayer = this.props.firstPlayer;
+
     if (player1Score > player2Score) {
       if (firstPlayer) {
         return (
-          // <p className="lead">{ 'Your opponent played ' + otherSolution ' for ' + otherScore + ' points' }</p>
-          <h1 className="h3 py-5 text-secondary font-weight-light">You win!</h1>
+          <div>
+            <h1 className="h3 py-5 text-secondary font-weight-light">You win!</h1>
+            <p className="text-secondary">{ 'Your Opponent Played ' + player2Solution + ' For ' + player2Score + ' Points' }</p>
+          </div>
         )
       }
       else {
         return (
-          // <p className="lead">{ 'Your opponent played ' + otherSolution ' for ' + otherScore + ' points' }</p>
-          <h1 className="h3 py-5 text-secondary font-weight-light">You loose!</h1>
+          <div>
+            <h1 className="h3 py-5 text-secondary font-weight-light">You lose!</h1>
+            <p className="text-secondary">{ 'Your Opponent Played ' + player1Solution + ' For ' + player1Score + ' Points' }</p>
+          </div>
         )
       }
     }
     else if (player1Score === player2Score) {
       return (
-        // <p className="lead">{ 'Your opponent played ' + otherSolution ' for ' + otherScore + ' points' }</p>
-        <h1 className="h3 py-5 text-secondary font-weight-light">It is a draw!</h1>
+        <div>
+          <h1 className="h3 py-5 text-secondary font-weight-light">It is a draw!</h1>
+          <p className="text-secondary">
+            { 'Your Opponent Played ' +
+            (firstPlayer ? player1Solution : player2Solution) + ' For ' + 
+            (firstPlayer ? player1Score : player2Score) + ' Points' }
+          </p>
+        </div>
       )
     }
     else {
       if (! firstPlayer) {
         return (
-          // <p className="lead">{ 'Your opponent played ' + otherSolution ' for ' + otherScore + ' points' }</p>
-          <h1 className="h3 py-5 text-secondary font-weight-light">You win!</h1>
+          <div>
+            <h1 className="h3 py-5 text-secondary font-weight-light">You win!</h1>
+            <p className="text-secondary">{ 'Your Opponent Played ' + player1Solution + ' For ' + player1Score + ' Points' }</p>
+          </div>
         )
       }
       else {
         return (
-          // <p className="lead">{ 'Your opponent played ' + otherSolution ' for ' + otherScore + ' points' }</p>
-          <h1 className="h3 py-5 text-secondary font-weight-light">You loose!</h1>
+          <div>
+            <h1 className="h3 py-5 text-secondary font-weight-light">You lose!</h1>
+            <p className="text-secondary">{ 'Your Opponent Played ' + player2Solution + ' For ' + player2Score + ' Points' }</p>
+          </div>
         )
       }
     }

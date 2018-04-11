@@ -5,4 +5,5 @@ export const MAKE_MOVE = 'makeMove'
 export const FIRST_PLAYER = 'firstPlayer';
 export const START_GAME = 'startGame';
 export const END_GAME = 'endGame';
-export const SHOW_WINNER = 'showWinner'
+export const SHOW_WINNER = 'showWinner';
+export const OPPONENT = 'opponent';

@@ -1,11 +1,26 @@
-import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID,
-         MAKE_MOVE, FIRST_PLAYER, START_GAME, END_GAME, SHOW_WINNER } from './actionTypes'
+import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
+  FIRST_PLAYER, START_GAME, END_GAME, SHOW_WINNER, OPPONENT } from './actionTypes'
 import axios from 'axios'
 
-export const randomLettersAction = string => {
+export const randomLettersAction = game => {
   return {
     type: RANDOM_LETTERS,
-    string: string
+    string: game.randomLetters,
+    game: game,
+  }
+}
+
+export function startGameAction(game) {
+  return function(dispatch) {
+    dispatch(randomLettersAction(game));
+    dispatch(opponentAction())
+  }
+}
+
+
+export const opponentAction = () => {
+  return {
+    type: OPPONENT,
   }
 }
 
@@ -42,23 +57,15 @@ export const firstPlayerAction = boolean => {
   }
 }
 
-export const StartGame = boolean => {
-  return {
-    type: START_GAME,
-    firstPlayer: boolean,
-  }
-}
-
 export function sendNameAction(name) {
   return function(dispatch) {
     window.Echo.channel('pizzazz')
     .listen('StartGame', (event) => {
-      dispatch(randomLettersAction(event.game.randomLetters));
+      dispatch(startGameAction(event.game));
     })
 
     window.Echo.channel('pizzazz')
     .listen('EndGame', (event) => {
-      console.log(event.game);
       dispatch(showWinnerAction(event.game));
     });
 
@@ -77,14 +84,10 @@ export function endGameAction(firstPlayer, makeMove) {
       firstPlayer: firstPlayer,
       makeMove: makeMove,
     })
-    .then((response) => {
-      console.log('');
-    });
   }
 }
 
 export const showWinnerAction = (game) => {
-  console.log(game);
   return {
     type: SHOW_WINNER,
     game: game,
