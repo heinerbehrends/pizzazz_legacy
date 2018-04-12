@@ -9,3 +9,4 @@ Clone project and run npm install and npm start.
 Uses react-dnd for drag and drop functionality, redux for state management,
 redux-thunk for api calls.
 Frontend for the pizzazz_backend repo that uses Laravel to send the game state to the other user via Pusher websocket service.
+![scheme-frontend-backend-pizzazz](https://raw.githubusercontent.com/heinerbehrends/pizzazz/master/Pizzazz-schema-frontend-backend.png)
