@@ -30,8 +30,8 @@ class Winner extends Component {
           <h1 className="h3 py-5 text-secondary font-weight-light">It is a draw!</h1>
           <p className="text-secondary">
             { 'Your Opponent Played ' +
-            (firstPlayer ? player1Solution : player2Solution) + ' For ' + 
-            (firstPlayer ? player1Score : player2Score) + ' Points' }
+            (firstPlayer ? player2Solution : player1Solution) + ' For ' +
+            (firstPlayer ? player2Score : player1Score) + ' Points' }
           </p>
         </div>
       )

@@ -21,8 +21,6 @@ export function findValidWordWildcard(string, wordScoreString) {
                .join('[a-z]?') +
       ')["]:(\\d*)');
     let result = wordScoreString.match(regEx);
-    console.log('regEx', 'result');
-    console.log([regEx, result]);
     if (result != null) {
       validWords.push(result);
     }

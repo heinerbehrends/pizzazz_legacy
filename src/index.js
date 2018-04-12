@@ -18,10 +18,7 @@ window.Echo = new Echo({
     encrypted: true
 });
 
-window.Echo.channel('pizzazz')
-    .listen('StartGame', (event) => {
-        console.log(event);
-    });
+
 
 const store = createStore(
   rootReducer,
@@ -29,8 +26,6 @@ const store = createStore(
     applyMiddleware(thunk)
   )
 );
-
-console.log(store.getState());
 
 render(
   <Provider store={store}>
