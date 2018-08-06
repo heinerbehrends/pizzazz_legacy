@@ -41,19 +41,18 @@ const letterSource = {
 
       if (targetParent === 'validWord' || parent === 'validWord') {
         const word = 0;
-        const score = 1;
         const validWordString = updateValidWord(props, target);
         console.log(['validWordString: ', validWordString]);
         if (validWordString.indexOf('8') !== -1) {
           var validWords = findValidWordWildcard(validWordString, wordScoreString);
           if (validWords){
             var longestValidWord = validWords[word];
-            var longestValidWordScore = validWords[score];
+            // var longestValidWordScore = validWords[score];
           }
         }
         else {
           longestValidWord = findValidWord(validWordString, wordScoreDict)[word];
-          longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
+          // longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
         }
         if (longestValidWord) {
           props.dispatch(showValidAction(longestValidWord.length))
