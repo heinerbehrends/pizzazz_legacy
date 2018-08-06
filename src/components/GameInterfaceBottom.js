@@ -1,69 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { makeMoveAction } from '../actions'
+import { endGameAction } from '../actions'
 import { getScoreWildcard } from '../scrabbleLogic/findWords'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
-import SendSolution from './SendSolution'
 import Winner from './Winner'
 
 
-class GameInterface extends Component {
+class GameInterfaceBottom extends Component {
   render() {
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScoreWildcard(validWord, letterValues);
-    const { index, gameState, gameEnd, firstPlayer } = this.props;
-
+    const { index, gameState } = this.props;
     switch(gameState) {
       case 'init':
-        return (
-          <ScreenName />
-        )
-      case 'waiting':
-        return (
-          <div className="my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              Waiting for an opponent
-            </span>
-          </div>
-        )
-      case 'makeWord':
-        var opponent = '';
-        if (firstPlayer) {
-          opponent = gameEnd.player2Name;
-        }
-        else {
-          opponent = gameEnd.player1Name;
-        }
-
         return (
           <div>
             <div className="my-5 pt-2">
               <span className = "text-secondary border-bottom px-3 pb-2">
-                Move Letters To Form A Word
+                Enter your screen name to play
               </span>
             </div>
-            <div>
-              <span className = "text-secondary border-bottom px-3 pb-2">
-                {'You play against ' + opponent}
-              </span>
-            </div>
+            <ScreenName />
+          </div>
+        )
+      case 'waiting':
+        return null
+      case 'makeWord':
+        return (
+          <div className="my-5">
+            <span className = "text-secondary border-bottom px-3 pb-2">
+            Move Letters To Form A Word
+            </span>
           </div>
         )
       case 'makeWordEnd':
         return (
-          <div>
-            <div className="my-5 pt-2">
-              <span className = "text-secondary border-bottom px-3 pb-2">
-              Move Letters To Form A Word
-              </span>
-            </div>
-            <SendSolution />
+          <div className="my-5">
+            <span className = "text-secondary border-bottom px-3 pb-2">
+            Move Letters To Form A Word
+            </span>
           </div>
         )
       case 'play':
         return (
-          <button className = "btn btn-outline-secondary my-5" word = { validWord }
+          <button className = "btn btn-outline-secondary my-5 px-3 d-block mx-auto" word = { validWord }
            score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, index) } >
             { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
           </button>
@@ -72,6 +54,14 @@ class GameInterface extends Component {
         return (
           <Winner />
         )
+      default:
+      return (
+        <div className="my-5">
+          <span className = "text-secondary border-bottom px-3 pb-2">
+          Move Letters To Form A Word
+          </span>
+        </div>
+      )
     }
   }
 }
@@ -83,14 +73,16 @@ const mapStateToProps = state => {
     gameState: state.gameState,
     index: state.showValid,
     firstPlayer: state.firstPlayer,
-    gameEnd: state.gameEnd
+    gameEnd: state.gameEnd,
+    makeMove: state.makeMove
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     makeMove: (word, score, index) => dispatch(makeMoveAction(word, score, index)),
+    endGame: (firstPlayer, makeMove) => dispatch(endGameAction(firstPlayer, makeMove)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameInterface)
+export default connect(mapStateToProps, mapDispatchToProps)(GameInterfaceBottom)
