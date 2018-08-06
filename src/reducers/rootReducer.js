@@ -6,6 +6,7 @@ import gameStateReducer from './gameState'
 import makeMoveReducer from './makeMove'
 import firstPlayerReducer from './firstPlayer'
 import gameEndReducer from './gameEnd'
+import countdownReducer from './countdown'
 
 const rootReducer = combineReducers({
   randomLetters: RandomLettersReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   showValid: showValidReducer,
   gameState: gameStateReducer,
   firstPlayer: firstPlayerReducer,
+  countdown: countdownReducer,
   makeMove: makeMoveReducer,
   gameEnd: gameEndReducer,
 });
