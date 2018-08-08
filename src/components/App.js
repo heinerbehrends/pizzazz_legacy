@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import RandomLetters from './RandomLetters'
+import RandomLettersHTML from './RandomLettersHTML'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
 import ValidWord from './ValidWord'
@@ -12,7 +13,7 @@ class App extends Component {
     return (
       <div className="text-center m-5">
         <GameInterfaceTop />
-        <RandomLetters />
+        <RandomLettersHTML />
         <ValidWord />
         <GameInterfaceBottom />
         <CountdownPizzazz />
