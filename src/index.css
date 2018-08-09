@@ -4,5 +4,5 @@ body {
   font-family: Roboto, sans-serif;
 }
 .is-valid {
-  border-bottom: 4px solid green;
+  background-color: green;
 }

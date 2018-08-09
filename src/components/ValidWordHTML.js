@@ -11,8 +11,8 @@ class ValidWordHTML extends Component {
   render() {
     const tilesArray = [];
     let i = 0;
+    console.log(this.props.showValid);
     for (let randomLetter of this.props.validWord) {
-      console.log(randomLetter);
       tilesArray.push(
         <DraggableTile
           letter={ randomLetter }

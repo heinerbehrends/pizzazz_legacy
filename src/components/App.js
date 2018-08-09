@@ -11,7 +11,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 class App extends Component {
   render() {
     return (
-      <div className="text-center m-5">
+      <div className="text-center my-5">
         <GameInterfaceTop />
         <RandomLettersHTML />
         <ValidWordHTML />

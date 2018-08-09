@@ -5,7 +5,7 @@ const LetterStyled = styled.div`
   border: 1px solid lightgray;
   border-radius: 0.5vw;
   color: #555;
-  background-color: #FFFBF0;
+  background-color: ${props => props.isValid ? '#e2fee2' : '#fffbf0'};
   font-weight: 200;
   font-size: 8vw;
   text-align: center;
@@ -30,9 +30,10 @@ const NumberSub = styled.sub`
 `;
 
 const ScrabbleTile = (props) => {
+  console.log(props);
   const letter = props.letter;
   return (
-    <LetterStyled>
+    <LetterStyled isValid={ props.isValid }>
       { letter }
       <NumberSub>
         { props.letterValues[letter] }
