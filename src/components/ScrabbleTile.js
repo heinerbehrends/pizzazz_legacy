@@ -9,8 +9,6 @@ const LetterStyled = styled.div`
   font-weight: 200;
   font-size: 8vw;
   text-align: center;
-  width: 13%;
-  height: 100%;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
 
   @media screen and (min-width: 501px) {
@@ -33,7 +31,6 @@ const NumberSub = styled.sub`
 
 const ScrabbleTile = (props) => {
   const letter = props.letter;
-  console.log(props.letterValues[letter]);
   return (
     <LetterStyled>
       { letter }

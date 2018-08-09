@@ -6,9 +6,9 @@ export function replaceLetter(string, letter, index) {
 }
 
 export function updateValidWord(props, target) {
-  const { string, index, parent, replaceLetter } = props;
+  const { letter, string, index, parent, replaceLetter } = props;
   const { targetLetter, targetIndex, targetParent, targetString } = target;
-  const letter = string[index];
+
   if (targetParent === 'validWord') {
     if (parent === 'validWord') {
       let firstMutation = replaceLetter(targetString, letter, targetIndex);

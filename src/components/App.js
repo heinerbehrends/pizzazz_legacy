@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import RandomLetters from './RandomLetters'
+// import RandomLetters from './RandomLetters'
 import RandomLettersHTML from './RandomLettersHTML'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
-import ValidWord from './ValidWord'
+import ValidWordHTML from './ValidWordHTML'
 import CountdownPizzazz from './CountdownPizzazz'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
@@ -14,7 +14,7 @@ class App extends Component {
       <div className="text-center m-5">
         <GameInterfaceTop />
         <RandomLettersHTML />
-        <ValidWord />
+        <ValidWordHTML />
         <GameInterfaceBottom />
         <CountdownPizzazz />
       </div>

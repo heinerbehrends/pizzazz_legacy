@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import ScrabbleTile from './ScrabbleTile'
+import DraggableTile from './DraggableTile'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions'
 
-const LetterContainer = styled.div`
+export const LetterContainer = styled.div`
   padding: 0;
   margin: 0 auto;
   list-style: none;
@@ -20,10 +20,22 @@ class RandomLettersHTML extends Component {
 
   render() {
     const tilesArray = [];
+    let i = 0;
     for (let randomLetter of this.props.randomLetters) {
       tilesArray.push(
-        <ScrabbleTile letter={ randomLetter } letterValues={ letterValues } />
+        <DraggableTile
+          letter={ randomLetter }
+          letterValues={ letterValues }
+          string = { this.props.randomLetters }
+          index={ i }
+          key={ i }
+          parent="randomLetters"
+          replaceLetter={ replaceLetter }
+          replaceLetterAction={ replaceLetterAction }
+          showValidAction={ showValidAction }
+        />
       )
+      i++;
     }
     return (
       <LetterContainer>
