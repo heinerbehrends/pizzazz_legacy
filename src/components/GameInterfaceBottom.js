@@ -12,6 +12,7 @@ class GameInterfaceBottom extends Component {
   render() {
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScoreWildcard(validWord, letterValues);
+    console.log(potentialScore);
     const { index, gameState } = this.props;
     switch(gameState) {
       case 'init':
