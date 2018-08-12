@@ -7,7 +7,7 @@ import { letterValues } from '../Constants'
 import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions'
 
 export const LetterContainer = styled.div`
-  padding: 0;
+  padding-bottom: 40px;
   margin: 0 auto;
   list-style: none;
   display: flex;
