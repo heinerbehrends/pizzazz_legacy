@@ -13,6 +13,7 @@ const Svg = styled.svg`
 `;
 
 const Circle = styled.circle`
+  stroke: #69757C;
   stroke-dasharray: 565.4867;
   stroke-dashoffset: 0;
   animation: dash 20s linear;
@@ -44,7 +45,8 @@ class CountdownPizzazz extends Component {
           onComplete = { () => (this.props.endGame(this.props.firstPlayer, this.props.makeMove)) }
           />
           <Svg width="200" height="200">
-            <Circle r="90" cx="100" cy="100" fill="none" stroke="darkgray" strokeWidth="6"></Circle>
+            <circle r="90" cx="100" cy="100" fill="none" stroke="lightgray" strokeWidth="6"></circle>
+            <Circle r="90" cx="100" cy="100" fill="none" strokeWidth="6"></Circle>
           </Svg>
         </div>
       )
