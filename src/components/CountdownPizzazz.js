@@ -12,7 +12,7 @@ const Svg = styled.svg`
   transform: rotate(270deg);
 `;
 
-const Circle = styled.circle`
+const styledCircle = styled.circle`
   stroke: #69757C;
   stroke-dasharray: 565.4867;
   stroke-dashoffset: 0;
@@ -46,7 +46,7 @@ class CountdownPizzazz extends Component {
           />
           <Svg width="200" height="200">
             <circle r="90" cx="100" cy="100" fill="none" stroke="lightgray" strokeWidth="6"></circle>
-            <Circle r="90" cx="100" cy="100" fill="none" strokeWidth="6"></Circle>
+            <styledCircle r="90" cx="100" cy="100" fill="none" strokeWidth="6"></styledCircle>
           </Svg>
         </div>
       )
