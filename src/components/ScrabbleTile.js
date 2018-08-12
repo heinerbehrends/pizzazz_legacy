@@ -8,8 +8,9 @@ const LetterStyled = styled.div`
   color: ${props => props.letter !== '8' | '0' ? '#555' : 'rgba(0,0,0,0)'};
   background-color: ${props => props.isValid ? '#C4F2CB' : '#f7e9b7'};
   font-weight: 200;
-  font-size: 8.65vw;
+  font-size: 8vw;
   text-align: center;
+  line-height: 13vw;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
 
   @media screen and (min-width: 501px) {
