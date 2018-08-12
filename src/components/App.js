@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import RandomLetters from './RandomLetters'
 import RandomLettersHTML from './RandomLettersHTML'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
