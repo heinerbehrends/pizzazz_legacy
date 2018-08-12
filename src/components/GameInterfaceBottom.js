@@ -12,13 +12,12 @@ class GameInterfaceBottom extends Component {
   render() {
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScoreWildcard(validWord, letterValues);
-    console.log(potentialScore);
     const { index, gameState } = this.props;
     switch(gameState) {
       case 'init':
         return (
           <div>
-            <div className="my-5 pt-2">
+            <div className="mb-5 pt-2">
               <span className = "text-secondary border-bottom px-3 pb-2">
                 Enter your screen name to play
               </span>
@@ -30,7 +29,7 @@ class GameInterfaceBottom extends Component {
         return null
       case 'makeWord':
         return (
-          <div className="my-5">
+          <div className="mb-5">
             <span className = "text-secondary border-bottom px-3 pb-2">
             Move Letters To Form A Word
             </span>
@@ -38,7 +37,7 @@ class GameInterfaceBottom extends Component {
         )
       case 'makeWordEnd':
         return (
-          <div className="my-5">
+          <div className="mb-5">
             <span className = "text-secondary border-bottom px-3 pb-2">
             Move Letters To Form A Word
             </span>
@@ -46,7 +45,7 @@ class GameInterfaceBottom extends Component {
         )
       case 'play':
         return (
-          <button className = "btn btn-outline-secondary my-5 px-3 d-block mx-auto" word = { validWord }
+          <button className = "btn btn-outline-secondary mb-5 px-3 d-block mx-auto" word = { validWord }
            score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, index) } >
             { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
           </button>
@@ -57,7 +56,7 @@ class GameInterfaceBottom extends Component {
         )
       default:
       return (
-        <div className="my-5">
+        <div className="mb-5">
           <span className = "text-secondary border-bottom px-3 pb-2">
           Move Letters To Form A Word
           </span>
