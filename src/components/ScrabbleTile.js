@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const LetterStyled = styled.div`
+  opacity: ${props => props.letter !== '0' ? '100' : '0'}
   border: 1px solid lightgray;
   border-radius: 0.5vw;
-  color: #555;
-  background-color: ${props => props.isValid ? '#e2fee2' : '#fffbf0'};
+  color: ${props => props.letter !== '8' | '0' ? '#555' : 'rgba(0,0,0,0)'};
+  background-color: ${props => props.isValid ? '#C4F2CB' : '#f7e9b7'};
   font-weight: 200;
-  font-size: 8vw;
+  font-size: 8.65vw;
   text-align: center;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
 
@@ -30,10 +31,9 @@ const NumberSub = styled.sub`
 `;
 
 const ScrabbleTile = (props) => {
-  console.log(props);
   const letter = props.letter;
   return (
-    <LetterStyled isValid={ props.isValid }>
+    <LetterStyled isValid={ props.isValid } letter={ props.letter }>
       { letter }
       <NumberSub>
         { props.letterValues[letter] }
