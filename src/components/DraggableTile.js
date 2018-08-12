@@ -10,10 +10,9 @@ import ScrabbleTile from './ScrabbleTile'
 class DraggableTile extends Component {
   render() {
     const { letter, index, connectDragSource, connectDropTarget, showValid } = this.props;
-    console.log(showValid);
     return connectDragSource(
               connectDropTarget(
-                <div style={{ width: 13 + "%", }}>
+                <div style={{ width: 13.68 + "%" }}>
                   <ScrabbleTile
                     letter={ letter }
                     index={ index }
