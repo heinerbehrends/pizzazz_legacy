@@ -1,5 +1,5 @@
 import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-  FIRST_PLAYER, START_GAME, END_GAME, SHOW_WINNER, OPPONENT } from './actionTypes'
+  FIRST_PLAYER, SHOW_WINNER, OPPONENT } from './actionTypes'
 import axios from 'axios'
 
 export const randomLettersAction = game => {

@@ -4,17 +4,22 @@ import { DragSource, DropTarget } from 'react-dnd'
 import { compose } from 'redux'
 import { updateValidWord } from '../scrabbleLogic/gameLogic'
 import { findValidWord, findValidWordWildcard } from '../scrabbleLogic/findWords'
-import { wordScoreDict, wordScoreString } from '../Constants'
+import { wordScoreDict, wordScoreString, letterValues } from '../Constants'
+import ScrabbleTile from './ScrabbleTile'
 
-class Letter extends Component {
+class DraggableTile extends Component {
   render() {
-    const { string, index, connectDragSource, connectDropTarget, showValid } = this.props;
+    const { letter, index, connectDragSource, connectDropTarget, showValid } = this.props;
     return connectDragSource(
               connectDropTarget(
-                <img style={{width: 66 + 'px'}}
-                className={showValid ? "is-valid" : ""}
-                src={'images/' + string[index] + '.jpg'}
-                alt={string[index]}/>
+                <div style={{ width: 13.68 + "%" }}>
+                  <ScrabbleTile
+                    letter={ letter }
+                    index={ index }
+                    letterValues= { letterValues }
+                    isValid = { showValid }
+                  />
+                </div>
               )
             )
   }
@@ -23,17 +28,15 @@ class Letter extends Component {
 const letterSource = {
   beginDrag(props) {
     return {
-      sourceLetter: props.string[props.index],
+      sourceLetter: props.letter,
       sourceIndex: props.index,
     }
   },
   endDrag(props, monitor) {
     if (monitor.didDrop()) {
       const target = monitor.getDropResult();
-      const { string, index, parent, replaceLetterAction } = props;
+      const { letter, index, parent, replaceLetterAction } = props;
       const { targetLetter, targetIndex, targetParent, showValidAction } = target;
-      const letter = string[index];
-
       props.dispatch(replaceLetterAction(letter, targetParent, targetIndex));
       props.dispatch(replaceLetterAction(targetLetter, parent, index));
 
@@ -41,19 +44,18 @@ const letterSource = {
 
       if (targetParent === 'validWord' || parent === 'validWord') {
         const word = 0;
-        const score = 1;
         const validWordString = updateValidWord(props, target);
-        console.log(['validWordString: ', validWordString]);
+
         if (validWordString.indexOf('8') !== -1) {
           var validWords = findValidWordWildcard(validWordString, wordScoreString);
           if (validWords){
             var longestValidWord = validWords[word];
-            var longestValidWordScore = validWords[score];
+            // var longestValidWordScore = validWords[score];
           }
         }
         else {
           longestValidWord = findValidWord(validWordString, wordScoreDict)[word];
-          longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
+          // longestValidWordScore = findValidWord(validWordString, wordScoreDict)[score];
         }
         if (longestValidWord) {
           props.dispatch(showValidAction(longestValidWord.length))
@@ -68,9 +70,9 @@ const letterSource = {
 
 const letterTarget = {
   drop(props) {
-    const { string, index, parent, showValidAction } = props;
+    const { letter, string, index, parent, showValidAction } = props;
     return {
-      targetLetter: string[index],
+      targetLetter: letter,
       targetString: string,
       targetIndex: index,
       targetParent: parent,
@@ -95,4 +97,4 @@ export default compose(
   connect(),
   DragSource('letter', letterSource, dragCollect),
   DropTarget('letter', letterTarget, dropCollect),
-)(Letter);
+)(DraggableTile);

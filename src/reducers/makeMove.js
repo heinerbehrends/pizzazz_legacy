@@ -1,11 +1,12 @@
 import { MAKE_MOVE } from '../actionTypes'
 
-const makeMoveReducer = (state = [], action) => {
+const makeMoveReducer = (state = [['NoSolution', 0]], action) => {
   switch(action.type) {
     case MAKE_MOVE:
-      let newState = state.slice(0);
+      let firstMove = state[0][0] === 'NoSolution';
+      let newState = state.slice((firstMove ? 1 : 0));
       let { word, score, index } = action;
-      let move = [word, score, index, 'local'];
+      let move = [word, score, index];
       newState.push(move);
       return newState
     default:
