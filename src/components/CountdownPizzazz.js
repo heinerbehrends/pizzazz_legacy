@@ -12,19 +12,33 @@ const Svg = styled.svg`
   transform: rotate(270deg);
 `;
 
-const styledCircle = styled.circle`
-  stroke: #69757C;
+const Circle = styled.circle`
+  r: 90;
+  cx: 100;
+  cy: 100;
+  fill: none;
+  stroke: #666;
+  stroke-width: 6px;
   stroke-dasharray: 565.4867;
   stroke-dashoffset: 0;
-  animation: dash 20s linear;
+  animation: dash 40s linear;
   animation-direction: reverse;
-
   @keyframes dash {
     to {
       stroke-dashoffset: 565.4867;
     }
   }
 `;
+
+const CircleBckgr = styled.circle`
+  r: 90;
+  cx: 100;
+  cy: 100;
+  fill: none;
+  stroke: lightgray;
+  stroke-width: 6px;
+`;
+
 
 class CountdownPizzazz extends Component {
 
@@ -33,20 +47,20 @@ class CountdownPizzazz extends Component {
   }
 
   render() {
-    let { countdown, makeMove } = this.props;
+    let { countdown } = this.props;
     if (countdown !== true) {
       return null
     }
     else {
       return (
         <div className = "position-relative d-inline" style = {{ width: 160 + 'px', height: 160 + 'px', lineHeight: 200 + 'px'}}>
-          <Countdown  date = {Date.now() + 20000}
+          <Countdown  date = {Date.now() + 40000}
           renderer = { renderer }
           onComplete = { () => (this.props.endGame(this.props.firstPlayer, this.props.makeMove)) }
           />
           <Svg width="200" height="200">
-            <circle r="90" cx="100" cy="100" fill="none" stroke="lightgray" strokeWidth="6"></circle>
-            <styledCircle r="90" cx="100" cy="100" fill="none" strokeWidth="6"></styledCircle>
+            <CircleBckgr r="90" cx="100" cy="100" fill="none" stroke="lightgray" strokeWidth="6"></CircleBckgr>
+            <Circle />
           </Svg>
         </div>
       )
