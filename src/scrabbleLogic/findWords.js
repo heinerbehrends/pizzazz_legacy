@@ -62,11 +62,10 @@ export function findValidSubstringsWildcard(string, wordScoreString) {
   return validWords;
 }
 
-export function getScoreWildcard(word, letterValues) {
-  var wordWithoutWildcard = word.split('8').join('');
+export function getScore(word, letterValues) {
   var score = 0;
   let index = 0;
-  for (let letter of wordWithoutWildcard) {
+  for (let letter of word) {
     if (index === 4) {
       score += letterValues[letter] * 2;
     }
