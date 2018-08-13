@@ -1,6 +1,51 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { firstPlayerAction, sendNameAction } from '../actions'
+
+const FormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+  box-sizing: border-box;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+`;
+
+const HiddenLabel = styled.label`
+  display: none!important;
+`;
+
+const FormGroup = styled.div`
+  flex: 0 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-flex: 0;
+`;
+
+const ButtonInput = styled.input`
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  padding: .375rem .75rem;
+  margin-right: 5px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  &:focus {
+    outline-color: #B4EAFF;
+  }
+`;
+
+const TextInput = ButtonInput.extend`
+  background-color: #fff;
+`;
 
 class ScreenName extends Component {
   constructor(props) {
@@ -21,15 +66,15 @@ class ScreenName extends Component {
   }
   render() {
     return (
-      <div className="d-flex justify-content-center mt-5">
-        <form id="screenName" name="screenName" className="form-inline" onSubmit={this.sendScreenName}>
-          <label className="sr-only" htmlFor="enter-screen-name">Screen name</label>
-          <div className="form-group">
-            <input onChange={this.handleChange} className="form-control border-right-0 rounded-0" type="text" size="35" id="enter-screen-name" name="screenName" autoFocus />
-            <input className="form-control rounded-0" type="submit" value="Submit" />
-          </div>
-        </form>
-      </div>
+      <FormContainer>
+        <Form id="screenName" name="screenName" className="form-inline" onSubmit={this.sendScreenName}>
+          <HiddenLabel htmlFor="enter-screen-name">Screen name</HiddenLabel>
+          <FormGroup>
+            <TextInput onChange={this.handleChange} type="text" id="enter-screen-name" name="screenName" autoFocus />
+            <ButtonInput type="submit" value="Submit" />
+          </FormGroup>
+        </Form>
+      </FormContainer>
     )
   }
 }
