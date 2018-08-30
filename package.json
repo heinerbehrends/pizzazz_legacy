@@ -1,7 +1,7 @@
 {
   "name": "pizzazz",
   "version": "0.1.0",
-  "proxy": "http://laravel.localhost:80/",
+  "proxy": "http://pizzazz.test:80/",
   "private": true,
   "dependencies": {
     "ajv": "^6.2.1",
