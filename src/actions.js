@@ -69,7 +69,7 @@ export function sendNameAction(name) {
       dispatch(showWinnerAction(event.game));
     });
 
-    axios.post('/api/screenName', {
+    axios.post('/api/start', {
       screenName: name
     })
     .then((response) => {
