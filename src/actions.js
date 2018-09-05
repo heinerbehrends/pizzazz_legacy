@@ -78,9 +78,10 @@ export function sendNameAction(name) {
   }
 }
 
-export function endGameAction(firstPlayer, makeMove) {
+export function endGameAction(id, firstPlayer, makeMove) {
   return function(dispatch) {
     axios.post('/api/endGame', {
+      id: id,
       firstPlayer: firstPlayer,
       makeMove: makeMove,
     })

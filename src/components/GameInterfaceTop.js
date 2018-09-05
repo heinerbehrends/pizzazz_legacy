@@ -5,7 +5,7 @@ import { endGameAction } from '../actions'
 
 class GameInterfaceTop extends Component {
   render() {
-    const { gameState, gameEnd, firstPlayer } = this.props;
+    const { gameState, gameData, firstPlayer } = this.props;
 
     switch(gameState) {
       case 'init':
@@ -28,7 +28,7 @@ class GameInterfaceTop extends Component {
         return (
           <div className = "my-5 pt-2">
             <span className = "text-secondary border-bottom px-3 pb-2">
-              {'You play against ' + (this.props.firstPlayer ? this.props.gameEnd.player2Name : this.props.gameEnd.player1Name)}
+              {'You play against ' + (this.props.firstPlayer ? this.props.gameData.player2Name : this.props.gameData.player1Name)}
             </span>
           </div>
         )
@@ -44,9 +44,9 @@ class GameInterfaceTop extends Component {
         return (
           <div className = "my-5 pt-2">
             <span className="text-secondary border-bottom px-3 pb-2">
-              { (firstPlayer ? gameEnd.player2Name : gameEnd.player1Name) + ' played ' +
-              (firstPlayer ? gameEnd.player2Solution : gameEnd.player1Solution) + ' for ' +
-              (firstPlayer ? gameEnd.player2Score : gameEnd.player1Score) + ' points' }
+              { (firstPlayer ? gameData.player2Name : gameData.player1Name) + ' played ' +
+              (firstPlayer ? gameData.player2Solution : gameData.player1Solution) + ' for ' +
+              (firstPlayer ? gameData.player2Score : gameData.player1Score) + ' points' }
             </span>
           </div>
         )
@@ -68,7 +68,7 @@ const mapStateToProps = state => {
     gameState: state.gameState,
     index: state.showValid,
     firstPlayer: state.firstPlayer,
-    gameEnd: state.gameEnd,
+    gameData: state.gameData,
     makeMove: state.makeMove
   }
 }

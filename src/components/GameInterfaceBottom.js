@@ -73,7 +73,7 @@ const mapStateToProps = state => {
     gameState: state.gameState,
     index: state.showValid,
     firstPlayer: state.firstPlayer,
-    gameEnd: state.gameEnd,
+    gameData: state.gameData,
     makeMove: state.makeMove
   }
 }

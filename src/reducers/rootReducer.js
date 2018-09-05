@@ -5,7 +5,7 @@ import showValidReducer from './showValidWord'
 import gameStateReducer from './gameState'
 import makeMoveReducer from './makeMove'
 import firstPlayerReducer from './firstPlayer'
-import gameEndReducer from './gameEnd'
+import gameDataReducer from './gameData'
 import countdownReducer from './countdown'
 
 const rootReducer = combineReducers({
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   firstPlayer: firstPlayerReducer,
   countdown: countdownReducer,
   makeMove: makeMoveReducer,
-  gameEnd: gameEndReducer,
+  gameData: gameDataReducer,
 });
 
 export default rootReducer

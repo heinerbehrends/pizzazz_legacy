@@ -50,7 +50,7 @@ class Winner extends Component {
 
 const mapStateToProps = state => {
   return {
-    game: state.gameEnd,
+    game: state.gameData,
     firstPlayer: state.firstPlayer
   }
 }

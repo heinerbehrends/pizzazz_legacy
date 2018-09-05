@@ -17,7 +17,7 @@ const Circle = styled.circle`
   cx: 100;
   cy: 100;
   fill: none;
-  stroke: #666;
+  stroke: lightgray;
   stroke-width: 6px;
   stroke-dasharray: 565.4867;
   stroke-dashoffset: 0;
@@ -35,7 +35,7 @@ const CircleBckgr = styled.circle`
   cx: 100;
   cy: 100;
   fill: none;
-  stroke: lightgray;
+  stroke: transparent;
   stroke-width: 6px;
 `;
 
@@ -43,10 +43,14 @@ const CircleBckgr = styled.circle`
 class CountdownPizzazz extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.props.countdown !== nextProps.countdown)
+    return (this.props.countdown !== nextProps.countdown ||
+            this.props.makeMove !== nextProps.makeMove)
   }
 
   render() {
+    console.log(this.props.makeMove);
+    console.log(this.props.gameData ? this.props.gameData.id : null);
+
     let { countdown } = this.props;
     if (countdown !== true) {
       return null
@@ -56,10 +60,9 @@ class CountdownPizzazz extends Component {
         <div className = "position-relative d-inline" style = {{ width: 160 + 'px', height: 160 + 'px', lineHeight: 200 + 'px'}}>
           <Countdown  date = {Date.now() + 40000}
           renderer = { renderer }
-          onComplete = { () => (this.props.endGame(this.props.firstPlayer, this.props.makeMove)) }
+          onComplete = { () => (this.props.endGame(this.props.gameData.id, this.props.firstPlayer, this.props.makeMove)) }
           />
           <Svg width="200" height="200">
-            <CircleBckgr r="90" cx="100" cy="100" fill="none" stroke="lightgray" strokeWidth="6"></CircleBckgr>
             <Circle />
           </Svg>
         </div>
@@ -73,12 +76,13 @@ const mapStateToProps = state => {
     countdown: state.countdown,
     firstPlayer: state.firstPlayer,
     makeMove: state.makeMove,
+    gameData: state.gameData,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    endGame: (firstPlayer, makeMove) => dispatch(endGameAction(firstPlayer, makeMove))
+    endGame: (id, firstPlayer, makeMove) => dispatch(endGameAction(id, firstPlayer, makeMove))
   }
 }
 

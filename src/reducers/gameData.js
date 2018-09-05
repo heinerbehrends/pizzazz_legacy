@@ -1,6 +1,6 @@
 import { RANDOM_LETTERS, SHOW_WINNER } from '../actionTypes'
 
-const gameEndReducer = (state = null, action) => {
+const gameDataReducer = (state = null, action) => {
   switch (action.type) {
     case RANDOM_LETTERS:
       return action.game;
@@ -11,4 +11,4 @@ const gameEndReducer = (state = null, action) => {
   }
 }
 
-export default gameEndReducer
+export default gameDataReducer
