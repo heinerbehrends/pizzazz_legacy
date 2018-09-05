@@ -1,8 +1,8 @@
-import { OPPONENT, END_COUNTDOWN } from '../actionTypes'
+import { RANDOM_LETTERS, END_COUNTDOWN } from '../actionTypes'
 
 const countdownReducer = (state = false, action) => {
   switch (action.type) {
-    case OPPONENT:
+    case RANDOM_LETTERS:
       return true;
     case END_COUNTDOWN:
       return false;

@@ -6,5 +6,6 @@ export const FIRST_PLAYER = 'firstPlayer';
 export const START_GAME = 'startGame';
 export const END_GAME = 'endGame';
 export const SHOW_WINNER = 'showWinner';
-export const OPPONENT = 'opponent';
+export const START = 'start';
 export const END_COUNTDOWN = 'endCountdown';
+export const DECREMENT_COUNTDOWN = 'decrementCountdown';

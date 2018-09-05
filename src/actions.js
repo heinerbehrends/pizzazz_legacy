@@ -1,5 +1,5 @@
 import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-  FIRST_PLAYER, SHOW_WINNER, OPPONENT, END_COUNTDOWN } from './actionTypes'
+  FIRST_PLAYER, SHOW_WINNER, START, END_COUNTDOWN, DECREMENT_COUNTDOWN } from './actionTypes'
 import axios from 'axios'
 
 export const randomLettersAction = game => {
@@ -13,14 +13,15 @@ export const randomLettersAction = game => {
 export function startGameAction(game) {
   return function(dispatch) {
     dispatch(randomLettersAction(game));
-    dispatch(opponentAction())
+    // dispatch(startAction());
+    setInterval(() => { dispatch(decrementCountdownAction()) }, 1000);
   }
 }
 
 
-export const opponentAction = () => {
+export const startAction = () => {
   return {
-    type: OPPONENT,
+    type: START,
   }
 }
 
@@ -83,6 +84,10 @@ export const endCountdownAction = () => {
     type: END_COUNTDOWN,
   }
 }
+
+export const decrementCountdownAction = () => ({
+  type: DECREMENT_COUNTDOWN,
+})
 
 export function endGameAction(id, firstPlayer, makeMove) {
   return function(dispatch) {
