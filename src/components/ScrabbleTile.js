@@ -10,7 +10,7 @@ const LetterStyled = styled.div`
   font-weight: 200;
   font-size: 8vw;
   text-align: center;
-  line-height: 11.5vw;
+  line-height: 12.2vw;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
 
   @media screen and (min-width: 501px) {
