@@ -43,14 +43,10 @@ const CircleBckgr = styled.circle`
 class CountdownPizzazz extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.props.countdown !== nextProps.countdown ||
-            this.props.makeMove !== nextProps.makeMove)
+    return (this.props.countdown !== nextProps.countdown)
   }
 
   render() {
-    console.log(this.props.makeMove);
-    console.log(this.props.gameData ? this.props.gameData.id : null);
-
     let { countdown } = this.props;
     if (countdown !== true) {
       return null

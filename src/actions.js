@@ -1,5 +1,5 @@
 import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-  FIRST_PLAYER, SHOW_WINNER, OPPONENT } from './actionTypes'
+  FIRST_PLAYER, SHOW_WINNER, OPPONENT, END_COUNTDOWN } from './actionTypes'
 import axios from 'axios'
 
 export const randomLettersAction = game => {
@@ -78,13 +78,20 @@ export function sendNameAction(name) {
   }
 }
 
+export const endCountdownAction = () => {
+  return {
+    type: END_COUNTDOWN,
+  }
+}
+
 export function endGameAction(id, firstPlayer, makeMove) {
   return function(dispatch) {
     axios.post('/api/endGame', {
       id: id,
       firstPlayer: firstPlayer,
       makeMove: makeMove,
-    })
+    });
+    dispatch(endCountdownAction());
   }
 }
 

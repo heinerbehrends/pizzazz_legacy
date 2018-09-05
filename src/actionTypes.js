@@ -7,3 +7,4 @@ export const START_GAME = 'startGame';
 export const END_GAME = 'endGame';
 export const SHOW_WINNER = 'showWinner';
 export const OPPONENT = 'opponent';
+export const END_COUNTDOWN = 'endCountdown';
