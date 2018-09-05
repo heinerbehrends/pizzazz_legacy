@@ -11,7 +11,7 @@ const LetterContainer = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-color: white;
-  padding: 1vw;
+  padding: 1.1vw;
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.05);
   margin: 0 auto 40px auto;
   list-style: none;
