@@ -1,7 +1,7 @@
 export function findValidWord(string, wordScoreDict) {
   string = string.toLowerCase();
   var validWordIndexes = [];
-  for (let i = 1; i <= string.length; i++) {
+  for (let i = 2; i <= string.length; i++) {
     if (wordScoreDict.hasOwnProperty(string.substring(0, i))) {
       validWordIndexes.push(i);
     }
@@ -13,7 +13,7 @@ export function findValidWord(string, wordScoreDict) {
 export function findValidWordWildcard(string, wordScoreString) {
   string = string.toLowerCase();
   var validWords = [];
-  for (let i = 1; i <= string.length; i++) {
+  for (let i = 2; i <= string.length; i++) {
     let substring = string.substring(0, i);
     let regEx = new RegExp(
       '["](' +
