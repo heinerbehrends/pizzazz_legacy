@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { makeMoveAction } from '../actions'
-import { endGameAction } from '../actions'
 
 class GameInterfaceTop extends Component {
   render() {
@@ -73,11 +71,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    makeMove: (word, score, index) => dispatch(makeMoveAction(word, score, index)),
-    endGame: (firstPlayer, makeMove) => dispatch(endGameAction(firstPlayer, makeMove)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameInterfaceTop)
+export default connect(mapStateToProps)(GameInterfaceTop)

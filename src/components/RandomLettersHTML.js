@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import DraggableTile from './DraggableTile'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
-import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions'
+import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions/gameActions'
 
 export const LetterContainer = styled.div`
   padding: 4.1px;

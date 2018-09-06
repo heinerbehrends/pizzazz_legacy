@@ -5,7 +5,6 @@ import CountdownContainer from './CountdownContainer'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
 import ValidWordHTML from './ValidWordHTML'
-import CountdownPizzazz from './CountdownPizzazz'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import DraggableTile from './DraggableTile'
 import { letterValues } from '../Constants'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
-import { replaceLetterAction, showValidAction } from '../actions'
+import { replaceLetterAction, showValidAction } from '../actions/gameActions'
 
 const LetterContainer = styled.div`
   background-image: url('images/pizzazzBoard.svg');
@@ -53,7 +53,7 @@ class ValidWordHTML extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { validWord: state.validWord,
            showValid: state.showValid,
            potentialScore: state.potentialScore }

@@ -1,5 +1,5 @@
 import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-  FIRST_PLAYER, SHOW_WINNER, START, END_COUNTDOWN, DECREMENT_COUNTDOWN } from './actionTypes'
+  FIRST_PLAYER, SHOW_WINNER, START, STOP_COUNTDOWN, DECREMENT_COUNTDOWN } from '../actionTypes'
 import axios from 'axios'
 
 export const randomLettersAction = game => {
@@ -10,14 +10,18 @@ export const randomLettersAction = game => {
   }
 }
 
-export function startGameAction(game) {
+export let countdownTimer = null;
+export const startGameAction = (game) => {
   return function(dispatch) {
     dispatch(randomLettersAction(game));
-    // dispatch(startAction());
-    setInterval(() => { dispatch(decrementCountdownAction()) }, 1000);
+    dispatch(startAction());
+    countdownTimer = setInterval(() => { dispatch(decrementCountdownAction()) }, 1000);
   }
 }
 
+export const stopCountdownAction = countdownTimer => {
+  clearInterval(countdownTimer)
+}
 
 export const startAction = () => {
   return {
@@ -58,7 +62,7 @@ export const firstPlayerAction = boolean => {
   }
 }
 
-export function sendNameAction(name) {
+export const sendNameAction = name => {
   return function(dispatch) {
     window.Echo.channel('pizzazz')
     .listen('StartGame', (event) => {
@@ -79,9 +83,10 @@ export function sendNameAction(name) {
   }
 }
 
-export const endCountdownAction = () => {
+export const endCountdownAction = (countdownTimer) => {
+  clearInterval(countdownTimer)
   return {
-    type: END_COUNTDOWN,
+    type: STOP_COUNTDOWN,
   }
 }
 
@@ -89,7 +94,7 @@ export const decrementCountdownAction = () => ({
   type: DECREMENT_COUNTDOWN,
 })
 
-export function endGameAction(id, firstPlayer, makeMove) {
+export const endGameAction = (id, firstPlayer, makeMove) => {
   return function(dispatch) {
     axios.post('/api/endGame', {
       id: id,
@@ -100,7 +105,7 @@ export function endGameAction(id, firstPlayer, makeMove) {
   }
 }
 
-export const showWinnerAction = (game) => {
+export const showWinnerAction = game => {
   return {
     type: SHOW_WINNER,
     game: game,

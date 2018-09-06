@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { makeMoveAction } from '../actions'
-import { endGameAction } from '../actions'
+import { makeMoveAction } from '../actions/gameActions'
 import { getScore } from '../scrabbleLogic/findWords'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
@@ -81,7 +80,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     makeMove: (word, score, index) => dispatch(makeMoveAction(word, score, index)),
-    endGame: (firstPlayer, makeMove) => dispatch(endGameAction(firstPlayer, makeMove)),
   }
 }
 

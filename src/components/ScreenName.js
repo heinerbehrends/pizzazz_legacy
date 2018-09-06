@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { firstPlayerAction, sendNameAction } from '../actions'
+import { sendNameAction, firstPlayerAction } from '../actions/apiActions'
 
 const FormContainer = styled.div`
   display: flex;

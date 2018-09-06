@@ -34,7 +34,7 @@ const NumberSub = styled.sub`
 const ScrabbleTile = (props) => {
   const letter = props.letter;
   return (
-    <LetterStyled isValid={ props.isValid } letter={ props.letter }>
+    <LetterStyled isValid={ props.isValid } letter={ letter }>
       { letter }
       <NumberSub>
         { props.letterValues[letter] }
