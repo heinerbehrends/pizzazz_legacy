@@ -32,12 +32,14 @@ function makeTilesArray(isCountdown, validWord, showValid) {
 
     else {
       tilesArray.push(
-        <ScrabbleTile
-          letter={ letter }
-          index={ i }
-          letterValues= { letterValues }
-          isValid = { false }
-        />
+        <div style={{ width: 13.68 + "%" }}>
+          <ScrabbleTile
+            letter={ letter }
+            index={ i }
+            letterValues= { letterValues }
+            isValid = { false }
+          />
+        </div>
       )
     }
   }
