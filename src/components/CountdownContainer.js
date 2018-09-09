@@ -1,35 +1,35 @@
 import React, { Component } from 'react'
-import Countdown from './Countdown'
+import CountdownDisplay from './CountdownDisplay'
 import { connect } from 'react-redux'
-import { endGameAction } from '../actions/apiActions'
-import { stopCountdownAction } from '../actions/countdownActions'
+import { sendGameAction } from '../actions/apiActions'
+import { decrementCountdownAction, stopCountdownAction, countdownTimer } from '../actions/countdownActions'
 
 class CountdownContainer extends Component {
 
-
-componentDidUpdate(prevProps) {
-  if (prevProps.value === 0) {
-    this.props.endGame(this.props.game.id, this.props.firstPlayer, this.props.makeMove);
-    this.props.stopCountdown();
+  componentDidMount() {
+    this.countdownTimer = setInterval(() => { this.props.decrementCountdown() }, 1000);
   }
-}
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.value === 0) {
+      this.props.sendGame(this.props.game.id, this.props.firstPlayer, this.props.makeMove);
+      this.props.stopCountdown();
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.countdownTimer);
+  }
 
   render() {
-    if (this.props.countdown) {
-      return(
-        <Countdown value={ this.props.value } countdown={ this.props.countdown }/>
-      )
-    }
-    else {
-      return null
-    }
+    return (
+      <CountdownDisplay value={ this.props.value } />
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    countdown: state.countdown,
     value: state.countdownValue,
     game: state.gameData,
     firstPlayer:state.firstPlayer,
@@ -39,8 +39,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    decrementCountdown: () => dispatch(decrementCountdownAction()),
     stopCountdown: () => dispatch(stopCountdownAction()),
-    endGame: (id, firstPlayer, makeMove) => dispatch(endGameAction(id, firstPlayer, makeMove))
+    sendGame: (id, firstPlayer, makeMove) => dispatch(sendGameAction(id, firstPlayer, makeMove))
   }
 }
 
