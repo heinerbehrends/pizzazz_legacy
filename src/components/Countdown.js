@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class Countdown extends Component {
 
   render() {
-    if (this.props.countdown) {
+    if (this.props.isCountdown) {
       return (
         <CountdownContainer />
       )
@@ -18,7 +18,7 @@ class Countdown extends Component {
 
 const mapStateToProps = state => {
   return {
-    countdown: state.countdown,
+    isCountdown: state.isCountdown,
   }
 }
 

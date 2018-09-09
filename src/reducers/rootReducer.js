@@ -6,7 +6,7 @@ import gameStateReducer from './gameState'
 import makeMoveReducer from './makeMove'
 import firstPlayerReducer from './firstPlayer'
 import gameDataReducer from './gameData'
-import countdownReducer from './countdown'
+import isCountdownReducer from './isCountdown'
 import countdownValueReducer from './countdownValue'
 
 const rootReducer = combineReducers({
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   showValid: showValidReducer,
   gameState: gameStateReducer,
   firstPlayer: firstPlayerReducer,
-  countdown: countdownReducer,
+  isCountdown: isCountdownReducer,
   countdownValue: countdownValueReducer,
   makeMove: makeMoveReducer,
   gameData: gameDataReducer,
