@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 import DraggableTile from './DraggableTile'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions/gameActions'
+import LetterContainer from './styled/RandomLettersStyled'
 
-export const LetterContainer = styled.div`
-  padding: 4.1px;
-  margin: 0 auto 8vw auto;
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  box-sizing: border-box;
-  max-width: 500px;
-  @media screen and (min-width: 501px) {
-    margin-bottom: 40px;
-  }
-`;
 
-class RandomLettersHTML extends Component {
+class RandomLetters extends Component {
 
   render() {
     const tilesArray = [];
@@ -48,12 +36,13 @@ class RandomLettersHTML extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
+  console.log(state.randomLetters);
   return { randomLetters: state.randomLetters };
 }
 
 const mapDispatchToProps = dispatch => {
-  return { newRandomLetters: (string) => dispatch(randomLettersAction(string))   }
+  return { newRandomLetters: string => dispatch(randomLettersAction(string))   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RandomLettersHTML);
+export default connect(mapStateToProps, mapDispatchToProps)(RandomLetters);
