@@ -1,4 +1,4 @@
-import { SHOW_VALID, MAKE_MOVE, FIRST_PLAYER, SHOW_WINNER, START } from '../actionTypes'
+import { SHOW_VALID, MAKE_MOVE, FIRST_PLAYER, SHOW_WINNER, START_GAME } from '../actionTypes'
 
 const gameStateReducer = (state='init', action) => {
   switch (action.type) {
@@ -9,7 +9,7 @@ const gameStateReducer = (state='init', action) => {
       else {
         return 'makeWord';
       }
-    case START:
+    case START_GAME:
       return 'makeWord';
     case SHOW_VALID:
       if (action.index !== 0) {

@@ -1,8 +1,8 @@
-import { RANDOM_LETTERS, SHOW_WINNER } from '../actionTypes'
+import { SAVE_GAME, SHOW_WINNER } from '../actionTypes'
 
 const gameDataReducer = (state = null, action) => {
   switch (action.type) {
-    case RANDOM_LETTERS:
+    case SAVE_GAME:
       return action.game;
     case SHOW_WINNER:
       return action.game;
