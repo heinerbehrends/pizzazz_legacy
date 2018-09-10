@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import CountdownDisplay from './CountdownDisplay'
 import { connect } from 'react-redux'
 import { sendGameAction } from '../actions/apiActions'
-import { decrementCountdownAction, stopCountdownAction, countdownTimer } from '../actions/countdownActions'
+import { decrementCountdownAction, stopCountdownAction } from '../actions/countdownActions'
 
 class CountdownContainer extends Component {
 

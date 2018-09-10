@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import DraggableTile from './DraggableTile'
-import { replaceLetter } from '../scrabbleLogic/gameLogic'
-import { letterValues } from '../Constants'
-import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions/gameActions'
+import { randomLettersAction } from '../actions/gameActions'
 import LetterContainer from './styled/RandomLettersStyled'
 import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 

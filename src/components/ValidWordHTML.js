@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ScrabbleBoard from './styled/ValidWordHTMLStyled'
-import DraggableTile from './DraggableTile'
 import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 
 class ValidWordHTML extends Component {

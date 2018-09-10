@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MessageDisplay from './MessageDisplay'
-import styled from 'styled-components'
 
 class GameInterfaceTop extends Component {
   render() {
