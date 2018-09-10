@@ -37,10 +37,9 @@ const letterSource = {
       const target = monitor.getDropResult();
       const { letter, index, parent, replaceLetterAction } = props;
       const { targetLetter, targetIndex, targetParent, showValidAction } = target;
+
       props.dispatch(replaceLetterAction(letter, targetParent, targetIndex));
       props.dispatch(replaceLetterAction(targetLetter, parent, index));
-
-
 
       if (targetParent === 'validWord' || parent === 'validWord') {
         const word = 0;
