@@ -7,7 +7,8 @@ import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 class ValidWordHTML extends Component {
   render() {
     const { validWord, showValid, isCountdown } = this.props;
-    let tilesArray = makeTilesArray(isCountdown, validWord, showValid);
+    let tilesArray = makeTilesArray(isCountdown, validWord, showValid, 'validWord');
+
     return (
       <ScrabbleBoard>
         { tilesArray }

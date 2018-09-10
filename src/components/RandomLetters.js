@@ -5,29 +5,15 @@ import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import { randomLettersAction, replaceLetterAction, showValidAction } from '../actions/gameActions'
 import LetterContainer from './styled/RandomLettersStyled'
+import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 
 
 class RandomLetters extends Component {
 
   render() {
-    const tilesArray = [];
-    let i = 0;
-    for (let randomLetter of this.props.randomLetters) {
-      tilesArray.push(
-        <DraggableTile
-          letter={ randomLetter }
-          letterValues={ letterValues }
-          string = { this.props.randomLetters }
-          index={ i }
-          key={ i }
-          parent="randomLetters"
-          replaceLetter={ replaceLetter }
-          replaceLetterAction={ replaceLetterAction }
-          showValidAction={ showValidAction }
-        />
-      )
-      i++;
-    }
+    const { isCountdown, randomLetters } = this.props;
+    const tilesArray = makeTilesArray(isCountdown, randomLetters, false, 'randomLetters');;
+
     return (
       <LetterContainer>
         { tilesArray }
@@ -37,8 +23,10 @@ class RandomLetters extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.randomLetters);
-  return { randomLetters: state.randomLetters };
+  return {
+    randomLetters: state.randomLetters,
+    isCountdown: state.isCountdown
+  };
 }
 
 const mapDispatchToProps = dispatch => {
