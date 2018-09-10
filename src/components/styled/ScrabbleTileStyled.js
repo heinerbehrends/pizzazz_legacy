@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 
+export const LetterContainer = styled.div`
+  width: 13.68%
+  `;
+  
 export const LetterStyled = styled.div`
   opacity: ${props => props.letter !== '0' ? '100' : '0'};
   user-select: none;

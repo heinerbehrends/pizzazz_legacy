@@ -4,6 +4,7 @@ import { replaceLetter } from '../scrabbleLogic/gameLogic'
 import { replaceLetterAction, showValidAction } from '../actions/gameActions'
 import ScrabbleTile from '../components/ScrabbleTile'
 import DraggableTile from '../components/DraggableTile'
+import { LetterContainer } from '../components/styled/ScrabbleTileStyled'
 
 function makeTilesArray(isCountdown, word, showValid, parent) {
 
@@ -11,7 +12,7 @@ function makeTilesArray(isCountdown, word, showValid, parent) {
   let i = 0;
 
   for (let letter of word) {
-
+    
     if (isCountdown) {
       tilesArray.push(
         <DraggableTile
@@ -32,14 +33,14 @@ function makeTilesArray(isCountdown, word, showValid, parent) {
 
     else {
       tilesArray.push(
-        <div key={ i } style={{ width: 13.68 + "%" }}>
+        <LetterContainer key={ i } >
           <ScrabbleTile
             letter={ letter }
             index={ i }
             letterValues= { letterValues }
             isValid = { false }
           />
-        </div>
+        </LetterContainer >
       )
       i++;
     }
