@@ -1,73 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import MessageDisplay from './MessageDisplay'
+import styled from 'styled-components'
 
 class GameInterfaceTop extends Component {
   render() {
     const { gameState, gameData, firstPlayer } = this.props;
+    let message = '';
 
     switch(gameState) {
       case 'init':
         return (
-          <div className="my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              Welcome to the PIZZAZZ word game
-            </span>
-          </div>
+          <MessageDisplay message={ "Welcome to" } />
         )
       case 'waiting':
         return (
-          <div className="my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              Waiting for an opponent
-            </span>
-          </div>
+          <MessageDisplay message={ "Waiting for an opponent" } />
         )
       case 'makeWord':
+        message = "You play against " + (this.props.firstPlayer ?
+                                         this.props.gameData.player2Name :
+                                         this.props.gameData.player1Name);
         return (
-          <div className = "my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              {'You play against ' + (this.props.firstPlayer ? this.props.gameData.player2Name : this.props.gameData.player1Name)}
-            </span>
-          </div>
+          <MessageDisplay message={ message } />
         )
       case 'play':
         return (
-          <div className = "my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-              {'Make your move or find a better word'}
-            </span>
-          </div>
+          <MessageDisplay message={ "Make your move or find a better word" } />
         )
       case 'showWinner':
+        message = (firstPlayer ? gameData.player2Name : gameData.player1Name) + ' played ' +
+        (firstPlayer ? gameData.player2Solution : gameData.player1Solution) + ' for ' +
+        (firstPlayer ? gameData.player2Score : gameData.player1Score) + ' points';
         return (
-          <div className = "my-5 pt-2">
-            <span className="text-secondary border-bottom px-3 pb-2">
-              { (firstPlayer ? gameData.player2Name : gameData.player1Name) + ' played ' +
-              (firstPlayer ? gameData.player2Solution : gameData.player1Solution) + ' for ' +
-              (firstPlayer ? gameData.player2Score : gameData.player1Score) + ' points' }
-            </span>
-          </div>
+          <MessageDisplay message={ message } />
         )
       default:
-        return (
-          <div className="my-5 pt-2">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-            </span>
-          </div>
-        )
+        return <MessageDisplay message={ "" } />
     }
   }
 }
 
 const mapStateToProps = state => {
   return {
-    validWord: state.validWord,
-    isValidIndex: state.showValid,
     gameState: state.gameState,
-    index: state.showValid,
     firstPlayer: state.firstPlayer,
     gameData: state.gameData,
-    makeMove: state.makeMove
   }
 }
 

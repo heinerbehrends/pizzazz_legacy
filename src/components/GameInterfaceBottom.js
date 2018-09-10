@@ -4,23 +4,21 @@ import { makeMoveAction } from '../actions/gameActions'
 import { getScore } from '../scrabbleLogic/findWords'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
+import MessageDisplay from './MessageDisplay'
 import Winner from './Winner'
 
 
 class GameInterfaceBottom extends Component {
   render() {
+    const { isValidIndex, gameState } = this.props;
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScore(validWord, letterValues);
-    const { index, gameState } = this.props;
+
     switch(gameState) {
       case 'init':
         return (
           <div>
-            <div className="mb-5 pt-2">
-              <span className = "text-secondary border-bottom px-3 pb-2">
-                Enter your screen name to play
-              </span>
-            </div>
+            <MessageDisplay message={ "Enter your screen name to play" } />
             <ScreenName />
           </div>
         )
@@ -28,24 +26,16 @@ class GameInterfaceBottom extends Component {
         return null
       case 'makeWord':
         return (
-          <div className="mb-5">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-            Move Letters To Form A Word
-            </span>
-          </div>
+          <MessageDisplay message={ "Move Letters To Form A Word" } />
         )
       case 'makeWordEnd':
         return (
-          <div className="mb-5">
-            <span className = "text-secondary border-bottom px-3 pb-2">
-            Move Letters To Form A Word
-            </span>
-          </div>
+        <MessageDisplay message={ "Move Letters To Form A Word" } />
         )
       case 'play':
         return (
           <button className = "btn btn-outline-secondary mb-5 px-3 d-block mx-auto" word = { validWord }
-           score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, index) } >
+           score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, isValidIndex) } >
             { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
           </button>
         )
@@ -54,13 +44,9 @@ class GameInterfaceBottom extends Component {
           <Winner />
         )
       default:
-      return (
-        <div className="mb-5">
-          <span className = "text-secondary border-bottom px-3 pb-2">
-          Move Letters To Form A Word
-          </span>
-        </div>
-      )
+        return (
+          <MessageDisplay message={ "" } />
+        )
     }
   }
 }
@@ -70,10 +56,9 @@ const mapStateToProps = state => {
     validWord: state.validWord,
     isValidIndex: state.showValid,
     gameState: state.gameState,
-    index: state.showValid,
     firstPlayer: state.firstPlayer,
     gameData: state.gameData,
-    makeMove: state.makeMove
+    makeMove: state.makeMove,
   }
 }
 
