@@ -9,34 +9,31 @@ class GameInterfaceTop extends Component {
 
     switch(gameState) {
       case 'init':
-        return (
-          <MessageDisplay message={ "Welcome to" } />
-        )
+        message = "Welcome to";
+        break;
       case 'waiting':
-        return (
-          <MessageDisplay message={ "Waiting for an opponent" } />
-        )
+        message = "Waiting for an opponent";
+        break;
       case 'makeWord':
         message = "You play against " + (this.props.firstPlayer ?
                                          this.props.gameData.player2Name :
                                          this.props.gameData.player1Name);
-        return (
-          <MessageDisplay message={ message } />
-        )
+        break;
       case 'play':
-        return (
-          <MessageDisplay message={ "Make your move or find a better word" } />
-        )
+        message = "Make your move or find a better word";
+        break;
       case 'showWinner':
         message = (firstPlayer ? gameData.player2Name : gameData.player1Name) + ' played ' +
         (firstPlayer ? gameData.player2Solution : gameData.player1Solution) + ' for ' +
         (firstPlayer ? gameData.player2Score : gameData.player1Score) + ' points';
-        return (
-          <MessageDisplay message={ message } />
-        )
+        break;
       default:
-        return <MessageDisplay message={ "" } />
+        message = "";
+        break;
     }
+    return (
+      <MessageDisplay message= { message } />
+    )
   }
 }
 
