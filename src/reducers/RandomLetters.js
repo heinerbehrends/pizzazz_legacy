@@ -1,17 +1,11 @@
-import { replaceLetter } from '../scrabbleLogic/gameLogic'
-import { RANDOM_LETTERS, REPLACE_LETTER } from '../actionTypes'
+import { START_GAME, REPLACE_LETTER } from '../actionTypes'
 
 const RandomLettersReducer = (state = 'PIZZAZZ', action) => {
   switch (action.type) {
-    case RANDOM_LETTERS:
-      return action.string;
+    case START_GAME:
+      return action.game.randomLetters;
     case REPLACE_LETTER:
-      if (action.target === 'randomLetters') {
-        return replaceLetter(state, action.letter, action.index);
-      }
-      else {
-        return state;
-      }
+      return action.randomLetters ? action.randomLetters : state
     default:
       return state;
   }

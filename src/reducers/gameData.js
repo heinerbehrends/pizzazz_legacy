@@ -1,8 +1,8 @@
-import { SAVE_GAME, SHOW_WINNER } from '../actionTypes'
+import { SHOW_WINNER, START_GAME } from '../actionTypes'
 
 const gameDataReducer = (state = null, action) => {
   switch (action.type) {
-    case SAVE_GAME:
+    case START_GAME:
       return action.game;
     case SHOW_WINNER:
       return action.game;
