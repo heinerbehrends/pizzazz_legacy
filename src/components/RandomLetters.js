@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { randomLettersAction } from '../actions/gameActions'
 import LetterContainer from './styled/RandomLettersStyled'
 import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 
@@ -26,8 +25,4 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = dispatch => {
-  return { newRandomLetters: string => dispatch(randomLettersAction(string))   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RandomLetters);
+export default connect(mapStateToProps)(RandomLetters);
