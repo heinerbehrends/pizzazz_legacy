@@ -1,33 +1,15 @@
-import { RANDOM_LETTERS, REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-  FIRST_PLAYER, SHOW_WINNER, START_GAME, SAVE_GAME } from '../actionTypes'
+import { REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
+         FIRST_PLAYER, SHOW_WINNER, START_GAME } from '../actionTypes'
 
-export const startGameAction = (game) => {
-  return dispatch => {
-    dispatch(saveGameAction(game));
-    dispatch(randomLettersAction(game.randomLetters));
-    dispatch(startAction());
-  }
-}
-
-export const saveGameAction = game => ({
-  type: SAVE_GAME,
+export const startGameAction = game => ({
   game: game,
-})
-
-export const randomLettersAction = string => ({
-  type: RANDOM_LETTERS,
-  string: string,
-})
-
-export const startAction = () => ({
   type: START_GAME,
 })
 
-export const replaceLetterAction = (letter, target, index) => ({
+export const replaceLettersAction = (randomLetters, validWord) => ({
+  randomLetters: randomLetters,
+  validWord: validWord,
   type: REPLACE_LETTER,
-  letter: letter,
-  target: target,
-  index: index,
 })
 
 export const showValidAction = index => ({
