@@ -1,18 +1,20 @@
 export function findValidWord(string, wordScoreDict) {
   string = string.toLowerCase();
-  var validWordIndexes = [];
+  var validWordIndex = 0;
   for (let i = 2; i <= string.length; i++) {
     if (wordScoreDict.hasOwnProperty(string.substring(0, i))) {
-      validWordIndexes.push(i);
+      validWordIndex = i;
     }
   }
-  const longestValidWord = string.substring(0, Math.max(...validWordIndexes));
+  const longestValidWord = string.substring(0, validWordIndex);
   return [longestValidWord, wordScoreDict[longestValidWord]]
 }
 
 export function findValidWordWildcard(string, wordScoreString) {
+
   string = string.toLowerCase();
   var validWords = [];
+
   for (let i = 2; i <= string.length; i++) {
     let substring = string.substring(0, i);
     let regEx = new RegExp(
@@ -20,13 +22,15 @@ export function findValidWordWildcard(string, wordScoreString) {
       substring.split('8')
                .join('[a-z]?') +
       ')["]:(\\d*)');
+
     let result = wordScoreString.match(regEx);
+
     if (result != null) {
-      validWords.push(result);
+      validWords = result;
     }
   }
   if (validWords.length !== 0) {
-    return [validWords[validWords.length - 1][1], validWords[validWords.length - 1][2]];
+    return [validWords[1], validWords[2]];
   }
 }
 
@@ -60,19 +64,4 @@ export function findValidSubstringsWildcard(string, wordScoreString) {
     }
   }
   return validWords;
-}
-
-export function getScore(word, letterValues) {
-  var score = 0;
-  let index = 0;
-  for (let letter of word) {
-    if (index === 4) {
-      score += letterValues[letter] * 2;
-    }
-    else {
-      score += letterValues[letter];
-    }
-    index++;
-  }
-  return score;
 }
