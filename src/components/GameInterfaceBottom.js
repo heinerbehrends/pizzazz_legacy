@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { makeMoveAction } from '../actions/gameActions'
-import { getScore } from '../scrabbleLogic/findWords'
+import { getScore } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
 import MessageDisplay from './MessageDisplay'
@@ -9,7 +9,9 @@ import Winner from './Winner'
 
 
 class GameInterfaceBottom extends Component {
+
   render() {
+
     const { isValidIndex, gameState } = this.props;
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScore(validWord, letterValues);
