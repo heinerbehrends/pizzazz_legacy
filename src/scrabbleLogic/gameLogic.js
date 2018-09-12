@@ -3,6 +3,7 @@ export const updateString = (props, target, randomOrValid) => {
 
   const { letter, string, index, parent } = props;
   const { targetLetter, targetIndex, targetParent, targetString } = target;
+  
   const isParent = (parent === randomOrValid);
   const isTargetParent = (targetParent === randomOrValid);
 
