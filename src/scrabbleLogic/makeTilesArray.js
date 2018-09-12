@@ -1,7 +1,7 @@
 import React from 'react'
 import { letterValues } from '../Constants'
 import { replaceLetter } from '../scrabbleLogic/gameLogic'
-import { replaceLetterAction, showValidAction } from '../actions/gameActions'
+import { replaceLettersAction, showValidAction } from '../actions/gameActions'
 import ScrabbleTile from '../components/ScrabbleTile'
 import DraggableTile from '../components/DraggableTile'
 import { LetterContainer } from '../components/styled/ScrabbleTileStyled'
@@ -12,7 +12,7 @@ function makeTilesArray(isCountdown, word, showValid, parent) {
   let i = 0;
 
   for (let letter of word) {
-    
+
     if (isCountdown) {
       tilesArray.push(
         <DraggableTile
@@ -24,7 +24,7 @@ function makeTilesArray(isCountdown, word, showValid, parent) {
           key={ i }
           parent={ parent }
           replaceLetter={ replaceLetter }
-          replaceLetterAction={ replaceLetterAction }
+          replaceLettersAction={ replaceLettersAction }
           showValidAction={ showValidAction }
         />
       )
