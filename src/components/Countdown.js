@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CountdownContainer from './CountdownContainer'
 import { connect } from 'react-redux'
 
@@ -14,6 +15,10 @@ class Countdown extends Component {
       return null;
     }
   }
+}
+
+Countdown.propTypes = {
+  isCountdown: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => {

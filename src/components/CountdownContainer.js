@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import CountdownDisplay from './CountdownDisplay'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import CountdownDisplay from './CountdownDisplay'
 import { sendGameAction } from '../actions/apiActions'
 import { decrementCountdownAction, stopCountdownAction } from '../actions/countdownActions'
+
 
 class CountdownContainer extends Component {
 
@@ -26,6 +28,16 @@ class CountdownContainer extends Component {
       <CountdownDisplay value={ this.props.value } />
     )
   }
+}
+
+CountdownContainer.propTypes = {
+  value: PropTypes.number.isRequired,
+  game: PropTypes.object.isRequired,
+  firstPlayer: PropTypes.bool.isRequired,
+  makeMove: PropTypes.array.isRequired,
+  decrementCountdown: PropTypes.func.isRequired,
+  stopCountdown: PropTypes.func.isRequired,
+  sendGame: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {

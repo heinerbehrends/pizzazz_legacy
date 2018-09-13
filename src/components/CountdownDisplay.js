@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Svg, Circle, NumberDisplay, Container } from './styled/CountdownStyled'
 
 
@@ -12,5 +13,9 @@ const CountdownDisplay = props => {
      </Container>
    )
  };
+
+ CountdownDisplay.propTypes = {
+   value: PropTypes.number.isRequired,
+ }
 
  export default CountdownDisplay

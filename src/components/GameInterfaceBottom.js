@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { makeMoveAction } from '../actions/gameActions'
 import { getScore } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
+import { ButtonInput } from './styled/ScreenNameStyled'
 import MessageDisplay from './MessageDisplay'
 import Winner from './Winner'
 
@@ -15,42 +17,53 @@ class GameInterfaceBottom extends Component {
     const { isValidIndex, gameState } = this.props;
     const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
     const potentialScore = getScore(validWord, letterValues);
+    let result;
 
     switch(gameState) {
       case 'init':
-        return (
+        result =
           <div>
             <MessageDisplay message={ "Enter your screen name to play" } />
             <ScreenName />
           </div>
-        )
-      case 'waiting':
-        return null
+        break;
+
       case 'makeWord':
-        return (
-          <MessageDisplay message={ "Move Letters To Form A Word" } />
-        )
+        result = <MessageDisplay message={ "Move Letters To Form A Word" } />
+        break;
+
       case 'makeWordEnd':
-        return (
-        <MessageDisplay message={ "Move Letters To Form A Word" } />
-        )
+        result = <MessageDisplay message={ "Move Letters To Form A Word" } />;
+        break;
+
       case 'play':
-        return (
-          <button className = "btn btn-outline-secondary mb-5 px-3 d-block mx-auto" word = { validWord }
-           score = { potentialScore } onClick={ () => this.props.makeMove(validWord, potentialScore, isValidIndex) } >
-            { 'Play ' + validWord + ' For ' + potentialScore + ' Points'}
-          </button>
-        )
+        let wordScoreString = 'Play ' + validWord + ' For ' + potentialScore + ' Points';
+        result = <ButtonInput
+                    value={ wordScoreString }
+                    onClick={ () => this.props.makeMove(validWord, potentialScore, isValidIndex) }
+                  />;
+        break;
+
       case 'showWinner':
-        return (
-          <Winner />
-        )
+        result = <Winner game={ this.props.gameData } firstPlayer={ this.props.firstPlayer} />
+        break;
+
       default:
-        return (
-          <MessageDisplay message={ "" } />
-        )
+        result = null;
     }
+
+    return result
   }
+}
+
+GameInterfaceBottom.propTypes = {
+  validWord: PropTypes.string.isRequired,
+  isValidIndex: PropTypes.number.isRequired,
+  gameState: PropTypes.string.isRequired,
+  firstPlayer: PropTypes.bool.isRequired,
+  gameData: PropTypes.object,
+  solution: PropTypes.array.isRequired,
+  makeMove: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -60,7 +73,7 @@ const mapStateToProps = state => {
     gameState: state.gameState,
     firstPlayer: state.firstPlayer,
     gameData: state.gameData,
-    makeMove: state.makeMove,
+    solution: state.makeMove,
   }
 }
 

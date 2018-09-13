@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import LetterContainer from './styled/RandomLettersStyled'
 import makeTilesArray from '../scrabbleLogic/makeTilesArray'
 
@@ -18,10 +19,15 @@ class RandomLetters extends Component {
   }
 }
 
+RandomLetters.propTypes = {
+  isCountdown: PropTypes.bool,
+  randomLetters: PropTypes.string.isRequired,
+}
+
 const mapStateToProps = state => {
   return {
     randomLetters: state.randomLetters,
-    isCountdown: state.isCountdown
+    isCountdown: state.isCountdown,
   };
 }
 

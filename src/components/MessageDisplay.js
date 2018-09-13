@@ -1,25 +1,30 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const MessageDisplayContainer = styled.div`
-margin-top: 3rem;
-margin-bottom:3rem;
+export const MessageContainer = styled.div`
+  margin-top: 3rem;
+  margin-bottom:3rem;
 `;
 
 const MessageDisplaySpan = styled.span`
-color: #6c757d;
-padding: 0.5rem;
-border-bottom: 1px solid #dee2e6;
+  color: #6c757d;
+  padding: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
 `;
 
 const MessageDisplay = props => {
   return (
-    <MessageDisplayContainer>
+    <MessageContainer>
       <MessageDisplaySpan>
         { props.message }
       </MessageDisplaySpan>
-    </MessageDisplayContainer>
+    </MessageContainer>
   )
 };
+
+MessageDisplay.propTypes  = {
+  message: PropTypes.string
+}
 
 export default MessageDisplay

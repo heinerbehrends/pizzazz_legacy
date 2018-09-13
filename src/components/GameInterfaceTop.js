@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import MessageDisplay from './MessageDisplay'
 
 class GameInterfaceTop extends Component {
@@ -31,10 +32,17 @@ class GameInterfaceTop extends Component {
         message = "";
         break;
     }
+
     return (
       <MessageDisplay message= { message } />
     )
   }
+}
+
+GameInterfaceTop.propTypes = {
+  gameState: PropTypes.string,
+  firstPlayer: PropTypes.bool,
+  gameData: PropTypes.object,
 }
 
 const mapStateToProps = state => {
