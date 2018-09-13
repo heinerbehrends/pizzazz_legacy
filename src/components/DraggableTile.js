@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { DragSource, DropTarget } from 'react-dnd'
 import { compose } from 'redux'
-import { updateString } from '../scrabbleLogic/gameLogic'
-import getIsValidIndex from '../scrabbleLogic/getIsValidIndex'
-import { letterValues } from '../Constants'
+import PropTypes from 'prop-types'
+import { letterSource, letterTarget } from './DraggableSourceTarget'
 import ScrabbleTile from './ScrabbleTile'
 
 
@@ -19,7 +18,6 @@ class DraggableTile extends Component {
                   <ScrabbleTile
                     letter={ letter }
                     index={ index }
-                    letterValues= { letterValues }
                     isValid = { showValid }
                   />
                 </div>
@@ -28,45 +26,18 @@ class DraggableTile extends Component {
   }
 }
 
-const letterSource = {
-
-  beginDrag(props) {
-    return {
-      sourceLetter: props.letter,
-      sourceIndex: props.index,
-    }
-  },
-
-  endDrag(props, monitor) {
-    if (monitor.didDrop()) {
-
-      const target = monitor.getDropResult();
-      const { replaceLettersAction, showValidAction, validWords, dispatch } = props;
-
-      const validWord = updateString(props, target, 'validWord');
-      const randomLetters = updateString(props, target, 'randomLetters');
-
-      dispatch(replaceLettersAction(randomLetters, validWord));
-
-      if (validWord) {
-        const isValidIndex = getIsValidIndex(validWord, validWords);
-        dispatch(showValidAction(isValidIndex))
-      }
-    }
-  }
+DraggableTile.propTypes = {
+  letter: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  showValid: PropTypes.bool.isRequired,
+  validWords: PropTypes.arrayOf(PropTypes.string).isRequired,
+  connectDragSource: PropTypes.func.isRequired,
+  connectDropTarget: PropTypes.func.isRequired,
 }
 
-const letterTarget = {
-  drop(props) {
-    const { letter, string, index, parent } = props;
-    return {
-      targetLetter: letter,
-      targetString: string,
-      targetIndex: index,
-      targetParent: parent,
-    }
-  }
-}
+const mapStateToProps = state => ({
+  validWords: state.gameData.validWords,
+})
 
 const dragCollect = connect => ({
   connectDragSource: connect.dragSource()
@@ -74,10 +45,6 @@ const dragCollect = connect => ({
 
 const dropCollect = connect => ({
   connectDropTarget: connect.dropTarget()
-})
-
-const mapStateToProps = state => ({
-  validWords: state.gameData.validWords,
 })
 
 export default compose(
