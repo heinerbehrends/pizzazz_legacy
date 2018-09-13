@@ -1,58 +1,35 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import WinnerDisplay from './WinnerDisplay'
 
-class Winner extends Component {
-  render() {
-    const { player1Score, player2Score } = this.props.game;
-    const firstPlayer = this.props.firstPlayer;
 
-    if (player1Score > player2Score) {
-      if (firstPlayer) {
-        return (
-          <div className="my-5">
-            <h3 className="text-secondary font-weight-light">You win!</h3>
-          </div>
-        )
-      }
-      else {
-        return (
-          <div className="my-5">
-            <h3 className="text-secondary font-weight-light">You lose!</h3>
-          </div>
-        )
-      }
-    }
-    else if (player1Score === player2Score) {
-      return (
-        <div className="my-5">
-          <h3 className="text-secondary font-weight-light">{ "It's a draw!" }</h3>
-        </div>
-      )
-    }
-    else {
-      if (! firstPlayer) {
-        return (
-          <div className="my-5">
-            <h3 className="text-secondary font-weight-light">You win!</h3>
-          </div>
-        )
-      }
-      else {
-        return (
-          <div className="my-5">
-            <h3 className="text-secondary font-weight-light">You lose!</h3>
-          </div>
-        )
-      }
-    }
+const Winner = props => {
+
+  const { player1Score, player2Score } = props.game;
+  const firstPlayer = props.firstPlayer;
+
+  const isFirstPlayerWinner = player1Score > player2Score;
+  const isWinner = (isFirstPlayerWinner && firstPlayer) || (!isFirstPlayerWinner && !firstPlayer);
+  let message = '';
+
+  if (isWinner) {
+    message = "You win";
   }
+  else if (player1Score === player2Score) {
+    message = "It's a draw";
+  }
+  else {
+    message = "You loose";
+  }
+
+  return (
+    <WinnerDisplay message={ message } />
+  )
 }
 
-const mapStateToProps = state => {
-  return {
-    game: state.gameData,
-    firstPlayer: state.firstPlayer
-  }
+Winner.propTypes = {
+  game: PropTypes.object.isRequired,
+  firstPlayer: PropTypes.bool.isRequired,
 }
 
-export default connect(mapStateToProps)(Winner);
+export default Winner;
