@@ -4,9 +4,9 @@ import { LetterStyled, NumberSub } from './styled/ScrabbleTileStyled'
 import { letterValues } from '../Constants'
 
 const ScrabbleTile = props => {
-  const letter = props.letter;
+  const { letter, isValid } = props;
   return (
-    <LetterStyled isValid={ props.isValid } letter={ letter }>
+    <LetterStyled isValid={ isValid } letter={ letter }>
       { letter }
       <NumberSub>
         { letterValues[letter] }

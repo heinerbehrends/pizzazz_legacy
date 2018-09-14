@@ -1,4 +1,4 @@
-import { STOP_COUNTDOWN, DECREMENT_COUNTDOWN } from '../actionTypes'
+import { DECREMENT_COUNTDOWN, STOP_COUNTDOWN } from '../actionTypes'
 
 export const stopCountdownAction = () => ({
     type: STOP_COUNTDOWN,

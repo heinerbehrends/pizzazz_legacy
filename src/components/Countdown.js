@@ -6,14 +6,8 @@ import { connect } from 'react-redux'
 class Countdown extends Component {
 
   render() {
-    if (this.props.isCountdown) {
-      return (
-        <CountdownContainer />
-      )
-    }
-    else {
-      return null;
-    }
+    return this.props.isCountdown ?
+           <CountdownContainer /> : null;
   }
 }
 

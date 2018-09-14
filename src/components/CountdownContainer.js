@@ -14,8 +14,8 @@ class CountdownContainer extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.value === 0) {
-      this.props.sendGame(this.props.game.id, this.props.firstPlayer, this.props.makeMove);
       this.props.stopCountdown();
+      this.props.sendGame(this.props.game.id, this.props.firstPlayer, this.props.solution);
     }
   }
 
@@ -34,7 +34,7 @@ CountdownContainer.propTypes = {
   value: PropTypes.number.isRequired,
   game: PropTypes.object.isRequired,
   firstPlayer: PropTypes.bool.isRequired,
-  makeMove: PropTypes.array.isRequired,
+  solution: PropTypes.array.isRequired,
   decrementCountdown: PropTypes.func.isRequired,
   stopCountdown: PropTypes.func.isRequired,
   sendGame: PropTypes.func.isRequired,
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
     value: state.countdownValue,
     game: state.gameData,
     firstPlayer:state.firstPlayer,
-    makeMove: state.makeMove,
+    solution: state.makeMove,
   }
 }
 

@@ -39,6 +39,7 @@ class GameInterfaceBottom extends Component {
       case 'play':
         let wordScoreString = 'Play ' + validWord + ' For ' + potentialScore + ' Points';
         result = <ButtonInput
+                    readOnly
                     value={ wordScoreString }
                     onClick={ () => this.props.makeMove(validWord, potentialScore, isValidIndex) }
                   />;

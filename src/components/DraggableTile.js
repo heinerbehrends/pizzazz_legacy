@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { DragSource, DropTarget } from 'react-dnd'
 import { compose } from 'redux'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { letterSource, letterTarget } from './DraggableSourceTarget'
 import ScrabbleTile from './ScrabbleTile'
 

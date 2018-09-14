@@ -5,6 +5,7 @@ import { showWinnerAction, startGameAction, firstPlayerAction } from './gameActi
 export const sendNameAction = name => {
 
   return dispatch => {
+
     window.Echo.channel('pizzazz')
     .listen('StartGame', (event) => {
       dispatch(startGameAction(event.game));

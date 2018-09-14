@@ -18,7 +18,7 @@ const WinnerDisplay = props => {
 }
 
 WinnerDisplay.propTypes = {
-  messages: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 }
 
 export default WinnerDisplay
