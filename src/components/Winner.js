@@ -12,14 +12,14 @@ const Winner = props => {
   const isWinner = (isFirstPlayerWinner && firstPlayer) || (!isFirstPlayerWinner && !firstPlayer);
   let message = '';
 
-  if (isWinner) {
-    message = "You win";
+  if (player1Score === player2Score) {
+    message = "It's a draw!";
   }
-  else if (player1Score === player2Score) {
-    message = "It's a draw";
+  else if (isWinner) {
+    message = "You win!";
   }
   else {
-    message = "You loose";
+    message = "You loose!";
   }
 
   return (
