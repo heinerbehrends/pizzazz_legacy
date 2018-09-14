@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
+import 'normalize.css/normalize.css'
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
