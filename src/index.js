@@ -7,26 +7,25 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 import 'normalize.css/normalize.css'
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: "3d2256d4fd0ec99b3854",
-    cluster: 'eu',
-    encrypted: true
-});
+import rootSaga from './sagas/rootSaga'
 
 
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(thunk)
+    applyMiddleware(sagaMiddleware, thunk)
   )
 );
+
+sagaMiddleware.run(rootSaga)
+
+// const action = type => store.dispatch({type})
 
 render(
   <Provider store={store}>

@@ -1,15 +1,10 @@
 import axios from 'axios'
-import { showWinnerAction, startGameAction, firstPlayerAction } from './gameActions'
+import { firstPlayerAction } from './gameActions'
 
 
 export const sendNameAction = name => {
 
   return dispatch => {
-
-    window.Echo.channel('pizzazz')
-    .listen('StartGame', (event) => {
-      dispatch(startGameAction(event.game));
-    })
 
     axios.post('/api/start', {
       screenName: name
@@ -25,11 +20,11 @@ export const sendNameAction = name => {
 export const sendGameAction = (id, firstPlayer, makeMove) => {
   return function(dispatch) {
 
-    window.Echo.channel('pizzazz')
-    .listen('EndGame', (event) => {
-      dispatch(showWinnerAction(event.game));
-    });
-
+    // window.Echo.channel('pizzazz')
+    // .listen('EndGame', (event) => {
+    //   dispatch(showWinnerAction(event.game));
+    // });
+    //
     axios.post('/api/endGame', {
       id: id,
       firstPlayer: firstPlayer,
