@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
-import { firstPlayerAction } from '../actions/gameActions'
+import { firstPlayerAction } from '../actions/actions'
 import { sendName } from '../apiCalls'
 
 function* sendNameSaga(action) {
@@ -18,8 +18,7 @@ function* sendNameSaga(action) {
 }
 
 function* watchSendName() {
-  const action = yield takeEvery('SEND_NAME', sendNameSaga)
-  console.log(action);
+  yield takeEvery('SEND_NAME', sendNameSaga)
 }
 
 export default watchSendName

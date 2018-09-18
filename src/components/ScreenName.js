@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sendNameAction } from '../actions/apiActions'
+import { sendNameAction } from '../actions/actions'
 import { FormContainer, Form, FormGroup, HiddenLabel,
          ButtonInput, TextInput } from './styled/ScreenNameStyled'
 
