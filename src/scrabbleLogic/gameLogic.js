@@ -3,7 +3,7 @@ export const updateString = (props, target, randomOrValid) => {
 
   const { letter, string, index, parent } = props;
   const { targetLetter, targetIndex, targetParent, targetString } = target;
-  
+
   const isParent = (parent === randomOrValid);
   const isTargetParent = (targetParent === randomOrValid);
 
@@ -24,8 +24,8 @@ export const updateString = (props, target, randomOrValid) => {
 
 export const replaceLetter = (string, letter, index) => {
   return string.substring(0, index)
-                    .concat(letter)
-                    .concat(string.substring(index + 1));
+               .concat(letter)
+               .concat(string.substring(index + 1));
 }
 
 const swapLetters = (props, target) => {
@@ -35,8 +35,10 @@ const swapLetters = (props, target) => {
 
 
 export const getScore = (word, letterValues) => {
+
   var score = 0;
   let index = 0;
+
   for (let letter of word) {
     if (index === 4) {
       score += letterValues[letter] * 2;
