@@ -1,13 +1,16 @@
 import { all } from 'redux-saga/effects'
-import watchEvents from './sendNameSaga'
-import watchSendName from './watchEventsSaga'
-
+import watchSendName from './sendNameSaga'
+import watchSendGame from './sendGameSaga'
+import watchEvents from './watchEventsSaga'
+import watchGame from './gameSaga'
 
 
 function* rootSaga() {
   yield all([
-    watchSendName(),
+    watchGame(),
     watchEvents(),
+    watchSendName(),
+    watchSendGame(),
   ])
 }
 

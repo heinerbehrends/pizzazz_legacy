@@ -1,36 +1,42 @@
 import { REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-         FIRST_PLAYER, SHOW_WINNER, START_GAME } from '../actionTypes'
+         FIRST_PLAYER, SHOW_WINNER, START_GAME, SEND_NAME } from '../actionTypes'
 
 export const startGameAction = game => ({
-  game: game,
   type: START_GAME,
+  game,
 })
 
 export const replaceLettersAction = (randomLetters, validWord) => ({
-  randomLetters: randomLetters,
-  validWord: validWord,
   type: REPLACE_LETTER,
+  randomLetters,
+  validWord,
 })
 
 export const showValidAction = index => ({
   type: SHOW_VALID,
-  index: index,
+  index,
 })
 
-export const makeMoveAction = (word, score, index, player) => ({
+export const makeMoveAction = (word, score, index) => ({
   type: MAKE_MOVE,
-  word: word,
-  score: score,
-  index: index,
+  word,
+  score,
+  index,
 })
 
-export const firstPlayerAction = boolean => ({
+export const firstPlayerAction = firstPlayer => ({
   type: FIRST_PLAYER,
-  firstPlayer: boolean,
+  firstPlayer,
 })
 
 
 export const showWinnerAction = game => ({
   type: SHOW_WINNER,
   game: game,
+})
+
+
+export const sendNameAction = name => ({
+  type: SEND_NAME,
+  name
 })
