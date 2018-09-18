@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { makeMoveAction } from '../actions/gameActions'
+import { makeMoveAction } from '../actions/actions'
 import { getScore } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
