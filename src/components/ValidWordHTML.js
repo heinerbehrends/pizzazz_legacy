@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import ScrabbleBoard from './styled/ValidWordHTMLStyled'
-import makeTilesArray from '../scrabbleLogic/makeTilesArray'
+import makeTilesArray from '../componentLogic/makeTilesArray'
 
 class ValidWordHTML extends Component {
 

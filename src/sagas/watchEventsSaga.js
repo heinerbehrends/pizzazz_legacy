@@ -18,15 +18,17 @@ const createPusherChannel = socket => {
 
     socket.channel('pizzazz')
           .listen('StartGame', event => {
-            event.isStart = true
+            event.startOrEnd = 'start'
             emit(event)
           }).listen('EndGame', event => {
+            event.startOrEnd = 'end'
             emit(event)
           })
 
     const unsubscribe = () => {
       socket.leave('pizzazz')
     }
+    
     return unsubscribe
   })
 }
@@ -39,8 +41,19 @@ function* watchEvents() {
   while (true) {
 
     const payload = yield take(socketChannel)
-    const type = payload.isStart ? START_GAME : SHOW_WINNER
-    yield put({type, game: payload.game})
+    const isStart = payload.startOrEnd === 'start'
+    const isEnd = payload.startOrEnd === 'end'
+    let type
+
+    if (isStart) {
+      type = START_GAME
+    }
+    else if (isEnd) {
+      type = SHOW_WINNER
+    }
+    if (isStart || isEnd) {
+      yield put({type, game: payload.game})
+    }
   }
 }
 
