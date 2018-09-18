@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import RandomLetters from './RandomLetters'
-import Countdown from './Countdown'
+import CountdownContainer from './CountdownContainer'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
 import ValidWordHTML from './ValidWordHTML'
@@ -23,7 +23,7 @@ class App extends Component {
         <RandomLetters />
         <ValidWordHTML />
         <GameInterfaceBottom />
-        <Countdown />
+        <CountdownContainer />
       </AppWrapper>
     )
   }
