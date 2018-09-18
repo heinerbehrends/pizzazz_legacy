@@ -7,7 +7,7 @@ Starting off as a self-education project @CodeGorilla Bootcamp.
 
 Clone project and run npm install and npm start.
 Uses react-dnd for drag and drop functionality, redux for state management,
-redux-thunk for api calls.
+redux-saga for api calls and countdown.
 Frontend for the [pizzazz_backend repo](https://github.com/heinerbehrends/pizzazz_backend) that uses Laravel to send the game state to the other user via Pusher websocket service.
 
 ![scheme-frontend-backend-pizzazz](https://raw.githubusercontent.com/heinerbehrends/pizzazz/master/Pizzazz-swin-lanes-frontend-backend.png)
