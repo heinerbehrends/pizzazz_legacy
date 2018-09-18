@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import LetterContainer from './styled/RandomLettersStyled'
-import makeTilesArray from '../scrabbleLogic/makeTilesArray'
+import makeTilesArray from '../componentLogic/makeTilesArray'
 
 
 class RandomLetters extends Component {
