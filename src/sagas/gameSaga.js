@@ -15,7 +15,7 @@ export function* handleGame() {
 
     let countdownValue = yield select(getCountdownValue)
 
-    if (countdownValue === 0) {
+    if (countdownValue < 0) {
       yield put({ type: END_GAME })
       break
     }
