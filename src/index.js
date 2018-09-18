@@ -6,7 +6,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import Pusher from 'pusher-js'
@@ -19,7 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(sagaMiddleware, thunk)
+    applyMiddleware(sagaMiddleware)
   )
 );
 
