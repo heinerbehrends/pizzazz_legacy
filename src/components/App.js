@@ -5,10 +5,11 @@ import CountdownContainer from './CountdownContainer'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
 import ValidWordHTML from './ValidWordHTML'
+import DragLayerTile from './DragLayerTile'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import TouchBackend from 'react-dnd-touch-backend'
-import MultiBackend, { TouchTransition, Preview } from 'react-dnd-multi-backend'
+import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend'
 
 
 const HTML5toTouch = {
@@ -33,20 +34,15 @@ const AppWrapper = styled.div`
 
 class App extends PureComponent {
 
-  generatePreview(type, item, style) {
-    Object.assign(style, {backgroundColor: item.color, width: '50px', height: '50px'});
-    return <div style={style}>Generated</div>;
-  }
-
   render() {
     return (
       <AppWrapper>
         <GameInterfaceTop />
         <RandomLetters />
         <ValidWordHTML />
-        <Preview generator={this.generatePreview} />
         <GameInterfaceBottom />
         <CountdownContainer />
+        <DragLayerTile />
       </AppWrapper>
     )
   }
