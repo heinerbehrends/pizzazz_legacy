@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { DragLayer } from 'react-dnd'
-import styled from 'styled-components'
 import ScrabbleTile from './ScrabbleTile'
 
 const layerStyles: React.CSSProperties = {
@@ -16,9 +15,9 @@ const layerStyles: React.CSSProperties = {
 }
 
 
-function getPosition(props) {
+function getPositionStyles(props) {
 
-  const { initialOffset, currentOffset } = props;
+  const { currentOffset } = props;
 
   if (!currentOffset) {
     return {
@@ -39,8 +38,8 @@ function getPosition(props) {
 class DragLayerTile extends Component {
 
   render() {
-    const { item, itemType, isDragging } = this.props;
-    const positionStyle = getPosition(this.props)
+    const { item, isDragging } = this.props;
+    const positionStyles = getPositionStyles(this.props)
 
     if (!isDragging) {
       return null;
@@ -48,7 +47,7 @@ class DragLayerTile extends Component {
 
     return (
       <div style={ layerStyles }>
-        <div style={ getPosition(this.props) } >
+        <div style={ positionStyles } >
           <ScrabbleTile letter={ item.sourceLetter } isValid={ false } />
         </div>
       </div>
