@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { LetterStyled, NumberSub } from './styled/ScrabbleTileStyled'
 import { letterValues } from '../Constants'
 
-const ScrabbleTile = props => {
-  const { letter, isValid } = props;
-  return (
-    <LetterStyled isValid={ isValid } letter={ letter }>
-      { letter }
-      <NumberSub>
-        { letterValues[letter] }
-      </NumberSub>
-    </LetterStyled>
-  )
-};
+class ScrabbleTile extends PureComponent {
+
+  render() {
+
+    const { letter, isValid } = this.props
+
+    return (
+      <LetterStyled isValid={ isValid } letter={ letter }>
+        { letter }
+        <NumberSub>
+          { letterValues[letter] }
+        </NumberSub>
+      </LetterStyled>
+    )
+  }
+}
 
 ScrabbleTile.propTypes = {
   isValid: PropTypes.bool.isRequired,
