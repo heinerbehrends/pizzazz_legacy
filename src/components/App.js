@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import RandomLetters from './RandomLetters'
-import CountdownContainer from './CountdownContainer'
+import Countdown from './Countdown'
 import GameInterfaceBottom from './GameInterfaceBottom'
 import GameInterfaceTop from './GameInterfaceTop'
 import ValidWordHTML from './ValidWordHTML'
@@ -41,7 +41,7 @@ class App extends PureComponent {
         <RandomLetters />
         <ValidWordHTML />
         <GameInterfaceBottom />
-        <CountdownContainer />
+        <Countdown />
         <DragLayerTile />
       </AppWrapper>
     )

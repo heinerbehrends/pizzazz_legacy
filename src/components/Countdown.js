@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import CountdownDisplay from './CountdownDisplay'
+import { Svg, Circle, NumberDisplay, Container } from './styled/CountdownStyled'
 
 
-class CountdownContainer extends Component {
+class Countdown extends Component {
 
   render() {
+
     return this.props.isCountdown ?
-      <CountdownDisplay value={ this.props.value } /> : null
+      <Container>
+        <NumberDisplay>{ this.props.value }</NumberDisplay>
+        <Svg>
+          <Circle />
+        </Svg>
+      </Container> : null
   }
 }
 
-CountdownContainer.propTypes = {
+Countdown.propTypes = {
   value: PropTypes.number.isRequired,
   isCountdown: PropTypes.bool.isRequired,
 }
@@ -24,4 +30,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(CountdownContainer)
+export default connect(mapStateToProps)(Countdown)
