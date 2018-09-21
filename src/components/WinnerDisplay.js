@@ -5,6 +5,8 @@ import { MessageContainer } from './MessageDisplay'
 
 const WinnerDisplayH3 = styled.h3`
   color: #6c757d;
+  font-size: 1.5rem;
+  font-weight: 400;
 `;
 
 const WinnerDisplay = props => {
