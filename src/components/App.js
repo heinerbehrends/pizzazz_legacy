@@ -26,7 +26,6 @@ const HTML5toTouch = {
 };
 
 const AppWrapper = styled.div`
-  background-color: #F9F8F2;
   text-align: center;
   padding: 3rem 0;
   box-sizing: border-box;
