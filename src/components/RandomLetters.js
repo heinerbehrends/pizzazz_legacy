@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import LetterContainer from './styled/RandomLettersStyled'
 import makeTilesArray from '../componentLogic/makeTilesArray'
 
 
-class RandomLetters extends Component {
+class RandomLetters extends PureComponent {
 
   render() {
     const { isCountdown, randomLetters } = this.props;

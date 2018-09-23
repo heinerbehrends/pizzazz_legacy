@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import ScrabbleBoard from './styled/ValidWordHTMLStyled'
 import makeTilesArray from '../componentLogic/makeTilesArray'
 
-class ValidWordHTML extends Component {
+class ValidWordHTML extends PureComponent {
 
   render() {
-
     const { validWord, showValid, isCountdown } = this.props;
     let tilesArray = makeTilesArray(isCountdown, validWord, showValid, 'validWord');
 
