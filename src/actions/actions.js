@@ -1,5 +1,5 @@
-import { REPLACE_LETTER, SHOW_VALID, MAKE_MOVE,
-         FIRST_PLAYER, SHOW_WINNER, START_GAME, SEND_NAME } from '../actionTypes'
+import { REPLACE_LETTER, SHOW_VALID, SEND_SOLUTION,
+         SHOW_WINNER, START_GAME, SEND_NAME } from '../actionTypes'
 
 export const startGameAction = game => ({
   type: START_GAME,
@@ -17,18 +17,10 @@ export const showValidAction = index => ({
   index,
 })
 
-export const makeMoveAction = (word, score, index) => ({
-  type: MAKE_MOVE,
-  word,
-  score,
-  index,
+export const sendSolutionAction = solution => ({
+  type: SEND_SOLUTION,
+  solution,
 })
-
-export const firstPlayerAction = firstPlayer => ({
-  type: FIRST_PLAYER,
-  firstPlayer,
-})
-
 
 export const showWinnerAction = game => ({
   type: SHOW_WINNER,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { makeMoveAction } from '../actions/actions'
+import { sendSolutionAction } from '../actions/actions'
 import { getScore } from '../scrabbleLogic/gameLogic'
 import { letterValues } from '../Constants'
 import ScreenName from './ScreenName'
@@ -41,7 +41,7 @@ class GameInterfaceBottom extends Component {
         result = <ButtonInput
                     readOnly
                     value={ wordScoreString }
-                    onClick={ () => this.props.makeMove(validWord, potentialScore, isValidIndex) }
+                    onClick={ () => this.props.solutions(validWord, potentialScore, isValidIndex) }
                   />;
         break;
 
@@ -61,10 +61,9 @@ GameInterfaceBottom.propTypes = {
   validWord: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
   gameState: PropTypes.string.isRequired,
-  firstPlayer: PropTypes.bool.isRequired,
   gameData: PropTypes.object,
   solution: PropTypes.array.isRequired,
-  makeMove: PropTypes.func.isRequired,
+  solutions: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -72,15 +71,14 @@ const mapStateToProps = state => {
     validWord: state.validWord,
     isValidIndex: state.showValid,
     gameState: state.gameState,
-    firstPlayer: state.firstPlayer,
     gameData: state.gameData,
-    solution: state.makeMove,
+    solution: state.solutions,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    makeMove: (word, score, index) => dispatch(makeMoveAction(word, score, index)),
+    solutions: (word, score, index) => dispatch(sendSolutionAction(word, score, index)),
   }
 }
 

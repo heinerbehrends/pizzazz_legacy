@@ -18,7 +18,7 @@ const Bar = styled.div`
   border-right: solid red 1px;
   animation-name: status-bar;
   animation-timing-function: linear;
-  animation-duration: 40s;
+  animation-duration: 15s;
 
   @keyframes status-bar {
   from { width: 0%; border-color: green }

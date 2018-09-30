@@ -1,59 +1,65 @@
-import { put, take, call } from 'redux-saga/effects'
+import { put, take, call, fork, select, cancel } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
-import Echo from 'laravel-echo'
-import { START_GAME, SHOW_WINNER } from '../actionTypes'
+import io from 'socket.io-client'
+import { START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT } from '../actionTypes'
 
-const createNewEcho = () => {
-  return new Echo({
-    broadcaster: 'pusher',
-    key: "3d2256d4fd0ec99b3854",
-    cluster: 'eu',
-    encrypted: true
-  });
-}
-
-const createPusherChannel = socket => {
-
-  return eventChannel(emit => {
-
-    socket.channel('pizzazz')
-          .listen('StartGame', event => {
-            event.startOrEnd = 'start'
-            emit(event)
-          }).listen('EndGame', event => {
-            event.startOrEnd = 'end'
-            emit(event)
-          })
-
-    const unsubscribe = () => {
-      socket.leave('pizzazz')
-    }
-    
-    return unsubscribe
+const connect = () => {
+  const socket = io('http://localhost:3001')
+  return new Promise(resolve => {
+    socket.on('connect', () => {
+      resolve(socket)
+    })
   })
 }
 
-function* watchEvents() {
+const subscribe = socket => {
+  return eventChannel(emit => {
+    socket.on('StartGame', game => {
+      emit({ type: START_GAME, game})
+    })
+    socket.on('newSolution', solution => {
+      console.log(solution);
+      emit({ type: NEW_SOLUTION, solution })
+    })
+    socket.on('disconnect', event => {
+      emit({ type: DISCONNECT })
+    })
+    return () => {}
+  })
+}
 
-  const socket = yield call(createNewEcho)
-  const socketChannel = yield call(createPusherChannel, socket)
-
+function* read(socket) {
+  const channel = yield call(subscribe, socket)
   while (true) {
+    const action = yield take(channel);
+    yield put(action);
+  }
+}
 
-    const payload = yield take(socketChannel)
-    const isStart = payload.startOrEnd === 'start'
-    const isEnd = payload.startOrEnd === 'end'
-    let type
+function* write(socket) {
+  while (true) {
+    const action = yield take(SEND_SOLUTION)
+    const solution = action.solution
+    const name = yield select(getScreenName)
+    socket.emit('sendSolution', { solution, name })
+  }
+}
 
-    if (isStart) {
-      type = START_GAME
-    }
-    else if (isEnd) {
-      type = SHOW_WINNER
-    }
-    if (isStart || isEnd) {
-      yield put({type, game: payload.game})
-    }
+const getScreenName = state => {
+  return state.screenName
+}
+
+function* handleIO(socket) {
+  yield fork(read, socket);
+  yield fork(write, socket);
+}
+
+function* watchEvents() {
+  while (true) {
+    const socket = yield call(connect)
+    const task = yield fork(handleIO, socket)
+    yield take(DISCONNECT)
+    yield cancel(task)
   }
 }
 
