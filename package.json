@@ -15,13 +15,13 @@
     "react-dnd-multi-backend": "^3.1.0",
     "react-dnd-touch-backend": "^0.5.1",
     "react-dom": "^16.2.0",
-    "react-mt-svg-lines": "^0.8.5",
     "react-pusher": "^0.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
+    "socket.io-client": "^2.1.1",
     "styled-components": "^3.4.1"
   },
   "scripts": {
