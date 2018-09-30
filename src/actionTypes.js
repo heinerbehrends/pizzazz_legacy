@@ -1,13 +1,11 @@
 export const RANDOM_LETTERS = 'RANDOM_LETTERS';
 export const REPLACE_LETTER = 'REPLACE_LETTER';
 export const SHOW_VALID = 'SHOW_VALID';
-export const MAKE_MOVE = 'MAKE_MOVE'
-export const FIRST_PLAYER = 'FIRST_PLAYER';
+export const SEND_SOLUTION = 'SEND_SOLUTION'
 export const START_GAME = 'START_GAME';
-export const SAVE_GAME = 'SAVE_GAME';
 export const END_GAME = 'END_GAME';
 export const SHOW_WINNER = 'SHOW_WINNER';
-export const STOP_COUNTDOWN = 'STOP_COUNTDOWN';
-export const START_COUNTDOWN = 'START_COUNTDOWN'
 export const DECREMENT_COUNTDOWN = 'DECREMENT_COUNTDOWN';
+export const NEW_SOLUTION = 'NEW_SOLUTION'
 export const SEND_NAME = 'SEND_NAME';
+export const DISCONNECT = 'DISCONNECT'

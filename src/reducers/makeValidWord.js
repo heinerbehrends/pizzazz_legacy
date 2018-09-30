@@ -1,15 +1,18 @@
-import { REPLACE_LETTER, MAKE_MOVE } from '../actionTypes'
+import { REPLACE_LETTER, SEND_SOLUTION, START_GAME } from '../actionTypes'
 
 const validWordReducer = (state = "0000000", action) => {
   switch(action.type) {
+    case START_GAME:
+      return "0000000"
     case REPLACE_LETTER:
       return action.validWord ? action.validWord : state
-    case MAKE_MOVE:
-      let zeros = '';
-      for (let i = 0; i < action.index; i++) {
+    case SEND_SOLUTION:
+      let zeros = ''
+      let index = action.solution.length
+      for (let i = 0; i < index; i++) {
         zeros += 0;
       }
-      return zeros.concat(state.substring(action.index))
+      return zeros.concat(state.substring(index))
     default:
       return state;
   }

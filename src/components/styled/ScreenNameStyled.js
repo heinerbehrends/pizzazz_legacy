@@ -33,6 +33,7 @@ export const ButtonInput = styled.input`
   vertical-align: middle;
   padding: .375rem .75rem;
   margin-right: 5px;
+  margin-bottom: 3rem;
   color: #495057;
   border: 1px solid #ced4da;
   background-color: #fff;

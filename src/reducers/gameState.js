@@ -1,14 +1,9 @@
-import { SHOW_VALID, MAKE_MOVE, FIRST_PLAYER, SHOW_WINNER, START_GAME } from '../actionTypes'
+import { SHOW_VALID, SEND_SOLUTION, SEND_NAME, SHOW_WINNER, START_GAME } from '../actionTypes'
 
 const gameStateReducer = (state='init', action) => {
   switch (action.type) {
-    case FIRST_PLAYER:
-      if (action.firstPlayer) {
-        return 'waiting';
-      }
-      else {
-        return 'makeWord';
-      }
+    case SEND_NAME:
+      return 'waiting';
     case START_GAME:
       return 'makeWord';
     case SHOW_VALID:
@@ -18,7 +13,7 @@ const gameStateReducer = (state='init', action) => {
       else {
         return 'makeWord';
       }
-    case MAKE_MOVE:
+    case SEND_SOLUTION:
       return 'makeWordEnd';
     case SHOW_WINNER:
       return 'showWinner'

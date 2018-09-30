@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga'
-import { put, select, takeEvery } from 'redux-saga/effects'
+import { put, select, take, call } from 'redux-saga/effects'
 import { DECREMENT_COUNTDOWN, END_GAME } from '../actionTypes'
 
 
@@ -8,7 +8,6 @@ const getCountdownValue = state => {
 }
 
 export function* handleGame() {
-
   while (true) {
     yield delay(1000)
     yield put({ type: DECREMENT_COUNTDOWN })
@@ -23,7 +22,11 @@ export function* handleGame() {
 }
 
 function* watchGame() {
-  yield takeEvery('START_GAME', handleGame)
+  while (true) {
+    yield take('START_GAME')
+    yield call(handleGame)
+    console.log('yeah');    
+  }
 }
 
 export default watchGame
