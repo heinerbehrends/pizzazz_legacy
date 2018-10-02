@@ -1,7 +1,7 @@
 import { put, take, call, fork, select, cancel } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
 import io from 'socket.io-client'
-import { START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT } from '../actionTypes'
+import { START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME } from '../actionTypes'
 
 const connect = () => {
   const socket = io('http://localhost:3001')
@@ -13,6 +13,7 @@ const connect = () => {
 }
 
 const subscribe = socket => {
+
   return eventChannel(emit => {
     socket.on('StartGame', game => {
       emit({ type: START_GAME, game})
@@ -24,11 +25,13 @@ const subscribe = socket => {
     socket.on('disconnect', event => {
       emit({ type: DISCONNECT })
     })
+
     return () => {}
   })
 }
 
 function* read(socket) {
+  yield take(SEND_NAME)
   const channel = yield call(subscribe, socket)
   while (true) {
     const action = yield take(channel);

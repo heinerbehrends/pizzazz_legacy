@@ -14,10 +14,9 @@ class GameInterfaceBottom extends Component {
 
   render() {
 
-    const { isValidIndex, gameState } = this.props;
-    const validWord = this.props.validWord.substring(0, this.props.isValidIndex);
-    const potentialScore = getScore(validWord, letterValues);
-    let result;
+    const { isValidIndex, gameState } = this.props
+    const validWord = this.props.validWord.substring(0, this.props.isValidIndex)
+    let result
 
     switch(gameState) {
       case 'init':
@@ -26,31 +25,32 @@ class GameInterfaceBottom extends Component {
             <MessageDisplay message={ "Enter your screen name to play" } />
             <ScreenName />
           </div>
-        break;
+        break
 
-      case 'makeWord':
+      case 'start':
         result = <MessageDisplay message={ "Move Letters To Form A Word" } />
-        break;
+        break
 
       case 'makeWordEnd':
-        result = <MessageDisplay message={ "Move Letters To Form A Word" } />;
-        break;
+        result = <MessageDisplay message={ "Move Letters To Form A Word" } />
+        break
 
-      case 'play':
+      case 'solution':
+        const potentialScore = getScore(validWord, letterValues)
         let wordScoreString = 'Play ' + validWord + ' For ' + potentialScore + ' Points';
         result = <ButtonInput
                     readOnly
                     value={ wordScoreString }
                     onClick={ () => this.props.solutions(validWord, potentialScore, isValidIndex) }
-                  />;
-        break;
+                  />
+        break
 
-      case 'showWinner':
+      case 'endGame':
         result = <Winner game={ this.props.gameData } firstPlayer={ this.props.firstPlayer} />
-        break;
+        break
 
       default:
-        result = null;
+        result = null
     }
 
     return result

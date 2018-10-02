@@ -1,13 +1,13 @@
 import { START_GAME, REPLACE_LETTER } from '../actionTypes'
 
-const RandomLettersReducer = (state = 'PIZZAZZ', action) => {
+const RandomLettersReducer = (state = 'pizzazz', action) => {
   switch (action.type) {
     case START_GAME:
-      return action.game.randomLetters.toUpperCase();
+      return action.game.randomLetters
     case REPLACE_LETTER:
-      return action.randomLetters ? action.randomLetters.toUpperCase() : state
+      return action.randomLetters ? action.randomLetters : state
     default:
-      return state;
+      return state
   }
 }
 
