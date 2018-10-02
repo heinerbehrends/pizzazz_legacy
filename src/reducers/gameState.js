@@ -5,18 +5,18 @@ const gameStateReducer = (state='init', action) => {
     case SEND_NAME:
       return 'waiting';
     case START_GAME:
-      return 'makeWord';
+      return 'start';
     case SHOW_VALID:
       if (action.index !== 0) {
-        return 'play';
+        return 'solution';
       }
       else {
-        return 'makeWord';
+        return 'start';
       }
     case SEND_SOLUTION:
       return 'makeWordEnd';
     case SHOW_WINNER:
-      return 'showWinner'
+      return 'endGame'
     default:
       return state;
   }

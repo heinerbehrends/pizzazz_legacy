@@ -2,35 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import MessageDisplay from './MessageDisplay'
+import { letterValues } from '../Constants'
+import { getScore } from '../scrabbleLogic/gameLogic'
 
 class GameInterfaceTop extends Component {
   render() {
-    const { gameState, gameData, firstPlayer } = this.props;
-    let message = '';
+    const { gameState, gameData } = this.props
+    let message = ''
 
     switch(gameState) {
       case 'init':
-        message = "Welcome to";
-        break;
+        message = "Welcome to"
+        break
       case 'waiting':
-        message = "Waiting for an opponent";
-        break;
-      case 'makeWord':
-        message = "You play against " + (this.props.firstPlayer ?
-                                         this.props.gameData.player2Name :
-                                         this.props.gameData.player1Name);
-        break;
-      case 'play':
-        message = "Make your move or find a better word";
-        break;
-      case 'showWinner':
-        message = (firstPlayer ? gameData.player2Name : gameData.player1Name) + ' played ' +
-        (firstPlayer ? gameData.player2Solution : gameData.player1Solution) + ' for ' +
-        (firstPlayer ? gameData.player2Score : gameData.player1Score) + ' points';
-        break;
+        message = "Waiting for a new game"
+        break
+      case 'start':
+        const maxLength = gameData.validWords.map(word => word.length).reduce((max, value) => Math.max(max, value))
+        message = `There are ${ gameData.validWords.length } possible words. The longest is ${ maxLength } letters long.`
+        break
+      case 'solution':
+        message = "Make your move or find a better word"
+        break
+      case 'endGame':
+        message = 'Yeah'
+        break
       default:
-        message = "";
-        break;
+        message = ""
+        break
     }
 
     return (
@@ -41,14 +40,12 @@ class GameInterfaceTop extends Component {
 
 GameInterfaceTop.propTypes = {
   gameState: PropTypes.string,
-  firstPlayer: PropTypes.bool,
   gameData: PropTypes.object,
 }
 
 const mapStateToProps = state => {
   return {
     gameState: state.gameState,
-    firstPlayer: state.firstPlayer,
     gameData: state.gameData,
   }
 }
