@@ -1,9 +1,11 @@
-import { START_GAME, REPLACE_LETTER } from '../actionTypes'
+import { START_GAME, REPLACE_LETTER, RANDOM_LETTERS } from '../actionTypes'
 
 const RandomLettersReducer = (state = 'pizzazz', action) => {
   switch (action.type) {
-    case START_GAME:
-      return action.game.randomLetters
+    case RANDOM_LETTERS:
+     return action.randomLetters
+    // case START_GAME:
+    //   return action.game.randomLetters
     case REPLACE_LETTER:
       return action.randomLetters ? action.randomLetters : state
     default:

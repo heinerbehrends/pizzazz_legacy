@@ -19,7 +19,6 @@ const subscribe = socket => {
       emit({ type: START_GAME, game})
     })
     socket.on('newSolution', solution => {
-      console.log(solution);
       emit({ type: NEW_SOLUTION, solution })
     })
     socket.on('disconnect', event => {
@@ -31,7 +30,9 @@ const subscribe = socket => {
 }
 
 function* read(socket) {
+  
   yield take(SEND_NAME)
+
   const channel = yield call(subscribe, socket)
   while (true) {
     const action = yield take(channel);

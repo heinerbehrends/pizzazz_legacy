@@ -25,7 +25,6 @@ function* watchGame() {
   while (true) {
     yield take('START_GAME')
     yield call(handleGame)
-    console.log('yeah');    
   }
 }
 
