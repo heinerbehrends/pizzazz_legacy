@@ -1,85 +1,60 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { sendSolutionAction } from '../actions/actions'
-import { getScore } from '../scrabbleLogic/gameLogic'
-import { letterValues } from '../Constants'
-import ScreenName from './ScreenName'
-import { ButtonInput } from './styled/ScreenNameStyled'
-import MessageDisplay from './MessageDisplay'
-import Winner from './Winner'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { sendSolutionAction } from '../actions/actions';
+import { getScore } from '../scrabbleLogic/gameLogic';
+import { letterValues } from '../Constants';
+import ScreenName from './ScreenName';
+import { ButtonInput } from './styled/ScreenNameStyled';
+import MessageDisplay from './MessageDisplay';
 
 
-class GameInterfaceBottom extends Component {
-
+class GameInterfaceBottom extends PureComponent {
   render() {
+    const { isValidIndex, validWord, message, isVisible, solutions } = this.props;
+    const solution = validWord.substring(0, isValidIndex);
+    let output = {};
 
-    const { isValidIndex, gameState } = this.props
-    const validWord = this.props.validWord.substring(0, this.props.isValidIndex)
-    let result
-
-    switch(gameState) {
-      case 'init':
-        result =
-          <div>
-            <MessageDisplay message={ "Enter your screen name to play" } />
-            <ScreenName />
-          </div>
-        break
-
-      case 'start':
-        result = <MessageDisplay message={ "Move Letters To Form A Word" } />
-        break
-
-      case 'makeWordEnd':
-        result = <MessageDisplay message={ "Move Letters To Form A Word" } />
-        break
-
-      case 'solution':
-        const potentialScore = getScore(validWord, letterValues)
-        let wordScoreString = 'Play ' + validWord + ' For ' + potentialScore + ' Points';
-        result = <ButtonInput
-                    readOnly
-                    value={ wordScoreString }
-                    onClick={ () => this.props.solutions(validWord, potentialScore, isValidIndex) }
-                  />
-        break
-
-      case 'endGame':
-        result = <Winner game={ this.props.gameData } firstPlayer={ this.props.firstPlayer} />
-        break
-
-      default:
-        result = null
+    if (isValidIndex) {
+      const potentialScore = getScore(solution, letterValues);
+      const wordScoreString = `Play ${solution.toUpperCase()} for ${potentialScore} points`;
+      output = (
+        <ButtonInput
+          readOnly
+          value={wordScoreString}
+          onClick={() => solutions(solution, potentialScore, isValidIndex)}
+        />
+      );
+    } else {
+      output = !isVisible ? null : (
+        <div>
+          <MessageDisplay message={message} />
+          <ScreenName />
+        </div>
+      );
     }
-
-    return result
+    return output;
   }
 }
 
 GameInterfaceBottom.propTypes = {
   validWord: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
-  gameState: PropTypes.string.isRequired,
-  gameData: PropTypes.object,
-  solution: PropTypes.array.isRequired,
+  message: PropTypes.string.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   solutions: PropTypes.func.isRequired,
-}
+};
 
-const mapStateToProps = state => {
-  return {
-    validWord: state.validWord,
-    isValidIndex: state.showValid,
-    gameState: state.gameState,
-    gameData: state.gameData,
-    solution: state.solutions,
-  }
-}
+const mapStateToProps = state => ({
+  validWord: state.validWord,
+  isValidIndex: state.showValid,
+  message: state.messageBottom.message,
+  isVisible: state.messageBottom.isVisible,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    solutions: (word, score, index) => dispatch(sendSolutionAction(word, score, index)),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  solutions: (word, score, index) => dispatch(sendSolutionAction(word, score, index)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameInterfaceBottom)
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameInterfaceBottom);

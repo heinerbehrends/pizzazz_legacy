@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ const Container = styled.div`
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const Bar = styled.div`
   position: relative;
@@ -24,11 +24,12 @@ const Bar = styled.div`
   from { width: 0%; border-color: green }
   to { width: 100%; border-color: red }
   }
-`
+`;
+
 const ProgressBar = () => (
   <Container>
     <Bar />
   </Container>
-)
+);
 
-export default ProgressBar
+export default ProgressBar;

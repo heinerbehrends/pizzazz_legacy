@@ -1,12 +1,12 @@
-import { SEND_NAME } from '../actionTypes'
+import { SEND_NAME } from '../actionTypes';
 
 const screenNameReducer = (state = '', action) => {
   switch (action.type) {
     case SEND_NAME:
-      return action.name
+      return action.name;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default screenNameReducer
+export default screenNameReducer;

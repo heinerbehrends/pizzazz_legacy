@@ -1,8 +1,8 @@
 import { delay } from 'redux-saga';
-import { put, select, take, call, fork, } from 'redux-saga/effects';
-import { DECREMENT_COUNTDOWN, END_GAME, MESSAGE_TOP, NEW_SOLUTION, } from '../actionTypes';
+import { put, select, take, call, fork } from 'redux-saga/effects';
+import { DECREMENT_COUNTDOWN, END_GAME, MESSAGE_TOP, NEW_SOLUTION } from '../actionTypes';
+import { getMaxLength, getMaxLengthScore, getWinnerSolution, addZeros } from '../scrabbleLogic/gameLogic';
 import randomTransition from './randomTransition';
-import { getMaxLength, getMaxLengthScore, getWinnerSolution, addZeros, } from '../scrabbleLogic/gameLogic';
 
 
 const getCountdownValue = state => state.countdownValue;
@@ -20,9 +20,10 @@ function* handleSolutions() {
   }
 }
 
-const getWinnerMessage = solution => (solution
-  ? `The winner ${solution.name.toUpperCase()} played `
-  : 'No user solutions were received');
+const getWinnerMessage = solution => (
+  solution ? `The winner ${solution.name.toUpperCase()} played `
+    : 'No user solutions were received'
+);
 
 function* handleWinner() {
   yield take(END_GAME);
@@ -36,12 +37,13 @@ function* handleWinner() {
   yield call(delay, 5000);
 
   const validWords = yield select(getValidWords);
+
   message = 'The best word was';
   yield put({ type: MESSAGE_TOP, message });
   yield fork(randomTransition, addZeros(getMaxLengthScore(validWords)[0]));
 }
 
-function* handleTopMessage() {
+function* handleStartMessages() {
   const validWords = yield select(getValidWords);
 
   let message = `There are ${validWords.length} possible words`;
@@ -50,7 +52,6 @@ function* handleTopMessage() {
 
   message = `The longest word is ${getMaxLength(validWords)} letters long`;
   yield put({ type: MESSAGE_TOP, message });
-  yield fork(handleSolutions);
 }
 
 function* handleCountdown() {
@@ -71,7 +72,8 @@ function* watchGame() {
   while (true) {
     yield take('START_GAME');
     yield fork(handleCountdown);
-    yield fork(handleTopMessage);
+    yield fork(handleStartMessages);
+    yield fork(handleSolutions);
     yield fork(handleWinner);
   }
 }

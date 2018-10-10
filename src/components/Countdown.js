@@ -1,19 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import ProgressBar from './ProgressBar'
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import ProgressBar from './ProgressBar';
 
 
-const Countdown = props => props.isCountdown ? <ProgressBar /> : null
+const Countdown = props => (props.isCountdown ? <ProgressBar /> : null)
 
 Countdown.propTypes = {
   isCountdown: PropTypes.bool.isRequired,
-}
+};
 
-const mapStateToProps = state => {
-  return {
-    isCountdown: state.isCountdown,
-  }
-}
+const mapStateToProps = state => ({
+  isCountdown: state.isCountdown,
+});
 
-export default connect(mapStateToProps)(Countdown)
+export default connect(mapStateToProps)(Countdown);

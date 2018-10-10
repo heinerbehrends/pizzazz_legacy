@@ -1,5 +1,5 @@
-import { updateString } from '../scrabbleLogic/gameLogic'
-import getIsValidIndex from '../scrabbleLogic/getIsValidIndex'
+import { updateString } from '../scrabbleLogic/gameLogic';
+import getIsValidIndex from '../scrabbleLogic/getIsValidIndex';
 
 
 export const letterSource = {
@@ -8,14 +8,15 @@ export const letterSource = {
     return {
       sourceLetter: props.letter,
       sourceIndex: props.index,
-    }
+    };
   },
 
   endDrag(props, monitor) {
     if (monitor.didDrop()) {
-
       const target = monitor.getDropResult();
-      const { replaceLettersAction, showValidAction, validWords, dispatch } = props;
+      const {
+        replaceLettersAction, showValidAction, validWords, dispatch,
+      } = props;
 
       const validWord = updateString(props, target, 'validWord');
       const randomLetters = updateString(props, target, 'randomLetters');
@@ -24,20 +25,22 @@ export const letterSource = {
 
       if (validWord) {
         const isValidIndex = getIsValidIndex(validWord, validWords);
-        dispatch(showValidAction(isValidIndex))
+        dispatch(showValidAction(isValidIndex));
       }
     }
-  }
-}
+  },
+};
 
 export const letterTarget = {
   drop(props) {
-    const { letter, string, index, parent } = props;
+    const {
+      letter, string, index, parent,
+    } = props;
     return {
       targetLetter: letter,
       targetString: string,
       targetIndex: index,
       targetParent: parent,
-    }
-  }
-}
+    };
+  },
+};

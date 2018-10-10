@@ -70,4 +70,4 @@ const collect = monitor => ({
   isDragging: monitor.isDragging(),
 })
 
-export default DragLayer(collect)(DragLayerTile)
+export default DragLayer(collect)(DragLayerTile);

@@ -1,15 +1,14 @@
-import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import LetterContainer from './styled/RandomLettersStyled'
-import makeTilesArray from '../componentLogic/makeTilesArray'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import LetterContainer from './styled/RandomLettersStyled';
+import makeTilesArray from '../componentLogic/makeTilesArray';
 
 
 class RandomLetters extends PureComponent {
-
   render() {
     const { isCountdown, randomLetters } = this.props;
-    const tilesArray = makeTilesArray(isCountdown, randomLetters, false, 'randomLetters');;
+    const tilesArray = makeTilesArray(isCountdown, randomLetters, false, 'randomLetters');
 
     return (
       <LetterContainer>
@@ -20,15 +19,14 @@ class RandomLetters extends PureComponent {
 }
 
 RandomLetters.propTypes = {
-  isCountdown: PropTypes.bool,
+  isCountdown: PropTypes.bool.isRequired,
   randomLetters: PropTypes.string.isRequired,
-}
+};
 
-const mapStateToProps = state => {
-  return {
-    randomLetters: state.randomLetters,
-    isCountdown: state.isCountdown,
-  };
-}
+const mapStateToProps = state => ({
+  randomLetters: state.randomLetters,
+  isCountdown: state.isCountdown,
+});
+
 
 export default connect(mapStateToProps)(RandomLetters);

@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux';
-import RandomLettersReducer from './RandomLetters'
-import validWordReducer from './makeValidWord'
-import showValidReducer from './showValidWord'
-import gameStateReducer from './gameState'
-import solutionsReducer from './solutions'
-import messageTopReducer from './messageTop'
-import gameDataReducer from './gameData'
-import isCountdownReducer from './isCountdown'
-import countdownValueReducer from './countdownValue'
-import screenNameReducer from './screenName'
+import RandomLettersReducer from './RandomLetters';
+import validWordReducer from './makeValidWord';
+import showValidReducer from './showValidWord';
+import gameStateReducer from './gameState';
+import solutionsReducer from './solutions';
+import messageTopReducer from './messageTop';
+import gameDataReducer from './gameData';
+import isCountdownReducer from './isCountdown';
+import countdownValueReducer from './countdownValue';
+import screenNameReducer from './screenName';
+import messageBottomReducer from './messageBottom';
 
 const rootReducer = combineReducers({
   randomLetters: RandomLettersReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   showValid: showValidReducer,
   gameState: gameStateReducer,
   messageTop: messageTopReducer,
+  messageBottom: messageBottomReducer,
   isCountdown: isCountdownReducer,
   countdownValue: countdownValueReducer,
   solutions: solutionsReducer,

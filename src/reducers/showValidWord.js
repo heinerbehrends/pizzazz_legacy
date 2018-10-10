@@ -1,19 +1,14 @@
-import { SHOW_VALID, SEND_SOLUTION } from '../actionTypes'
+import { SHOW_VALID, SEND_SOLUTION } from '../actionTypes';
 
 const showValidReducer = (state = 0, action) => {
-  switch (action.type){
+  switch (action.type) {
     case SHOW_VALID:
-      if (state !== action.index) {
-        return action.index;
-      }
-      else {
-        return state;
-      }
+      return state !== action.index ? action.index : state;
     case SEND_SOLUTION:
       return 0;
     default:
       return state;
- }
-}
+  }
+};
 
 export default showValidReducer;
