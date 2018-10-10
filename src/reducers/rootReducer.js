@@ -4,6 +4,7 @@ import validWordReducer from './makeValidWord'
 import showValidReducer from './showValidWord'
 import gameStateReducer from './gameState'
 import solutionsReducer from './solutions'
+import messageTopReducer from './messageTop'
 import gameDataReducer from './gameData'
 import isCountdownReducer from './isCountdown'
 import countdownValueReducer from './countdownValue'
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   validWord: validWordReducer,
   showValid: showValidReducer,
   gameState: gameStateReducer,
+  messageTop: messageTopReducer,
   isCountdown: isCountdownReducer,
   countdownValue: countdownValueReducer,
   solutions: solutionsReducer,

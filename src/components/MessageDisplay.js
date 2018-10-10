@@ -5,13 +5,13 @@ import styled from 'styled-components'
 export const MessageContainer = styled.div`
   margin-top: 3rem;
   margin-bottom:3rem;
-`;
+`
 
 const MessageDisplaySpan = styled.span`
   color: #6c757d;
   padding: 0.5rem;
   border-bottom: 1px solid #dee2e6;
-`;
+`
 
 const MessageDisplay = props => {
   return (
@@ -21,7 +21,7 @@ const MessageDisplay = props => {
       </MessageDisplaySpan>
     </MessageContainer>
   )
-};
+}
 
 MessageDisplay.propTypes  = {
   message: PropTypes.string
