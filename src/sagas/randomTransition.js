@@ -1,37 +1,37 @@
-import { delay } from 'redux-saga'
-import { put, take } from 'redux-saga/effects'
-import { RANDOM_LETTERS, START_GAME } from '../actionTypes'
+import { delay } from 'redux-saga';
+import { put, take } from 'redux-saga/effects';
+import { RANDOM_LETTERS, START_GAME } from '../actionTypes';
 
-const getRandomIndex = bagOfLetters => Math.floor(Math.random() * bagOfLetters.length)
-const getRandomLetter = () => abc[getRandomIndex(abc)]
-const abc = 'abcdefghijklmnopqrstuvwxyz8'
+const getRandomIndex = bagOfLetters => Math.floor(Math.random() * bagOfLetters.length);
+const abc = 'abcdefghijklmnopqrstuvwxyz8';
+const getRandomLetter = () => abc[getRandomIndex(abc)];
 
 function* randomTransition(string) {
   let stringArrRandom = string
     .split('')
-    .map((letter, i) => letter === '0' ? 'correct' : getRandomLetter())
+    .map(letter => (letter === '0' ? 'correct' : getRandomLetter()));
 
   while (true) {
-    yield delay(20)
+    yield delay(20);
     stringArrRandom = stringArrRandom
-      .map((letter, i) => letter !== 'correct' ? getRandomLetter() : string[i])
+      .map((letter, i) => (letter !== 'correct' ? getRandomLetter() : string[i]));
 
-    yield put({type: RANDOM_LETTERS, randomLetters: stringArrRandom.join('')})
+    yield put({ type: RANDOM_LETTERS, randomLetters: stringArrRandom.join('') });
 
     stringArrRandom = stringArrRandom
-      .map((letter, i) => letter === string[i] ? stringArrRandom[i] = 'correct' : letter)
+      .map((letter, i) => (letter === string[i] ? 'correct' : letter));
 
     if (!stringArrRandom.filter(element => element !== 'correct').length) {
-      break
+      break;
     }
   }
 }
 
 export function* watchStartGame() {
   while (true) {
-    const action = yield take(START_GAME)
-    yield randomTransition(action.game.randomLetters)
+    const action = yield take(START_GAME);
+    yield randomTransition(action.game.randomLetters);
   }
 }
 
-export default randomTransition
+export default randomTransition;
