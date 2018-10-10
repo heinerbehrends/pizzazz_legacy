@@ -2,6 +2,7 @@ import { put, take, call, fork, select, cancel } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
 import io from 'socket.io-client'
 import { START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME } from '../actionTypes'
+import { getMaxScore, getWinnerSolution } from '../scrabbleLogic/gameLogic'
 
 const connect = () => {
   const socket = io('http://localhost:3001')
@@ -16,6 +17,7 @@ const subscribe = socket => {
 
   return eventChannel(emit => {
     socket.on('StartGame', game => {
+      console.log(getWinnerSolution([{solution: 'pizzazz', name: 'sdf'}, {solution: 'pizazz8', name: 'dfg'}]));
       emit({ type: START_GAME, game})
     })
     socket.on('newSolution', solution => {
@@ -30,7 +32,7 @@ const subscribe = socket => {
 }
 
 function* read(socket) {
-  
+
   yield take(SEND_NAME)
 
   const channel = yield call(subscribe, socket)

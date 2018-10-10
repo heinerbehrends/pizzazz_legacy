@@ -1,26 +1,25 @@
 import { delay } from 'redux-saga'
-import { put, take, call } from 'redux-saga/effects'
+import { put, take } from 'redux-saga/effects'
 import { RANDOM_LETTERS, START_GAME } from '../actionTypes'
 
 const getRandomIndex = bagOfLetters => Math.floor(Math.random() * bagOfLetters.length)
+const getRandomLetter = () => abc[getRandomIndex(abc)]
 const abc = 'abcdefghijklmnopqrstuvwxyz8'
 
 function* randomTransition(string) {
-
-  const stringArrEnd = string.split('')
-  let stringArrRandom = stringArrEnd.map(letter => abc[getRandomIndex(abc)])
+  let stringArrRandom = string
+    .split('')
+    .map((letter, i) => letter === '0' ? 'correct' : getRandomLetter())
 
   while (true) {
     yield delay(20)
-    stringArrRandom = stringArrRandom.map((letter, i) => letter !== 'correct' ?
-                                                           abc[getRandomIndex(abc)] :
-                                                           stringArrEnd[i])
+    stringArrRandom = stringArrRandom
+      .map((letter, i) => letter !== 'correct' ? getRandomLetter() : string[i])
 
     yield put({type: RANDOM_LETTERS, randomLetters: stringArrRandom.join('')})
 
-    stringArrRandom.map((letter, i) => letter === stringArrEnd[i] ?
-                                         stringArrRandom[i] = 'correct' :
-                                         letter)
+    stringArrRandom = stringArrRandom
+      .map((letter, i) => letter === string[i] ? stringArrRandom[i] = 'correct' : letter)
 
     if (!stringArrRandom.filter(element => element !== 'correct').length) {
       break
