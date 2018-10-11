@@ -1,8 +1,11 @@
-import { put, take, call, fork, select, cancel } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
 import io from 'socket.io-client';
-import { START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME } from '../actionTypes';
-import { getMaxScore, getWinnerSolution } from '../scrabbleLogic/gameLogic';
+import { eventChannel } from 'redux-saga';
+import {
+  put, take, call, fork, select, cancel,
+} from 'redux-saga/effects';
+import {
+  START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME,
+} from '../actionTypes';
 
 const connect = () => {
   const socket = io('http://localhost:3001');

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 const ScrabbleBoard = styled.div`
@@ -19,4 +19,4 @@ const ScrabbleBoard = styled.div`
   }
 `;
 
-export default ScrabbleBoard
+export default ScrabbleBoard;

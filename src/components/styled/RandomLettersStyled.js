@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 const LetterContainer = styled.div`
@@ -14,4 +14,4 @@ const LetterContainer = styled.div`
   }
 `;
 
-export default LetterContainer
+export default LetterContainer;

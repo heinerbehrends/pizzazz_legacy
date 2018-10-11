@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -31,16 +31,20 @@ const AppWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const App = () => (
-  <AppWrapper>
-    <MessageTop />
-    <RandomLetters />
-    <ValidWordHTML />
-    <GameInterfaceBottom />
-    <Countdown />
-    <DragLayerTile />
-  </AppWrapper>
-);
+class App extends Component {
+  render() {
+    return (
+      <AppWrapper>
+        <MessageTop />
+        <RandomLetters />
+        <ValidWordHTML />
+        <GameInterfaceBottom />
+        <Countdown />
+        <DragLayerTile />
+      </AppWrapper>
+    )
+  }
+};
 
 
 export default DragDropContext(MultiBackend(HTML5toTouch))(App);

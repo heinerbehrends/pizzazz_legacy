@@ -1,6 +1,6 @@
-import { SHOW_VALID, SEND_SOLUTION, SEND_NAME, SHOW_WINNER, START_GAME } from '../actionTypes'
+import { SHOW_VALID, SEND_SOLUTION, SEND_NAME, SHOW_WINNER, START_GAME } from '../actionTypes';
 
-const gameStateReducer = (state='init', action) => {
+const gameStateReducer = (state = 'init', action) => {
   switch (action.type) {
     case SEND_NAME:
       return 'waiting';
@@ -10,16 +10,14 @@ const gameStateReducer = (state='init', action) => {
       if (action.index !== 0) {
         return 'solution';
       }
-      else {
-        return 'start';
-      }
+      return 'start';
     case SEND_SOLUTION:
       return 'makeWordEnd';
     case SHOW_WINNER:
-      return 'endGame'
+      return 'endGame';
     default:
       return state;
   }
-}
+};
 
 export default gameStateReducer;

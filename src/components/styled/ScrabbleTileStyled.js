@@ -1,17 +1,17 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 export const LetterContainer = styled.div`
   width: 13.68%
-  `;
+`;
 
 export const LetterStyled = styled.div`
-  opacity: ${props => props.letter !== '0' ? '100' : '0'};
+  opacity: ${props => (props.letter !== '0' ? '100' : '0')};
   user-select: none;
   border: 1px solid lightgray;
   border-radius: 0.5vw;
-  color: ${props => props.letter !== '8' | '0' ? '#555' : 'rgba(0,0,0,0)'};
-  background-color: ${props => props.isValid ? '#C4F2CB' : '#f7e9b7'};
+  color: ${props => (props.letter !== ('8' || '0') ? '#555' : 'rgba(0,0,0,0)')};
+  background-color: ${props => (props.isValid ? '#C4F2CB' : '#f7e9b7')};
   font-weight: 400;
   font-size: 8vw;
   text-align: center;

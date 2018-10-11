@@ -1,27 +1,23 @@
 import { delay } from 'redux-saga';
 import { put, take } from 'redux-saga/effects';
 import { RANDOM_LETTERS, START_GAME } from '../actionTypes';
+import {
+  zeroToCorrect, isAllCorrect, randomOrCorrect, markAsCorrect,
+} from '../scrabbleLogic/transitionLogic';
 
-const getRandomIndex = bagOfLetters => Math.floor(Math.random() * bagOfLetters.length);
-const abc = 'abcdefghijklmnopqrstuvwxyz8';
-const getRandomLetter = () => abc[getRandomIndex(abc)];
 
 function* randomTransition(string) {
   let stringArrRandom = string
     .split('')
-    .map(letter => (letter === '0' ? 'correct' : getRandomLetter()));
+    .map(zeroToCorrect);
 
   while (true) {
     yield delay(20);
-    stringArrRandom = stringArrRandom
-      .map((letter, i) => (letter !== 'correct' ? getRandomLetter() : string[i]));
-
+    stringArrRandom = randomOrCorrect(stringArrRandom, string);
     yield put({ type: RANDOM_LETTERS, randomLetters: stringArrRandom.join('') });
 
-    stringArrRandom = stringArrRandom
-      .map((letter, i) => (letter === string[i] ? 'correct' : letter));
-
-    if (!stringArrRandom.filter(element => element !== 'correct').length) {
+    stringArrRandom = markAsCorrect(stringArrRandom, string);
+    if (isAllCorrect(stringArrRandom)) {
       break;
     }
   }
