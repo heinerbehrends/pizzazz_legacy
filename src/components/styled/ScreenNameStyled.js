@@ -27,21 +27,43 @@ export const FormGroup = styled.div`
   -webkit-box-flex: 0;
 `;
 
-export const ButtonInput = styled.input`
+const InputStyled = styled.input`
   display: inline-block;
-  width: auto;
   vertical-align: middle;
-  padding: .375rem .75rem;
-  margin-right: 5px;
+  width: auto;
+  font-size: 1rem;
+  padding: .5rem 1.5rem;
   margin-bottom: 3rem;
-  color: #495057;
-  border: 1px solid #ced4da;
+  color: #6c757d;
+  border: .5px solid #ced4da;
   background-color: #fff;
-  &:focus {
-    outline-color: #B4EAFF;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
+  :focus {
+    outline: 0;
+    border: 1px solid #bdeafe;
   }
 `;
 
-export const TextInput = ButtonInput.extend`
-  background-color: #fff;
+export const ButtonInput = styled(InputStyled)`
+  border-radius: .3rem;
+  text-align: center;
+  :active {
+    box-shadow: inset 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
+  }
+`;
+
+export const ButtonForm = styled(ButtonInput)`
+  border-radius: 0 .3rem .3rem 0;
+  text-align: center;
+  :active {
+    box-shadow: inset 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
+  }
+`;
+
+export const TextInput = styled(InputStyled)`
+  text-align: left;
+  border-radius: .3rem 0 0 .3rem;
+  ::placeholder {
+    color: #adb6c1;
+  }
 `;

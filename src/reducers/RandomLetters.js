@@ -1,6 +1,6 @@
 import { REPLACE_LETTER, RANDOM_LETTERS } from '../actionTypes';
 
-const RandomLettersReducer = (state = '8888888', action) => {
+const randomLettersReducer = (state = '0000000', action) => {
   switch (action.type) {
     case RANDOM_LETTERS:
       return action.randomLetters;
@@ -11,4 +11,4 @@ const RandomLettersReducer = (state = '8888888', action) => {
   }
 };
 
-export default RandomLettersReducer;
+export default randomLettersReducer;

@@ -1,16 +1,11 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import MessageDisplay from './MessageDisplay';
 
-class MessageTop extends PureComponent {
-  render() {
-    const { message } = this.props;
-    return (
-      <MessageDisplay message={message} />
-    );
-  }
-}
+const MessageTop = props => (
+  <MessageDisplay message={props.message} /> // eslint-disable-line react/destructuring-assignment
+);
 
 MessageTop.propTypes = {
   message: PropTypes.string.isRequired,
@@ -18,6 +13,8 @@ MessageTop.propTypes = {
 
 const mapStateToProps = state => ({
   message: state.messageTop,
+  countdownValue: state.countdownValue,
+  canJoin: state.canJoin,
 });
 
 export default connect(mapStateToProps)(MessageTop);

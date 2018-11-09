@@ -6,7 +6,7 @@ import TouchBackend from 'react-dnd-touch-backend';
 import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend';
 import RandomLetters from './RandomLetters';
 import Countdown from './Countdown';
-import GameInterfaceBottom from './GameInterfaceBottom';
+import InterfaceBottom from './InterfaceBottom';
 import MessageTop from './MessageTop';
 import ValidWordHTML from './ValidWordHTML';
 import DragLayerTile from './DragLayerTile';
@@ -27,7 +27,7 @@ const HTML5toTouch = {
 
 const AppWrapper = styled.div`
   text-align: center;
-  padding: 3rem 0;
+  padding: 6rem 0 3rem 0;
   box-sizing: border-box;
 `;
 
@@ -38,8 +38,8 @@ class App extends Component {
         <MessageTop />
         <RandomLetters />
         <ValidWordHTML />
-        <GameInterfaceBottom />
         <Countdown />
+        <InterfaceBottom />
         <DragLayerTile />
       </AppWrapper>
     )
