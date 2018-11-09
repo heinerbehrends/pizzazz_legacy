@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const Container = styled.div`
   position: relative;
@@ -9,27 +10,40 @@ const Container = styled.div`
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 3rem;
 `;
 
 const Bar = styled.div`
   position: relative;
-  background: #ddd;
+  background: #e7ddcf;
   height: 100%;
-  border-right: solid red 1px;
+  border-right: solid #ffc2c0 1px;
   animation-name: status-bar;
   animation-timing-function: linear;
-  animation-duration: 40s;
+  animation-duration: ${props => props.duration}s;
 
   @keyframes status-bar {
-  from { width: 0%; border-color: green }
-  to { width: 100%; border-color: red }
+  from { width: ${props => 100 - props.duration * 2.5}%; }
+  to { width: 100%; }
   }
 `;
 
-const ProgressBar = () => (
-  <Container>
-    <Bar />
-  </Container>
-);
+class ProgressBar extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
 
-export default ProgressBar;
+  render() {
+    return (
+      <Container>
+        <Bar duration={ this.props.duration } />
+      </Container>
+    )
+  }
+};
+
+const mapStateToProps = state => ({
+  duration: state.countdownValue,
+});
+
+export default connect(mapStateToProps)(ProgressBar);

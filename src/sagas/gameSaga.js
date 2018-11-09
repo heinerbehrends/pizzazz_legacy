@@ -1,80 +1,62 @@
 import { delay } from 'redux-saga';
-import { put, select, take, call, fork } from 'redux-saga/effects';
-import { DECREMENT_COUNTDOWN, END_GAME, MESSAGE_TOP, NEW_SOLUTION } from '../actionTypes';
-import { getMaxLength, getMaxLengthScore, getWinnerSolution, addZeros } from '../scrabbleLogic/gameLogic';
-import randomTransition from './randomTransition';
+import {
+  put, select, take, call, fork, cancel,
+} from 'redux-saga/effects';
+import {
+  DECREMENT_COUNTDOWN, START_GAME, SET_COUNTDOWN, END_GAME,
+} from '../actionTypes';
+import handleWinner from './handleWinner';
+import { handleStartMessages, handleWaitingMessage, handleSolutions } from './messages';
 
-
-const getCountdownValue = state => state.countdownValue;
-const getValidWords = state => state.gameData.validWords;
-const getSolutions = state => state.solutions;
-
-function* handleSolutions() {
-  while (true) {
-    const { solution } = yield take(NEW_SOLUTION);
-    yield put({
-      type: MESSAGE_TOP,
-      message: `${solution.name} played a \
-                ${solution.solution.length}-letter word`,
-    });
-  }
-}
-
-const getWinnerMessage = solution => (
-  solution ? `The winner ${solution.name.toUpperCase()} played `
-    : 'No user solutions were received'
-);
-
-function* handleWinner() {
-  yield take(END_GAME);
-  const solutions = yield select(getSolutions);
-  const solution = getWinnerSolution(solutions);
-  let message = getWinnerMessage(solution);
-  yield put({ type: MESSAGE_TOP, message });
-  if (solution) {
-    yield fork(randomTransition, addZeros(solution.solution));
-  }
-  yield call(delay, 5000);
-
-  const validWords = yield select(getValidWords);
-
-  message = 'The best word was';
-  yield put({ type: MESSAGE_TOP, message });
-  yield fork(randomTransition, addZeros(getMaxLengthScore(validWords)[0]));
-}
-
-function* handleStartMessages() {
-  const validWords = yield select(getValidWords);
-
-  let message = `There are ${validWords.length} possible words`;
-  yield put({ type: MESSAGE_TOP, message });
-  yield call(delay, 5000);
-
-  message = `The longest word is ${getMaxLength(validWords)} letters long`;
-  yield put({ type: MESSAGE_TOP, message });
-}
 
 function* handleCountdown() {
   while (true) {
-    yield call(delay, 1000);
-    yield put({ type: DECREMENT_COUNTDOWN });
-
-    const countdownValue = yield select(getCountdownValue);
-
-    if (countdownValue < 0) {
-      yield put({ type: END_GAME });
-      break;
+    const countdownValue = yield select(state => state.countdownValue);
+    if (countdownValue === 0) {
+      console.log('handleCountdown ends');
+      return;
     }
+    yield put({ type: DECREMENT_COUNTDOWN });
+    yield call(delay, 1000);
   }
 }
 
+function* handleGame() {
+  yield fork(handleCountdown);
+  yield fork(handleStartMessages);
+  yield fork(handleSolutions);
+}
+function* handleEnd(task) {
+  yield cancel(task);
+  yield fork(handleWinner);
+}
+
+function* gameLoop() {
+  yield take(START_GAME);
+  const gameTask = yield fork(handleGame);
+  yield take(END_GAME);
+  yield call(handleEnd, gameTask);
+}
+
+function* firstGame() {
+  const countdown = yield take('COUNTDOWN');
+  const { value } = countdown;
+  yield put({ type: SET_COUNTDOWN, value });
+  const countdownTask = yield fork(handleCountdown);
+  const messageTask = yield fork(handleWaitingMessage);
+
+  yield take(START_GAME);
+  yield cancel(countdownTask);
+  yield cancel(messageTask);
+  const gameTask = yield fork(handleGame);
+  yield take(END_GAME);
+  yield call(handleEnd, gameTask);
+}
+
 function* watchGame() {
+  yield call(firstGame);
   while (true) {
-    yield take('START_GAME');
-    yield fork(handleCountdown);
-    yield fork(handleStartMessages);
-    yield fork(handleSolutions);
-    yield fork(handleWinner);
+    yield call(gameLoop);
   }
 }
 

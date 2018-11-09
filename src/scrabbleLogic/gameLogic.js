@@ -50,14 +50,10 @@ export const getWinnerSolution = (solutionArray) => {
     .filter(solution => solution.length === getMaxLength(solutions));
   const maxLengthScore = maxLength
     .filter(word => getScore(word, LETTER_VALUES) === getMaxScore(maxLength));
+  const winnerSolution = solutionArray.filter(solution => solution.solution === maxLengthScore[0]);
 
-  return solutionArray.filter(solution => solution.solution === maxLengthScore[0])[0];
+  return winnerSolution[0];
 };
-
-export const addZeros = string => '0000000'
-  .split('')
-  .map((letter, i) => (string[i] ? string[i] : '0'))
-  .join('');
 
 export const replaceWildCard = (wildCardString, validWords) => {
   const regEx = `(${wildCardString.split('8').join('[a-z]')}),`;

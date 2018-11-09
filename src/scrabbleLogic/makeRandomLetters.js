@@ -1,44 +1,52 @@
-export function makeBagOfLetters (letterDistribution) {
-  let bagOfLettersArray = [];
-  for (let letter in letterDistribution) {
-    for (let i = 0; i < letterDistribution[letter]; i++) {
-      bagOfLettersArray.push(letter);
-    }
-  }
-  return bagOfLettersArray;
-}
+// export function makeBagOfLetters (letterDistribution) {
+//   let bagOfLettersArray = [];
+//   for (let letter in letterDistribution) {
+//     for (let i = 0; i < letterDistribution[letter]; i++) {
+//       bagOfLettersArray.push(letter);
+//     }
+//   }
+//   return bagOfLettersArray;
+// }
 
-export function makeRandomLetters(bagOfLetters, nrOfLetters) {
-  let randomString = "";
-  for (let i = 0; i < nrOfLetters; i++) {
-    let randomIndex = Math.floor(Math.random() * bagOfLetters.length)
-    randomString += bagOfLetters[randomIndex];
-  }
-  return randomString.toUpperCase();
-}
+export const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
 
-export function makeRandomLettersVowels(nrOfVowels, nrOfLetters) {
-  let randomString = "";
-  let vowels = 'aeiou';
-  let consonants = 'bcdfghjklmnpqrstvwxyz8';
-  for (let i = 0; i < nrOfVowels; i++) {
-    randomString += vowels[Math.floor(Math.random() * vowels.length)];
-  }
-  for (let i = 0; i < nrOfLetters - nrOfVowels; i++) {
-    randomString += consonants[Math.floor(Math.random() * consonants.length)]
-  }
-  return shuffle(randomString.toUpperCase());
-}
+export const getRandomLetter = strArr => strArr[getRandomIndex(strArr)];
+
+export const makeBagOfLetters = letterDistribution => Object
+  .keys(letterDistribution)
+  .map(letter => letter.repeat(letterDistribution[letter]))
+  .map(string => string.split(''))
+  .reduce((acc, val) => acc.concat(val));
+
+export const makeRandomLetters = (bagOfLetters, nrOfLetters) => ''
+  .padEnd(nrOfLetters)
+  .split('')
+  .map(getRandomLetter(bagOfLetters))
+  .join('')
+  .toUpperCase();
 
 function shuffle(string) {
-  var array = string.split(""),
-  n = array.length;
+  const array = string.split('');
+  const n = array.length;
 
-  for(var i = n - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = array[i];
+  for (let i = n - 1; i > 0; i -= i) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = array[i];
     array[i] = array[j];
     array[j] = tmp;
   }
-  return array.join("");
+  return array.join('');
+}
+
+export function makeRandomLettersVowels(nrOfVowels, nrOfLetters) {
+  let randomString = '';
+  const vowels = 'aeiou';
+  const consonants = 'bcdfghjklmnpqrstvwxyz8';
+  for (let i = 0; i < nrOfVowels; i += 1) {
+    randomString += vowels[Math.floor(Math.random() * vowels.length)];
+  }
+  for (let i = 0; i < nrOfLetters - nrOfVowels; i += 1) {
+    randomString += consonants[Math.floor(Math.random() * consonants.length)]
+  }
+  return shuffle(randomString.toUpperCase());
 }

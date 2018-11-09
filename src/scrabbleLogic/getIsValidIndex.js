@@ -1,36 +1,37 @@
-const getIsValidIndexNoWildcard = (validWordString, validWordsArray) => {
-  const validWord = validWordString.toLowerCase();
-  let isValidIndex = 0;
+const getIsValidIndexNoWildcard = (string, validWordsArray) => string.split('')
+  .reduce(
+    (acc, letter, i) => {
+      const index = i + 1;
+      if (index < 2) {
+        return 0;
+      } if (validWordsArray.includes(string.substring(0, index))) {
+        return index;
+      }
+      return Math.max(acc, 0);
+    },
+  );
 
-  for (let i = 2; i <= validWord.length; i += 1) {
-    if (validWordsArray.includes(validWord.substring(0, i))) {
-      isValidIndex = i;
-    }
-  }
-  return isValidIndex;
-};
-
-const getRegExp = AtoZstring => new RegExp(`["](${AtoZstring})["]`);
+const getRegExp = string => new RegExp(`["](${string})["]`);
 const replace8withAtoZ = wildcardString => wildcardString.split('8').join('[a-z]');
 const buildRegExObject = wildcardString => getRegExp(replace8withAtoZ(wildcardString));
 
-const findValidIndexRegEx = (wildcardString, validWordsString) => {
-  let isValidIndex = 0;
-  for (let i = 2; i <= wildcardString.length; i += 1) {
-    const substring = wildcardString.substring(0, i);
-    const regEx = buildRegExObject(substring);
-    const result = validWordsString.match(regEx);
-    if (result) {
-      isValidIndex = i;
-    }
-  }
-  return isValidIndex;
-};
-
-const getIsValidIndexWildcard = (validWordString, validWordsArray) => findValidIndexRegEx(
-  validWordString.toLowerCase(),
-  JSON.stringify(validWordsArray)
-);
+const getIsValidIndexWildcard = (wildcardString, validWordsArray) => wildcardString.split('')
+  .reduce(
+    (acc, letter, i) => {
+      const index = i + 1;
+      if (index < 2) {
+        return 0;
+      }
+      const validWordsString = JSON.stringify(validWordsArray);
+      const substring = wildcardString.substring(0, index).toLowerCase();
+      const regEx = buildRegExObject(substring);
+      const result = validWordsString.match(regEx);
+      if (result) {
+        return index;
+      }
+      return acc;
+    },
+  );
 
 const getIsValidIndex = (validWordString, validWordsArray) => (
   validWordString.includes('8')

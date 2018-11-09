@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { sendNameAction } from '../actions/actions';
 import {
-  FormContainer, Form, FormGroup, HiddenLabel, ButtonInput, TextInput,
+  FormContainer, Form, FormGroup, HiddenLabel, ButtonForm, TextInput,
 } from './styled/ScreenNameStyled';
 
 class ScreenName extends Component {
@@ -31,11 +31,22 @@ class ScreenName extends Component {
     const { screenName } = this.props;
     return screenName.length ? null : (
       <FormContainer>
-        <Form id="screenName" name="screenName" onSubmit={this.sendScreenName}>
+        <Form
+          id="screenName"
+          name="screenName"
+          autoComplete="off"
+          onSubmit={this.sendScreenName}
+        >
           <HiddenLabel htmlFor="enter-screen-name">Screen name</HiddenLabel>
           <FormGroup>
-            <TextInput onChange={this.handleChange} type="text" id="enter-screen-name" name="screenName" autoFocus />
-            <ButtonInput type="submit" value="Submit" />
+            <TextInput
+              placeholder="Enter screen name to start"
+              onChange={this.handleChange}
+              type="text" id="enter-screen-name"
+              name="screenName"
+              autoFocus
+            />
+          <ButtonForm type="submit" value="Go" />
           </FormGroup>
         </Form>
       </FormContainer>

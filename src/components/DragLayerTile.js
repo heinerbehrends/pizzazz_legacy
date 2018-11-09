@@ -16,7 +16,6 @@ const layerStyles: React.CSSProperties = {
 
 
 function getPositionStyles(props) {
-
   const { currentOffset } = props;
 
   if (!currentOffset) {
@@ -32,11 +31,10 @@ function getPositionStyles(props) {
     transform,
     WebkitTransform: transform,
     width:'13.68%'
-  }
+  };
 }
 
 class DragLayerTile extends Component {
-
   render() {
     const { item, isDragging } = this.props;
     const positionStyles = getPositionStyles(this.props)
@@ -51,17 +49,17 @@ class DragLayerTile extends Component {
           <ScrabbleTile letter={ item.sourceLetter } isValid={ false } />
         </div>
       </div>
-    )
+    );
   }
-}
+};
 
 DragLayerTile.propTypes = {
   item: PropTypes.object,
   currentOffset: PropTypes.shape({
     x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired
+    y: PropTypes.number.isRequired,
   }),
-  isDragging: PropTypes.bool.isRequired
+  isDragging: PropTypes.bool.isRequired,
 };
 
 const collect = monitor => ({

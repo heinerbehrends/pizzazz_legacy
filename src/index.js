@@ -8,7 +8,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import 'normalize.css/normalize.css'
 import rootSaga from './sagas/rootSaga'
 
 
