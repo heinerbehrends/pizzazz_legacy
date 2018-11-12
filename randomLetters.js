@@ -4,28 +4,17 @@ const letterDistribution = {
   'c':2, 'm':2, 'p':2, 'f':2, 'h':2, 'v':2, 'w':2, 'y':2, 'k':1, 'j':1, 'x':1, 'q':1, 'z':1, '8':2
 };
 
+const makeBagOfLetters = letterDistribution => Object.keys(letterDistribution)
+  .map(letter => letter.repeat(letterDistribution[letter]))
+  .map(string => string.split(''))
+  .reduce((acc, val) => acc.concat(val));
 
-const makeBagOfLetters = letterDistribution => {
-  // input: an object where the keys are the abc and the values are the frequencies of each letter
-  // output: an array where each letter is repeated according to the frequency in the input object
-  let bagOfLetters = []
-  // for each letter in the object
-  for (let letter in letterDistribution) {
-    // add it to bag repeatedly as indicated in the object values
-    for (let i = 0; i < letterDistribution[letter]; i++) {
-      bagOfLetters.push(letter);
-    }
-  }
-
-  return bagOfLetters
-}
 
 const bagOfLetters = makeBagOfLetters(letterDistribution)
 
 
-const getRandomIndex = bagOfLetters => {
-  // randomly picks a valid index of an array
-  return Math.floor(Math.random() * bagOfLetters.length)
+const getRandomIndex = strArr => {
+  return Math.floor(Math.random() * strArr.length)
 }
 
 const addRandomChar = (string, bagOfLetters) => {
@@ -56,14 +45,12 @@ const makeRandomLettersVowels = (nrOfLetters, bagOfLetters) => {
   const nrOfVowels = Math.random() < 0.7 ? 3 : 2
 
   let randomString = ''
-
   for (let i = 0; i < nrOfVowels; i++) {
     randomString = addRandomChar(randomString, bagOfVowels)
   }
   for (let i = 0; i < nrOfLetters - nrOfVowels; i++) {
     randomString = addRandomChar(randomString, bagOfConsonants)
   }
-
   return shuffle(randomString)
 }
 
@@ -72,11 +59,9 @@ const makeRandomLetters = (nrOfLetters, bagOfLetters) => {
   // input: number of letters of the output string, array of characters from which to draw
   // output: shuffled string of random characters
   let randomString = ''
-
   for (let i = 0; i < nrOfLetters; i++) {
     randomString = addRandomChar(randomString, bagOfVowels)
   }
-
   return shuffle(randomString)
 }
 
