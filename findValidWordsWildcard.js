@@ -22,7 +22,7 @@ const insertCharacter = (string, character, index) => {
 }
 
 
-const addABC = (sortedString) => {
+const addAtoZ = (sortedString) => {
   // adds all characters of the abc to a sorted string to replace a wildcard character
   // input: sorted string without the wildcard character
   // output: array of all possible sorted strings
@@ -44,10 +44,9 @@ const addABC = (sortedString) => {
 const findValidWordsWildcard = (randomLettersWildcard, sortedValidWords) => {
   // randomLetters: input string without the wildcard
   // sortedPossibleStrings: sorted randomLetters with a to z added
-  // remove the wildcard character
+  // remove the wildcard character, add all characters a-z
   const randomLetters = randomLettersWildcard.split('8').join('')
-  // use the helper function to find all possible ordered substrings
-  const sortedPossibleStrings = addABC(findValid.sortString(randomLetters))
+  const sortedPossibleStrings = addAtoZ(findValid.sortString(randomLetters))
   let validWords = []
   // for each possible string add the valid anagrams to valid words array
   for (let i = 0; i < sortedPossibleStrings.length; i++) {
