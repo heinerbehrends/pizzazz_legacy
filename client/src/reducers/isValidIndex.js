@@ -1,4 +1,4 @@
-import { IS_VALID, SEND_SOLUTION, END_GAME } from '../actionTypes';
+import { IS_VALID, SEND_SOLUTION, END_GAME } from '../actions/actionTypes';
 
 const isValidIndexReducer = (state = 0, action) => {
   switch (action.type) {

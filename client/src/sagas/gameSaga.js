@@ -4,7 +4,7 @@ import {
 } from 'redux-saga/effects';
 import {
   DECREMENT_COUNTDOWN, START_GAME, SET_COUNTDOWN, END_GAME,
-} from '../actionTypes';
+} from '../actions/actionTypes';
 import handleWinner from './handleWinner';
 import { handleStartMessages, handleWaitingMessage, handleSolutions } from './messages';
 

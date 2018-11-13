@@ -2,10 +2,10 @@ import { delay } from 'redux-saga';
 import {
   put, select, call, fork,
 } from 'redux-saga/effects';
-import { MESSAGE_TOP } from '../actionTypes';
+import { MESSAGE_TOP } from '../actions/actionTypes';
 import {
   getMaxLengthScore, getWinnerSolution,
-} from '../scrabbleLogic/gameLogic';
+} from '../clientLogic/gameLogic';
 import orderedTransition from './orderedTransition';
 
 const getSolutions = state => state.solutions;

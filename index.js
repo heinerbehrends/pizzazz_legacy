@@ -1,8 +1,8 @@
 const app = require('express')()
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
-const getLetters = require('./randomLetters')
-const findValid = require('./findValidWordsWildcard')
+const getLetters = require('./serverLogic/randomLetters')
+const findValid = require('./serverLogic/findValidWordsWildcard')
 const duration = 50;
 
 let randomLetters;

@@ -1,5 +1,5 @@
-import { updateString } from '../scrabbleLogic/gameLogic';
-import getIsValidIndex from '../scrabbleLogic/getIsValidIndex';
+import { updateString } from '../clientLogic/gameLogic';
+import getIsValidIndex from '../clientLogic/getIsValidIndex';
 
 
 export const letterSource = {

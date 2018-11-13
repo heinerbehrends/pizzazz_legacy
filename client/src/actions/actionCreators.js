@@ -1,7 +1,7 @@
 import {
   REPLACE_LETTER, IS_VALID, SEND_SOLUTION,
   SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME,
-} from '../actionTypes';
+} from './actionTypes';
 
 export const startGameAction = game => ({
   type: START_GAME,

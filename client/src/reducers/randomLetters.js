@@ -1,4 +1,4 @@
-import { REPLACE_LETTER, RANDOM_LETTERS } from '../actionTypes';
+import { REPLACE_LETTER, RANDOM_LETTERS } from '../actions/actionTypes';
 
 const randomLettersReducer = (state = '0000000', action) => {
   switch (action.type) {

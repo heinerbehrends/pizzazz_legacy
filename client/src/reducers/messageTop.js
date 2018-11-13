@@ -1,4 +1,4 @@
-import { SEND_NAME, MESSAGE_TOP } from '../actionTypes';
+import { SEND_NAME, MESSAGE_TOP } from '../actions/actionTypes';
 
 const messageTopReducer = (state = 'Welcome to', action) => {
   switch (action.type) {

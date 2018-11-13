@@ -1,4 +1,4 @@
-import { SET_COUNTDOWN, DECREMENT_COUNTDOWN, START_GAME } from '../actionTypes';
+import { SET_COUNTDOWN, DECREMENT_COUNTDOWN, START_GAME } from '../actions/actionTypes';
 
 const countdownValueReducer = (state = 40, action) => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { START_GAME } from '../actionTypes';
+import { START_GAME } from '../actions/actionTypes';
 
 const gameDataReducer = (state = { randomLetters: '', validWords: [] }, action) => {
   switch (action.type) {

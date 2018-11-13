@@ -1,6 +1,6 @@
 import {
   REPLACE_LETTER, SEND_SOLUTION, START_GAME, END_GAME,
-} from '../actionTypes';
+} from '../actions/actionTypes';
 
 const scrabbleBoardReducer = (state = '0000000', action) => {
   switch (action.type) {
