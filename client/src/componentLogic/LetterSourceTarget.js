@@ -3,14 +3,12 @@ import getIsValidIndex from '../scrabbleLogic/getIsValidIndex';
 
 
 export const letterSource = {
-
   beginDrag(props) {
     return {
       sourceLetter: props.letter,
       sourceIndex: props.index,
     };
   },
-
   endDrag(props, monitor) {
     if (monitor.didDrop()) {
       const target = monitor.getDropResult();

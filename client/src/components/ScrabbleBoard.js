@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ScrabbleBoard from './styled/ValidWordHTMLStyled';
+import ScrabbleBoardStyled from './styled/ScrabbleBoardStyled';
 import makeTilesArray from '../componentLogic/makeTilesArray';
 
-class ValidWordHTML extends PureComponent {
+class ScrabbleBoard extends PureComponent {
   render() {
     const { validWord, showValid, isCountdown } = this.props;
     const tilesArray = makeTilesArray(isCountdown, validWord, showValid, 'validWord');
 
     return (
-      <ScrabbleBoard>
+      <ScrabbleBoardStyled>
         { tilesArray }
-      </ScrabbleBoard>
+      </ScrabbleBoardStyled>
     );
   }
 }
 
-ValidWordHTML.propTypes = {
+ScrabbleBoard.propTypes = {
   validWord: PropTypes.string.isRequired,
   showValid: PropTypes.number.isRequired,
   isCountdown: PropTypes.bool.isRequired,
@@ -29,4 +29,4 @@ const mapStateToProps = state => ({
   isCountdown: state.isCountdown,
 });
 
-export default connect(mapStateToProps)(ValidWordHTML);
+export default connect(mapStateToProps)(ScrabbleBoard);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-const ScrabbleBoard = styled.div`
+const ScrabbleBoardStyled = styled.div`
   background-image: url('images/pizzazzBoard.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -19,4 +19,4 @@ const ScrabbleBoard = styled.div`
   }
 `;
 
-export default ScrabbleBoard;
+export default ScrabbleBoardStyled;

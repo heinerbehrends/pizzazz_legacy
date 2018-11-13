@@ -9,7 +9,7 @@ import { ButtonInput } from './styled/ScreenNameStyled';
 import { JOIN_GAME } from '../actionTypes';
 
 
-class InterfaceBottom extends PureComponent {
+class Interface extends PureComponent {
   render() {
     const {
       isValidIndex,
@@ -27,18 +27,20 @@ class InterfaceBottom extends PureComponent {
           type="button"
           readOnly
           autoFocus
-          value={'Join the current game'}
+          value="Join the current game"
           onClick={joinGame}
-          />
+        />
       );
     }
     if (isValidIndex) {
       const potentialScore = getScore(solution, letterValues);
-      const wordScoreString = `Play ${solution.toUpperCase()} for ${potentialScore} points`;
+      const buttonValue = `Play ${solution.toUpperCase()} for ${potentialScore} points`;
       return (
         <ButtonInput
+          type="button"
           readOnly
-          value={wordScoreString}
+          autoFocus
+          value={buttonValue}
           onClick={() => sendSolutions(solution, potentialScore, isValidIndex)}
         />
       );
@@ -47,7 +49,7 @@ class InterfaceBottom extends PureComponent {
   }
 }
 
-InterfaceBottom.propTypes = {
+Interface.propTypes = {
   validWord: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
   countdownValue: PropTypes.number.isRequired,
@@ -69,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(InterfaceBottom);
+export default connect(mapStateToProps, mapDispatchToProps)(Interface);
