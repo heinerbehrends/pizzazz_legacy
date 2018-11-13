@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sendSolutionAction, joinGameAction } from '../actions/actions';
-import { getScore } from '../scrabbleLogic/gameLogic';
+import { sendSolutionAction, joinGameAction } from '../actions/actionCreators';
+import { getScore } from '../clientLogic/gameLogic';
 import { letterValues } from '../Constants';
 import ScreenName from './ScreenName';
 import { ButtonInput } from './styled/ScreenNameStyled';

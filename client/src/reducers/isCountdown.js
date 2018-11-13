@@ -1,4 +1,4 @@
-import { START_GAME, END_GAME } from '../actionTypes';
+import { START_GAME, END_GAME } from '../actions/actionTypes';
 
 const isCountdownReducer = (state = false, action) => {
   switch (action.type) {

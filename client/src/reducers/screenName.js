@@ -1,4 +1,4 @@
-import { SEND_NAME } from '../actionTypes';
+import { SEND_NAME } from '../actions/actionTypes';
 
 const screenNameReducer = (state = '', action) => {
   switch (action.type) {

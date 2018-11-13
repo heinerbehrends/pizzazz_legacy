@@ -6,8 +6,9 @@ export const MessageContainer = styled.div`
 `;
 
 export const Message = styled.span`
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 200;
   color: #6c757d;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: .5px solid #ced4da;
 `;

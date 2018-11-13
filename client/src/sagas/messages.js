@@ -4,9 +4,9 @@ import {
 } from 'redux-saga/effects';
 import {
   DECREMENT_COUNTDOWN, MESSAGE_TOP, NEW_SOLUTION,
-} from '../actionTypes';
+} from '../actions/actionTypes';
 
-import { getMaxLength } from '../scrabbleLogic/gameLogic';
+import { getMaxLength } from '../clientLogic/gameLogic';
 
 const getValidWords = state => state.gameData.validWords;
 const getCountdownValue = state => state.countdownValue;

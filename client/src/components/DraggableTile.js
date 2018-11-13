@@ -1,11 +1,11 @@
 /* eslint no-shadow: off */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { letterSource, letterTarget } from '../componentLogic/LetterSourceTarget';
+import { letterSource, letterTarget } from '../clientLogic/LetterSourceTarget';
 import ScrabbleTile from './ScrabbleTile';
 
 
@@ -13,11 +13,7 @@ class DraggableTile extends Component {
   componentDidMount() {
     const { connectDragPreview } = this.props;
     if (connectDragPreview) {
-      // Use empty image as a drag preview so browsers don't draw it
-      // and we can draw whatever we want on the custom drag layer instead.
       connectDragPreview(getEmptyImage(), {
-        // IE fallback: specify that we'd rather screenshot the node
-        // when it already knows it's being dragged so we can hide it with CSS.
         captureDraggingState: true,
       });
     }

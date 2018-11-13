@@ -5,7 +5,7 @@ import {
 } from 'redux-saga/effects';
 import {
   START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME, JOIN_GAME,
-} from '../actionTypes';
+} from '../actions/actionTypes';
 
 const connect = () => {
   const socket = io('http://localhost:3001');

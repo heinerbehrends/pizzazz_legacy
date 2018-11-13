@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga';
 import { put, take } from 'redux-saga/effects';
-import { RANDOM_LETTERS, START_GAME } from '../actionTypes';
+import { RANDOM_LETTERS, START_GAME } from '../actions/actionTypes';
 import {
   getRandomAbc,
   makeRandomArray,
@@ -8,7 +8,7 @@ import {
   isFinished,
   isKeyframe,
   getNextIndex,
-} from '../scrabbleLogic/transitionLogic';
+} from '../clientLogic/transitionLogic';
 // duration must be a multiple of frameDuration
 const frameDuration = 25;
 const duration = frameDuration * 7;

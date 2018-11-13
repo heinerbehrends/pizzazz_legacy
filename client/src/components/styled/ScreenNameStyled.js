@@ -31,8 +31,9 @@ const InputStyled = styled.input`
   display: inline-block;
   vertical-align: middle;
   width: auto;
-  font-size: 1rem;
-  padding: .5rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 200;
+  padding: .6rem 1.8rem;
   margin-bottom: 3rem;
   color: #6c757d;
   border: .5px solid #ced4da;

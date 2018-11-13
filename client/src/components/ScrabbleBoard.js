@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ScrabbleBoardStyled from './styled/ScrabbleBoardStyled';
-import makeTilesArray from '../componentLogic/makeTilesArray';
+import makeTilesArray from '../clientLogic/makeTilesArray';
 
 class ScrabbleBoard extends PureComponent {
   render() {

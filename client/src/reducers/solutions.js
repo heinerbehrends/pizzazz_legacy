@@ -1,4 +1,4 @@
-import { NEW_SOLUTION, START_GAME } from '../actionTypes';
+import { NEW_SOLUTION, START_GAME } from '../actions/actionTypes';
 
 const solutionsReducer = (state = [], action) => {
   switch (action.type) {

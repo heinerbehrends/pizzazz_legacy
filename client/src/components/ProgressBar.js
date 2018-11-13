@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Container, Bar } from './styled/ProgressBarStyled';
 
 class ProgressBar extends Component {
@@ -10,13 +10,13 @@ class ProgressBar extends Component {
 
   render() {
     const { duration, isCountdown } = this.props;
-    console.log(isCountdown);
     return isCountdown
       ? (
         <Container>
           <Bar duration={duration} />
         </Container>
-      ) : null;
+      )
+      : null;
   }
 }
 

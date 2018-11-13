@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LetterContainer from './styled/RandomLettersStyled';
-import makeTilesArray from '../componentLogic/makeTilesArray';
+import makeTilesArray from '../clientLogic/makeTilesArray';
 
 
 class RandomLetters extends PureComponent {

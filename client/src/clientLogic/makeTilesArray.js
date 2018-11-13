@@ -1,7 +1,7 @@
 import React from 'react';
 import { letterValues } from '../Constants';
-import { replaceLetter } from '../scrabbleLogic/gameLogic';
-import { replaceLettersAction, isValidIndexAction } from '../actions/actions';
+import { replaceLetter } from '../clientLogic/gameLogic';
+import { replaceLettersAction, isValidIndexAction } from '../actions/actionCreators';
 import ScrabbleTile from '../components/ScrabbleTile';
 import DraggableTile from '../components/DraggableTile';
 import { LetterContainer } from '../components/styled/ScrabbleTileStyled';
