@@ -17,7 +17,6 @@ export const LetterStyled = styled.div`
   text-align: center;
   line-height: 12.2vw;
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
-
   @media screen and (min-width: 501px) {
       font-size: 40px;
       line-height: 65px;
@@ -30,7 +29,6 @@ export const NumberSub = styled.sub`
   font-size: 2.6vw;
   font-weight: 400;
   vertical-align: -25%;
-
   @media screen and (min-width: 501px) {
     font-size:14.5px;
   }

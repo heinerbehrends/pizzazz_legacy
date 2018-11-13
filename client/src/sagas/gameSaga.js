@@ -13,7 +13,6 @@ function* handleCountdown() {
   while (true) {
     const countdownValue = yield select(state => state.countdownValue);
     if (countdownValue === 0) {
-      console.log('handleCountdown ends');
       return;
     }
     yield put({ type: DECREMENT_COUNTDOWN });

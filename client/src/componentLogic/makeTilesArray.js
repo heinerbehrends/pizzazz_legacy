@@ -6,6 +6,7 @@ import ScrabbleTile from '../components/ScrabbleTile';
 import DraggableTile from '../components/DraggableTile';
 import { LetterContainer } from '../components/styled/ScrabbleTileStyled';
 
+/* eslint react/no-array-index-key: off */
 function makeTilesArray(isCountdown, word, isValidIndex, parent) {
   return isCountdown
     ? word.split('')

@@ -21,7 +21,6 @@ export function* handleStartMessages() {
   yield put({ type: MESSAGE_TOP, message });
 }
 
-
 export function* handleWaitingMessage() {
   let value = yield select(getCountdownValue);
   yield call(delay, 500);
@@ -36,7 +35,6 @@ export function* handleWaitingMessage() {
     }
   }
 }
-
 
 export function* handleSolutions() {
   while (true) {
