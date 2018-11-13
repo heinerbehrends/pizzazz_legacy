@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MessageDisplay from './MessageDisplay';
 
-const MessageTop = props => (
+const Message = props => (
   <MessageDisplay message={props.message} /> // eslint-disable-line react/destructuring-assignment
 );
 
-MessageTop.propTypes = {
+Message.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
@@ -17,4 +17,4 @@ const mapStateToProps = state => ({
   canJoin: state.canJoin,
 });
 
-export default connect(mapStateToProps)(MessageTop);
+export default connect(mapStateToProps)(Message);

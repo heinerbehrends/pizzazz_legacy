@@ -8,7 +8,7 @@ class ScrabbleTile extends PureComponent {
     const { letter, isValid } = this.props;
 
     return (
-      <LetterStyled isValid={ isValid } letter={ letter }>
+      <LetterStyled isValid={isValid} letter={letter}>
         { letter.toUpperCase() }
         <NumberSub>
           { letterValues[letter] }

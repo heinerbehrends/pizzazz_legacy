@@ -1,10 +1,11 @@
+/* eslint no-shadow: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { letterSource, letterTarget } from './DraggableSourceTarget';
+import { letterSource, letterTarget } from '../componentLogic/LetterSourceTarget';
 import ScrabbleTile from './ScrabbleTile';
 
 
@@ -34,13 +35,13 @@ class DraggableTile extends Component {
 
     return connectDragSource(
       connectDropTarget(
-        <div style={{ width: 13.68 + "%" }}>
+        <div style={{ width: '13.68%' }}>
           <ScrabbleTile
-            letter={ isDragging ? '0' : letter }
-            index={ index }
-            isValid = { showValid }
+            letter={isDragging ? '0' : letter}
+            index={index}
+            isValid={showValid}
           />
-        </div>
+        </div>,
       ),
     );
   }

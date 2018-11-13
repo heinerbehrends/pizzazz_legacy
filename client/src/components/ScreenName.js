@@ -42,11 +42,12 @@ class ScreenName extends Component {
             <TextInput
               placeholder="Enter screen name to start"
               onChange={this.handleChange}
-              type="text" id="enter-screen-name"
+              type="text"
+              id="enter-screen-name"
               name="screenName"
               autoFocus
             />
-          <ButtonForm type="submit" value="Go" />
+            <ButtonForm type="submit" value="Go" />
           </FormGroup>
         </Form>
       </FormContainer>

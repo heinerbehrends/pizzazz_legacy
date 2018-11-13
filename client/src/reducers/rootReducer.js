@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import randomLettersReducer from './RandomLetters';
+import randomLettersReducer from './randomLetters';
 import validWordReducer from './makeValidWord';
 import showValidReducer from './showValidWord';
 import solutionsReducer from './solutions';

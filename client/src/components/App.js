@@ -1,3 +1,4 @@
+/* eslint react/prefer-stateless-function: off */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-dnd';
@@ -6,9 +7,9 @@ import TouchBackend from 'react-dnd-touch-backend';
 import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend';
 import RandomLetters from './RandomLetters';
 import Countdown from './Countdown';
-import InterfaceBottom from './InterfaceBottom';
-import MessageTop from './MessageTop';
-import ValidWordHTML from './ValidWordHTML';
+import Interface from './Interface';
+import Message from './Message';
+import ScrabbleBoard from './ScrabbleBoard';
 import DragLayerTile from './DragLayerTile';
 
 
@@ -35,16 +36,16 @@ class App extends Component {
   render() {
     return (
       <AppWrapper>
-        <MessageTop />
+        <Message />
         <RandomLetters />
-        <ValidWordHTML />
+        <ScrabbleBoard />
         <Countdown />
-        <InterfaceBottom />
+        <Interface />
         <DragLayerTile />
       </AppWrapper>
-    )
+    );
   }
-};
+}
 
 
 export default DragDropContext(MultiBackend(HTML5toTouch))(App);

@@ -4,7 +4,7 @@ import {
   put, take, call, fork, select, cancel,
 } from 'redux-saga/effects';
 import {
-  START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME, JOIN_GAME
+  START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME, JOIN_GAME,
 } from '../actionTypes';
 
 const connect = () => {
@@ -46,9 +46,7 @@ function* sendName(socket) {
 }
 
 function* joinGame(socket) {
-  console.log('waiting for join');
   yield take(JOIN_GAME);
-  console.log('join!');
   socket.emit('joinGame');
 }
 

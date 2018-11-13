@@ -1,24 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { MessageContainer, Message } from './styled/MessageStyled';
 
-export const MessageContainer = styled.div`
-  margin-bottom:3rem;
-  margin-top: 0.5rem;
-`;
-
-const MessageDisplaySpan = styled.span`
-  font-size: 1rem;
-  color: #6c757d;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #dee2e6;
-`;
-
+/* eslint react/destructuring-assignment: off */
 const MessageDisplay = props => (
   <MessageContainer>
-    <MessageDisplaySpan>
+    <Message>
       { props.message }
-    </MessageDisplaySpan>
+    </Message>
   </MessageContainer>
 );
 
