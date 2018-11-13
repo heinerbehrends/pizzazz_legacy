@@ -11,8 +11,18 @@ const swapLetters = (props, target) => {
 };
 
 export const updateString = (props, target, randomOrValid) => {
-  const { letter, string, index, parent } = props;
-  const { targetLetter, targetIndex, targetParent, targetString } = target;
+  const {
+    letter,
+    string,
+    index,
+    parent,
+  } = props;
+  const {
+    targetLetter,
+    targetIndex,
+    targetParent,
+    targetString,
+  } = target;
   const isParent = (parent === randomOrValid);
   const isTargetParent = (targetParent === randomOrValid);
 
@@ -59,3 +69,13 @@ export const replaceWildCard = (wildCardString, validWords) => {
   const regEx = `(${wildCardString.split('8').join('[a-z]')}),`;
   return validWords.join(',').match(regEx)[1];
 };
+
+export const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
+
+export const getRandomLetter = strArr => strArr[getRandomIndex(strArr)];
+
+export const makeBagOfLetters = letterDistribution => Object
+  .keys(letterDistribution)
+  .map(letter => letter.repeat(letterDistribution[letter]))
+  .map(string => string.split(''))
+  .reduce((acc, val) => acc.concat(val));

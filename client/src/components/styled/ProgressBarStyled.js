@@ -9,6 +9,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3rem;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
 `;
 
 export const Bar = styled.div`
@@ -19,7 +20,6 @@ export const Bar = styled.div`
   animation-name: status-bar;
   animation-timing-function: linear;
   animation-duration: ${props => props.duration}s;
-
   @keyframes status-bar {
   from { width: ${props => 100 - props.duration * 2.5}%; }
   to { width: 100%; }

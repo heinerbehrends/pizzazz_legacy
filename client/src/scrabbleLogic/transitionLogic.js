@@ -1,5 +1,5 @@
 import { abc } from '../Constants';
-import { getRandomLetter } from './makeRandomLetters';
+import { getRandomLetter } from './gameLogic';
 
 export const getRandomAbc = () => getRandomLetter(abc);
 

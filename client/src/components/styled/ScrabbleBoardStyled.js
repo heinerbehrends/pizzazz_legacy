@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const ScrabbleBoardStyled = styled.div`
   background-image: url('images/pizzazzBoard.svg');
   background-size: contain;

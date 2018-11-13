@@ -1,6 +1,6 @@
 export const RANDOM_LETTERS = 'RANDOM_LETTERS';
 export const REPLACE_LETTER = 'REPLACE_LETTER';
-export const SHOW_VALID = 'SHOW_VALID';
+export const IS_VALID = 'IS_VALID';
 export const SEND_SOLUTION = 'SEND_SOLUTION';
 export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';

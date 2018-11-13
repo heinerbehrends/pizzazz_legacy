@@ -1,5 +1,5 @@
 import {
-  REPLACE_LETTER, SHOW_VALID, SEND_SOLUTION,
+  REPLACE_LETTER, IS_VALID, SEND_SOLUTION,
   SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME,
 } from '../actionTypes';
 
@@ -15,7 +15,7 @@ export const replaceLettersAction = (randomLetters, validWord) => ({
 });
 
 export const isValidIndexAction = index => ({
-  type: SHOW_VALID,
+  type: IS_VALID,
   index,
 });
 
