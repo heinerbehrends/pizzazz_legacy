@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-
+import {
+  textColor, fadedText, borderColor, white, blue, spacer, padding, shadow,
+} from './styleConstants';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -33,15 +35,15 @@ const InputStyled = styled.input`
   width: auto;
   font-size: 1.1rem;
   font-weight: 200;
-  padding: .6rem 1.8rem;
-  margin-bottom: 3rem;
-  color: #6c757d;
-  border: .5px solid #ced4da;
-  background-color: #fff;
-  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
+  padding: ${padding};
+  margin-bottom: ${spacer};
+  color: ${textColor};
+  border: .5px solid ${borderColor};
+  background-color: ${white};
+  box-shadow: ${shadow};
   :focus {
     outline: 0;
-    border: 1px solid #bdeafe;
+    border: 1px solid ${blue};
   }
 `;
 
@@ -49,22 +51,23 @@ export const ButtonInput = styled(InputStyled)`
   border-radius: .3rem;
   text-align: center;
   :active {
-    box-shadow: inset 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: inset ${shadow};
   }
 `;
 
 export const ButtonForm = styled(ButtonInput)`
   border-radius: 0 .3rem .3rem 0;
-  text-align: center;
-  :active {
-    box-shadow: inset 1px 2px 1px 0 rgba(0, 0, 0, 0.05);
-  }
 `;
 
 export const TextInput = styled(InputStyled)`
   text-align: left;
   border-radius: .3rem 0 0 .3rem;
   ::placeholder {
-    color: #adb6c1;
+    color: ${textColor};
+  }
+  :focus {
+    ::placeholder {
+      color: ${fadedText};
+    }
   }
 `;
