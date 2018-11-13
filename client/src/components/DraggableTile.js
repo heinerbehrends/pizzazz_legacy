@@ -29,7 +29,7 @@ class DraggableTile extends Component {
       index,
       connectDragSource,
       connectDropTarget,
-      showValid,
+      isValidIndex,
       isDragging,
     } = this.props;
 
@@ -39,7 +39,7 @@ class DraggableTile extends Component {
           <ScrabbleTile
             letter={isDragging ? '0' : letter}
             index={index}
-            isValid={showValid}
+            isValid={isValidIndex}
           />
         </div>,
       ),
@@ -50,7 +50,7 @@ class DraggableTile extends Component {
 DraggableTile.propTypes = {
   letter: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  showValid: PropTypes.bool.isRequired,
+  isValidIndex: PropTypes.bool.isRequired,
   isDragging: PropTypes.bool.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired,

@@ -1,6 +1,6 @@
 import { SHOW_VALID, SEND_SOLUTION, END_GAME } from '../actionTypes';
 
-const showValidReducer = (state = 0, action) => {
+const isValidIndexReducer = (state = 0, action) => {
   switch (action.type) {
     case SHOW_VALID:
       return state !== action.index ? action.index : state;
@@ -13,4 +13,4 @@ const showValidReducer = (state = 0, action) => {
   }
 };
 
-export default showValidReducer;
+export default isValidIndexReducer;

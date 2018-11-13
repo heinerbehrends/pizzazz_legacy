@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sendSolutionAction } from '../actions/actions';
+import { sendSolutionAction, joinGameAction } from '../actions/actions';
 import { getScore } from '../scrabbleLogic/gameLogic';
 import { letterValues } from '../Constants';
 import ScreenName from './ScreenName';
 import { ButtonInput } from './styled/ScreenNameStyled';
-import { JOIN_GAME } from '../actionTypes';
 
 
 class Interface extends PureComponent {
@@ -60,14 +59,14 @@ Interface.propTypes = {
 
 const mapStateToProps = state => ({
   validWord: state.validWord,
-  isValidIndex: state.showValid,
+  isValidIndex: state.isValidIndex,
   countdownValue: state.countdownValue,
   canJoin: state.canJoin,
 });
 
 const mapDispatchToProps = dispatch => ({
   sendSolutions: (word, score, index) => dispatch(sendSolutionAction(word, score, index)),
-  joinGame: () => dispatch({ type: JOIN_GAME }),
+  joinGame: () => dispatch(joinGameAction()),
 });
 
 
