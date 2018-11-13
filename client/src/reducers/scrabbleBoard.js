@@ -2,7 +2,7 @@ import {
   REPLACE_LETTER, SEND_SOLUTION, START_GAME, END_GAME,
 } from '../actionTypes';
 
-const validWordReducer = (state = '0000000', action) => {
+const scrabbleBoardReducer = (state = '0000000', action) => {
   switch (action.type) {
     case START_GAME:
       return '0000000';
@@ -20,4 +20,4 @@ const validWordReducer = (state = '0000000', action) => {
   }
 };
 
-export default validWordReducer;
+export default scrabbleBoardReducer;

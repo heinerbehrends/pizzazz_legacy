@@ -13,7 +13,7 @@ export const letterSource = {
     if (monitor.didDrop()) {
       const target = monitor.getDropResult();
       const {
-        replaceLettersAction, showValidAction, validWords, dispatch,
+        replaceLettersAction, isValidIndexAction, validWords, dispatch,
       } = props;
 
       const validWord = updateString(props, target, 'validWord');
@@ -23,7 +23,7 @@ export const letterSource = {
 
       if (validWord) {
         const isValidIndex = getIsValidIndex(validWord, validWords);
-        dispatch(showValidAction(isValidIndex));
+        dispatch(isValidIndexAction(isValidIndex));
       }
     }
   },

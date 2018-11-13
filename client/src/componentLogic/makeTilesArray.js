@@ -1,12 +1,12 @@
 import React from 'react';
 import { letterValues } from '../Constants';
 import { replaceLetter } from '../scrabbleLogic/gameLogic';
-import { replaceLettersAction, showValidAction } from '../actions/actions';
+import { replaceLettersAction, isValidIndexAction } from '../actions/actions';
 import ScrabbleTile from '../components/ScrabbleTile';
 import DraggableTile from '../components/DraggableTile';
 import { LetterContainer } from '../components/styled/ScrabbleTileStyled';
 
-function makeTilesArray(isCountdown, word, showValid, parent) {
+function makeTilesArray(isCountdown, word, isValidIndex, parent) {
   return isCountdown
     ? word.split('')
       .map((letter, i) => (
@@ -14,13 +14,13 @@ function makeTilesArray(isCountdown, word, showValid, parent) {
           letter={letter}
           letterValues={letterValues}
           string={word}
-          showValid={showValid > i}
+          isValidIndex={isValidIndex > i}
           index={i}
           key={i}
           parent={parent}
           replaceLetter={replaceLetter}
           replaceLettersAction={replaceLettersAction}
-          showValidAction={showValidAction}
+          isValidIndexAction={isValidIndexAction}
         />
       ))
     : word.split('')

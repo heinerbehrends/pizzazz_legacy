@@ -6,8 +6,8 @@ import makeTilesArray from '../componentLogic/makeTilesArray';
 
 class ScrabbleBoard extends PureComponent {
   render() {
-    const { validWord, showValid, isCountdown } = this.props;
-    const tilesArray = makeTilesArray(isCountdown, validWord, showValid, 'validWord');
+    const { validWord, isValidIndex, isCountdown } = this.props;
+    const tilesArray = makeTilesArray(isCountdown, validWord, isValidIndex, 'validWord');
 
     return (
       <ScrabbleBoardStyled>
@@ -19,13 +19,13 @@ class ScrabbleBoard extends PureComponent {
 
 ScrabbleBoard.propTypes = {
   validWord: PropTypes.string.isRequired,
-  showValid: PropTypes.number.isRequired,
+  isValidIndex: PropTypes.number.isRequired,
   isCountdown: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   validWord: state.validWord,
-  showValid: state.showValid,
+  isValidIndex: state.isValidIndex,
   isCountdown: state.isCountdown,
 });
 
