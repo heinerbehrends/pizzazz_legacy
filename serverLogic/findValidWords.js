@@ -1,60 +1,60 @@
-const wordScoreDict = require('./word_score_dict.json')
-const getCombinations = require('./getCombinations')
+const wordScoreDict = require('./word_score_dict.json');
+const getCombinations = require('./getCombinations');
 
+const abc = 'abcdefghijklmnopqrstuvwxyz';
 
-const sortString = string => {
-  var array = string.split('');
-  var sorted = array.sort();
-  return sorted.join('');
-}
+const sortString = string => string
+  .split('')
+  .sort()
+  .join('');
 
-const getSortedValidWords = () => {
-  // takes the words in a dictionary and return an objects
-  // in which the keys are ordered strings and the values
-  // are valid word anagrams of the ordered strings
-  let sortedValidWords = {}
-
-  for (const word in wordScoreDict) {
-    // order the letters
-    const sortedWord = sortString(word)
-    // if an anagram already exists
-    if (sortedWord in sortedValidWords) {
-      // create an array that holds both anagrams
-      if (typeof sortedValidWords[sortedWord] === 'string') {
-        sortedValidWords[sortedWord] = [sortedValidWords[sortedWord], word]
+// returns an object where the keys are ordered strings and
+// the values are all valid anagrams of the ordered strings
+const getSortedValidWords = dict => Object.keys(dict)
+  .reduce((acc, word) => {
+    const sortedWord = sortString(word);
+    const sortedWords = acc;
+    if ((sortedWord in sortedWords)) {
+      if (typeof sortedWords[sortedWord] === 'string') {
+        sortedWords[sortedWord] = [sortedWords[sortedWord], word];
+      } else {
+        sortedWords[sortedWord].push(word);
       }
-      // if it's an array already adds the anagram
-      else {
-        sortedValidWords[sortedWord].push(word)
-      }
+    } else {
+      sortedWords[sortedWord] = word;
     }
-    // if there is no anagram yet
-    else {
-      sortedValidWords[sortedWord] = word;
-    }
-  }
+    return sortedWords;
+  }, {});
 
-  return sortedValidWords
-}
+const sortedWords = getSortedValidWords(wordScoreDict);
 
-const sortedValidWords = getSortedValidWords()
+const findWords = (randomLetters, sortedValidWords) => {
+  const sortedSubstrings = getCombinations(sortString(randomLetters));
+  const validWords = sortedSubstrings
+    .filter(substring => substring in sortedValidWords)
+    .map(validSubstring => sortedWords[validSubstring]);
+  return [].concat(...validWords);
+};
 
+const removeWildcard = string => string.split('8').join('');
 
-const findValidWords = (randomLetters, sortedValidWords) => {
-  // get all possible sorted substrings
-  const sortedSubstrings = getCombinations(sortString(randomLetters))
-  let validWords = []
+const addAtoZ = string => abc.split('')
+  .map(letter => `${string}${letter}`);
 
-  for (let i = 0; i < sortedSubstrings.length; i++) {
-    // check if there is a valid word anagram of the sorted substring
-    if (sortedSubstrings[i] in sortedValidWords) {
-      // add the valid word(s) to valid words array
-      validWords.push(sortedValidWords[sortedSubstrings[i]])
-    }
-  }
-  // return the flattened array
-  return [].concat(...validWords)
-}
+const findWordsWildcard = (wildcardString, sortedValidWords) => {
+  const string = removeWildcard(wildcardString);
+  const possibleStrings = addAtoZ(string);
+  const sortedStrings = possibleStrings.map(sortString);
+  const validWords = sortedStrings
+    .map(sortedString => findWords(sortedString, sortedValidWords));
+  return [...new Set([].concat(...validWords))];
+};
 
+/* eslint arrow-body-style: off */
+const findAllValidWords = (randomLetters, sortedValidWords) => {
+  return randomLetters.includes('8')
+    ? findWordsWildcard(randomLetters, sortedValidWords)
+    : findWords(randomLetters, sortedValidWords);
+};
 
-module.exports = { findValidWords, sortedValidWords, sortString }
+module.exports = { findAllValidWords, sortedWords };
