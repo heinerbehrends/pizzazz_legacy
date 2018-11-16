@@ -2,7 +2,6 @@
   "name": "pizzazz",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "ajv": "^6.2.1",
     "eslint": "^5.6.1",
