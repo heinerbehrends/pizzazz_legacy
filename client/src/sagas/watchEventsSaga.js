@@ -8,7 +8,7 @@ import {
 } from '../actions/actionTypes';
 
 const connect = () => {
-  const socket = io('http://localhost:3001');
+  const socket = io();
   return new Promise((resolve) => {
     socket.on('connect', () => {
       resolve(socket);
