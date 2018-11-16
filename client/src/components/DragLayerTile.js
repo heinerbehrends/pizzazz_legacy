@@ -14,7 +14,6 @@ const layerStyles = {
   maxWidth: '500px',
 };
 
-
 function getPositionStyles(props) {
   const { currentOffset } = props;
 

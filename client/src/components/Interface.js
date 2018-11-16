@@ -12,13 +12,13 @@ class Interface extends PureComponent {
   render() {
     const {
       isValidIndex,
-      validWord,
+      scrabbleBoard,
       sendSolutions,
       countdownValue,
       canJoin,
       joinGame,
     } = this.props;
-    const solution = validWord.substring(0, isValidIndex);
+    const solution = scrabbleBoard.substring(0, isValidIndex);
 
     if (countdownValue > 20 && canJoin) {
       return (
@@ -49,7 +49,7 @@ class Interface extends PureComponent {
 }
 
 Interface.propTypes = {
-  validWord: PropTypes.string.isRequired,
+  scrabbleBoard: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
   countdownValue: PropTypes.number.isRequired,
   canJoin: PropTypes.bool.isRequired,
@@ -58,7 +58,7 @@ Interface.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  validWord: state.validWord,
+  scrabbleBoard: state.scrabbleBoard,
   isValidIndex: state.isValidIndex,
   countdownValue: state.countdownValue,
   canJoin: state.canJoin,

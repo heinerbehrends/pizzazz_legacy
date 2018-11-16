@@ -1,20 +1,20 @@
 import { combineReducers } from 'redux';
 import randomLettersReducer from './randomLetters';
-import validWordReducer from './scrabbleBoard';
+import scrabbleBoardReducer from './scrabbleBoard';
 import isValidIndexReducer from './isValidIndex';
-import solutionsReducer from './solutions';
+import screenNameReducer from './screenName';
 import messageTopReducer from './messageTop';
-import gameDataReducer from './gameData';
 import isCountdownReducer from './isCountdown';
 import countdownValueReducer from './countdownValue';
-import screenNameReducer from './screenName';
+import solutionsReducer from './solutions';
+import gameDataReducer from './gameData';
 import canJoinReducer from './canJoin';
 
 const rootReducer = combineReducers({
   randomLetters: randomLettersReducer,
-  screenName: screenNameReducer,
-  validWord: validWordReducer,
+  scrabbleBoard: scrabbleBoardReducer,
   isValidIndex: isValidIndexReducer,
+  screenName: screenNameReducer,
   messageTop: messageTopReducer,
   isCountdown: isCountdownReducer,
   countdownValue: countdownValueReducer,

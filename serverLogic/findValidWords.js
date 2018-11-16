@@ -1,60 +1,65 @@
 const wordScoreDict = require('./word_score_dict.json');
 const getCombinations = require('./getCombinations');
 
-const abc = 'abcdefghijklmnopqrstuvwxyz';
-
 const sortString = string => string
   .split('')
   .sort()
   .join('');
 
-// returns an object where the keys are ordered strings and
-// the values are all valid anagrams of the ordered strings
-const getSortedValidWords = dict => Object.keys(dict)
+/* input: an object in which the keys are all valid words for the app.
+output: an object in which the keys are the words of the dictionary ordered
+alphabetically and the values are all valid words that are anagrams of the keys */
+const getSortedWordsDict = dict => Object.keys(dict)
   .reduce((acc, word) => {
     const sortedWord = sortString(word);
-    const sortedWords = acc;
-    if ((sortedWord in sortedWords)) {
-      if (typeof sortedWords[sortedWord] === 'string') {
-        sortedWords[sortedWord] = [sortedWords[sortedWord], word];
+    const sortedWordsDict = acc;
+
+    if ((sortedWord in sortedWordsDict)) {
+      if (typeof sortedWordsDict[sortedWord] === 'string') {
+        sortedWordsDict[sortedWord] = [sortedWordsDict[sortedWord], word];
       } else {
-        sortedWords[sortedWord].push(word);
+        sortedWordsDict[sortedWord].push(word);
       }
     } else {
-      sortedWords[sortedWord] = word;
+      sortedWordsDict[sortedWord] = word;
     }
-    return sortedWords;
+    return sortedWordsDict;
   }, {});
 
-const sortedWords = getSortedValidWords(wordScoreDict);
+const sortedWordsDict = getSortedWordsDict(wordScoreDict);
 
-const findWords = (randomLetters, sortedValidWords) => {
-  const sortedSubstrings = getCombinations(sortString(randomLetters));
-  const validWords = sortedSubstrings
-    .filter(substring => substring in sortedValidWords)
-    .map(validSubstring => sortedWords[validSubstring]);
+/* input: a string to search for and a sorted key dictionary
+ouput: an array of all words in the dictionary that are combinations of the letters in the string */
+const findWords = (randomLetters, sortedDict) => {
+  const sortedRandomLetters = sortString(randomLetters);
+  const sortedCombinations = getCombinations(sortedRandomLetters);
+  const validWords = sortedCombinations
+    .filter(combination => combination in sortedDict)
+    .map(validCombination => sortedWordsDict[validCombination]);
   return [].concat(...validWords);
 };
 
 const removeWildcard = string => string.split('8').join('');
-
+const abc = 'abcdefghijklmnopqrstuvwxyz';
 const addAtoZ = string => abc.split('')
   .map(letter => `${string}${letter}`);
 
-const findWordsWildcard = (wildcardString, sortedValidWords) => {
+/* removes the wildcard, adds all the letters and than runs findWords
+input: a string with the one wildcard character to search for and a sorted key dictionary
+ouput: an array of all words in the dictionary that are combinations of the letters in the string */
+const findWordsWildcard = (wildcardString, sortedDict) => {
   const string = removeWildcard(wildcardString);
   const possibleStrings = addAtoZ(string);
-  const sortedStrings = possibleStrings.map(sortString);
-  const validWords = sortedStrings
-    .map(sortedString => findWords(sortedString, sortedValidWords));
+  const validWords = possibleStrings
+    .map(sortedString => findWords(sortedString, sortedDict));
   return [...new Set([].concat(...validWords))];
 };
 
 /* eslint arrow-body-style: off */
-const findAllValidWords = (randomLetters, sortedValidWords) => {
+const findAllValidWords = (randomLetters, sortedDict) => {
   return randomLetters.includes('8')
-    ? findWordsWildcard(randomLetters, sortedValidWords)
-    : findWords(randomLetters, sortedValidWords);
+    ? findWordsWildcard(randomLetters, sortedDict)
+    : findWords(randomLetters, sortedDict);
 };
 
-module.exports = { findAllValidWords, sortedWords };
+module.exports = { findAllValidWords, sortedWordsDict };

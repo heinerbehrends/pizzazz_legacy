@@ -1,7 +1,4 @@
 import React from 'react';
-import { letterValues } from '../Constants';
-import { replaceLetter } from '../clientLogic/gameLogic';
-import { replaceLettersAction, isValidIndexAction } from '../actions/actionCreators';
 import ScrabbleTile from '../components/ScrabbleTile';
 import DraggableTile from '../components/DraggableTile';
 import { LetterContainer } from '../components/styled/ScrabbleTileStyled';
@@ -13,15 +10,11 @@ function makeTilesArray(isCountdown, word, isValidIndex, parent) {
       .map((letter, i) => (
         <DraggableTile
           letter={letter}
-          letterValues={letterValues}
           string={word}
-          isValidIndex={isValidIndex > i}
+          isValid={isValidIndex > i}
           index={i}
           key={i}
           parent={parent}
-          replaceLetter={replaceLetter}
-          replaceLettersAction={replaceLettersAction}
-          isValidIndexAction={isValidIndexAction}
         />
       ))
     : word.split('')
@@ -30,7 +23,6 @@ function makeTilesArray(isCountdown, word, isValidIndex, parent) {
           <ScrabbleTile
             letter={letter}
             index={i}
-            letterValues={letterValues}
             isValid={false}
           />
         </LetterContainer>

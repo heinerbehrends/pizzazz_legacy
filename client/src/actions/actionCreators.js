@@ -1,11 +1,17 @@
 import {
-  REPLACE_LETTER, IS_VALID, SEND_SOLUTION,
+  REPLACE_LETTER, IS_VALID, SEND_SOLUTION, END_DRAG,
   SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME,
 } from './actionTypes';
 
 export const startGameAction = game => ({
   type: START_GAME,
   game,
+});
+
+export const endDragAction = (props, target) => ({
+  type: END_DRAG,
+  props,
+  target,
 });
 
 export const replaceLettersAction = (randomLetters, validWord) => ({

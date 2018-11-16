@@ -1,4 +1,5 @@
 export const RANDOM_LETTERS = 'RANDOM_LETTERS';
+export const END_DRAG = 'END_DRAG';
 export const REPLACE_LETTER = 'REPLACE_LETTER';
 export const IS_VALID = 'IS_VALID';
 export const SEND_SOLUTION = 'SEND_SOLUTION';

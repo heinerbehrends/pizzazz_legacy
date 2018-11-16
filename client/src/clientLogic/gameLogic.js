@@ -1,4 +1,4 @@
-import { letterValues as LETTER_VALUES } from '../Constants';
+import { letterValues } from '../Constants';
 
 export const replaceLetter = (string, letter, index) => string
   .substring(0, index)
@@ -10,7 +10,7 @@ const swapLetters = (props, target) => {
   return replaceLetter(firstMutation, target.targetLetter, props.index);
 };
 
-export const updateString = (props, target, randomOrValid) => {
+export const updateLetters = (props, target, randomOrValid) => {
   const {
     letter,
     string,
@@ -36,13 +36,13 @@ export const updateString = (props, target, randomOrValid) => {
   return false;
 };
 
-export const getScore = (word, letterValues) => word
+export const getScore = (word, letterValuesDict) => word
   .split('')
-  .map((letter, index) => (index === 4 ? letterValues[letter] * 2 : letterValues[letter]))
+  .map((letter, index) => (index === 4 ? letterValuesDict[letter] * 2 : letterValuesDict[letter]))
   .reduce((sum, element) => element + sum);
 
 export const getMaxScore = wordArray => wordArray
-  .map(word => getScore(word, LETTER_VALUES))
+  .map(word => getScore(word, letterValues))
   .reduce((max, value) => Math.max(max, value));
 
 export const getMaxLength = wordArray => wordArray
@@ -51,7 +51,7 @@ export const getMaxLength = wordArray => wordArray
 
 export const getMaxLengthScore = (wordArray) => {
   const maxLength = wordArray.filter(word => word.length === getMaxLength(wordArray));
-  return maxLength.filter(word => getScore(word, LETTER_VALUES) === getMaxScore(maxLength));
+  return maxLength.filter(word => getScore(word, letterValues) === getMaxScore(maxLength));
 };
 
 export const getWinnerSolution = (solutionArray) => {
@@ -59,23 +59,12 @@ export const getWinnerSolution = (solutionArray) => {
   const maxLength = solutions
     .filter(solution => solution.length === getMaxLength(solutions));
   const maxLengthScore = maxLength
-    .filter(word => getScore(word, LETTER_VALUES) === getMaxScore(maxLength));
+    .filter(word => getScore(word, letterValues) === getMaxScore(maxLength));
   const winnerSolution = solutionArray.filter(solution => solution.solution === maxLengthScore[0]);
 
   return winnerSolution[0];
 };
 
-export const replaceWildCard = (wildCardString, validWords) => {
-  const regEx = `(${wildCardString.split('8').join('[a-z]')}),`;
-  return validWords.join(',').match(regEx)[1];
-};
-
 export const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
 
 export const getRandomLetter = strArr => strArr[getRandomIndex(strArr)];
-
-export const makeBagOfLetters = letterDistribution => Object
-  .keys(letterDistribution)
-  .map(letter => letter.repeat(letterDistribution[letter]))
-  .map(string => string.split(''))
-  .reduce((acc, val) => acc.concat(val));

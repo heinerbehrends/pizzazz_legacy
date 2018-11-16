@@ -6,8 +6,8 @@ import makeTilesArray from '../clientLogic/makeTilesArray';
 
 class ScrabbleBoard extends PureComponent {
   render() {
-    const { validWord, isValidIndex, isCountdown } = this.props;
-    const tilesArray = makeTilesArray(isCountdown, validWord, isValidIndex, 'validWord');
+    const { scrabbleBoard, isValidIndex, isCountdown } = this.props;
+    const tilesArray = makeTilesArray(isCountdown, scrabbleBoard, isValidIndex, 'scrabbleBoard');
 
     return (
       <ScrabbleBoardStyled>
@@ -18,13 +18,13 @@ class ScrabbleBoard extends PureComponent {
 }
 
 ScrabbleBoard.propTypes = {
-  validWord: PropTypes.string.isRequired,
+  scrabbleBoard: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
   isCountdown: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  validWord: state.validWord,
+  scrabbleBoard: state.scrabbleBoard,
   isValidIndex: state.isValidIndex,
   isCountdown: state.isCountdown,
 });

@@ -9,7 +9,7 @@ import {
 import orderedTransition from './orderedTransition';
 
 const getSolutions = state => state.solutions;
-const getValidWords = state => state.gameData.validWords;
+export const getValidWords = state => state.gameData.validWords;
 
 
 function* bestUserWord() {

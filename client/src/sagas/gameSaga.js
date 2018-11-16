@@ -3,10 +3,17 @@ import {
   put, select, take, call, fork, cancel,
 } from 'redux-saga/effects';
 import {
-  DECREMENT_COUNTDOWN, START_GAME, SET_COUNTDOWN, END_GAME,
+  DECREMENT_COUNTDOWN, END_DRAG, START_GAME, SET_COUNTDOWN, END_GAME,
 } from '../actions/actionTypes';
-import handleWinner from './handleWinner';
-import { handleStartMessages, handleWaitingMessage, handleSolutions } from './messages';
+import { replaceLettersAction, isValidIndexAction } from '../actions/actionCreators';
+import { updateLetters } from '../clientLogic/gameLogic';
+import getIsValidIndex from '../clientLogic/getIsValidIndex';
+import handleWinner, { getValidWords } from './handleWinner';
+import {
+  handleStartMessages,
+  handleWaitingMessage,
+  handleSolutions,
+} from './messages';
 
 
 function* handleCountdown() {
@@ -20,9 +27,25 @@ function* handleCountdown() {
   }
 }
 
+function* handleDrop() {
+  while (true) {
+    const dropAction = yield take(END_DRAG);
+    const validWords = yield select(getValidWords);
+    const { props, target } = dropAction;
+    const scrabbleBoard = updateLetters(props, target, 'scrabbleBoard');
+    const randomLetters = updateLetters(props, target, 'randomLetters');
+    yield put(replaceLettersAction(randomLetters, scrabbleBoard));
+    if (scrabbleBoard) {
+      const isValidIndex = getIsValidIndex(scrabbleBoard, validWords);
+      yield put(isValidIndexAction(isValidIndex));
+    }
+  }
+}
+
 function* handleGame() {
   yield fork(handleCountdown);
   yield fork(handleStartMessages);
+  yield fork(handleDrop);
   yield fork(handleSolutions);
 }
 function* handleEnd(task) {

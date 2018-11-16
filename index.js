@@ -29,7 +29,6 @@ io.on('connection', (socket) => {
     socket.emit('StartGame', { randomLetters, validWords, seconds });
   });
   socket.on('sendSolution', (solution) => {
-    console.log(solution);
     socket.emit('newSolution', solution);
     socket.broadcast.emit('newSolution', solution);
   });
@@ -48,7 +47,6 @@ function* countdown() {
     yield seconds;
     if (seconds === 10) {
       io.emit('EndGame', { type: 'END_GAME' });
-      console.log('End Game send');
     }
     if (seconds === 0) {
       seconds = duration;
@@ -59,11 +57,11 @@ function* countdown() {
 
 function* gameFlow() {
   const { makeRandomLetters, bagOfLetters } = getLetters;
-  const { findAllValidWords, sortedWords } = findValid;
+  const { findAllValidWords, sortedWordsDict } = findValid;
 
   while (true) {
     randomLetters = makeRandomLetters(7, bagOfLetters);
-    validWords = findAllValidWords(randomLetters, sortedWords);
+    validWords = findAllValidWords(randomLetters, sortedWordsDict);
     yield io.emit('StartGame', { randomLetters, validWords, seconds });
     yield* countdown();
   }
