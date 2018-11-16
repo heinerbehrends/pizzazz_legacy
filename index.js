@@ -37,8 +37,9 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(3001, () => {
-  console.log('listening on *:3001');
+const port = process.env.PORT || 3001;
+http.listen(port, () => {
+  console.log(`listening on *: ${port}`);
 });
 
 function* countdown() {
