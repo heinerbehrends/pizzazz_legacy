@@ -1,7 +1,7 @@
 {
   "name": "pizzazz-backend",
   "version": "0.0.1",
-  "description": "a socket.io backend for pizzazz word game app",
+  "description": "a micro scrabble game built with node and sockets.io",
   "dependencies": {
     "express": "4.15.2",
     "socket.io": "^2.1.1"
