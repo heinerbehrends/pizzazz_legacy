@@ -42,19 +42,6 @@ http.listen(port, () => {
   console.log(`listening on *: ${port}`);
 });
 
-function* countdown() {
-  while (true) {
-    seconds -= 1;
-    yield seconds;
-    if (seconds === 10) {
-      io.emit('EndGame', { type: 'END_GAME' });
-    }
-    if (seconds === 0) {
-      seconds = duration;
-      break;
-    }
-  }
-}
 
 function* gameFlow() {
   const { makeRandomLetters, bagOfLetters } = getLetters;
@@ -64,7 +51,17 @@ function* gameFlow() {
     randomLetters = makeRandomLetters(7, bagOfLetters);
     validWords = findAllValidWords(randomLetters, sortedWordsDict);
     yield io.emit('StartGame', { randomLetters, validWords, seconds });
-    yield* countdown();
+    while (true) {
+      seconds -= 1;
+      yield seconds;
+      if (seconds === 10) {
+        io.emit('EndGame', { type: 'END_GAME' });
+      }
+      if (seconds === 0) {
+        seconds = duration;
+        break;
+      }
+    }
   }
 }
 const gen = gameFlow();
