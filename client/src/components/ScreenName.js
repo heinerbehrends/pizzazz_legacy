@@ -9,21 +9,23 @@ import {
 class ScreenName extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { screenName: '' };
     this.handleChange = this.handleChange.bind(this);
     this.sendScreenName = this.sendScreenName.bind(this);
   }
 
   handleChange(event) {
-    const { state } = this;
-    state[event.target.name] = event.target.value;
-    this.setState(state);
+    const { value } = event.target;
+    this.setState({ screenName: value });
   }
 
   sendScreenName(event) {
     event.preventDefault();
     const { sendName } = this.props;
     const { screenName } = this.state;
+    if (!screenName) {
+      return;
+    }
     sendName(screenName);
   }
 
