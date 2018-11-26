@@ -11,5 +11,5 @@ export const DECREMENT_COUNTDOWN = 'DECREMENT_COUNTDOWN';
 export const NEW_SOLUTION = 'NEW_SOLUTION';
 export const SEND_NAME = 'SEND_NAME';
 export const DISCONNECT = 'DISCONNECT';
-export const MESSAGE_TOP = 'MESSAGE_TOP';
+export const MESSAGE = 'MESSAGE';
 export const SET_COUNTDOWN = 'SET_COUNTDOWN';

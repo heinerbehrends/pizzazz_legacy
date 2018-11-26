@@ -2,7 +2,7 @@ import { delay } from 'redux-saga';
 import {
   put, select, call, fork,
 } from 'redux-saga/effects';
-import { MESSAGE_TOP } from '../actions/actionTypes';
+import { MESSAGE } from '../actions/actionTypes';
 import {
   getMaxLengthScore, getWinnerSolution,
 } from '../clientLogic/gameLogic';
@@ -18,11 +18,11 @@ function* bestUserWord() {
     const winnerSolution = getWinnerSolution(solutions);
     const { name, solution } = winnerSolution;
     const message = `The winner ${name.toUpperCase()} played`;
-    yield put({ type: MESSAGE_TOP, message });
+    yield put({ type: MESSAGE, message });
     yield fork(orderedTransition, solution);
   } else {
     const message = 'No user solutions were received';
-    yield put({ type: MESSAGE_TOP, message });
+    yield put({ type: MESSAGE, message });
   }
   yield call(delay, 4000);
 }
@@ -30,7 +30,7 @@ function* bestUserWord() {
 function* bestWord() {
   const validWords = yield select(getValidWords);
   const message = 'The best word was';
-  yield put({ type: MESSAGE_TOP, message });
+  yield put({ type: MESSAGE, message });
   const bestSolution = getMaxLengthScore(validWords)[0];
   yield call(orderedTransition, bestSolution);
 }
