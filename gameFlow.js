@@ -29,7 +29,6 @@ function* gameFlow(io) {
     while (true) {
       yield state = { ...state, seconds: state.seconds - 1 };
       const { seconds } = state;
-      console.log(seconds);
       if (seconds === 10) {
         io.emit('EndGame', { type: 'END_GAME' });
       }
@@ -38,7 +37,6 @@ function* gameFlow(io) {
         break;
       }
     }
-    console.log('end loop');
   }
 }
 
