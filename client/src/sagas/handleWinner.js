@@ -17,8 +17,10 @@ function* bestUserWord() {
   if (solutions.length) {
     const winnerSolution = getWinnerSolution(solutions);
     const { name, solution } = winnerSolution;
-    const message = `The winner ${name.toUpperCase()} played`;
-    yield put({ type: MESSAGE, message });
+    yield put({
+      type: MESSAGE,
+      message: `The winner ${name.toUpperCase()} played`,
+    });
     yield fork(orderedTransition, solution);
   } else {
     const message = 'No user solutions were received';

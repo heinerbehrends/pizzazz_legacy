@@ -1,6 +1,6 @@
 import {
   REPLACE_LETTER, IS_VALID, SEND_SOLUTION, END_DRAG,
-  SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME,
+  SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME, MESSAGE,
 } from './actionTypes';
 
 export const startGameAction = game => ({
@@ -43,4 +43,9 @@ export const sendNameAction = name => ({
 
 export const joinGameAction = () => ({
   type: JOIN_GAME,
+});
+
+export const messageAction = message => ({
+  type: MESSAGE,
+  message,
 });

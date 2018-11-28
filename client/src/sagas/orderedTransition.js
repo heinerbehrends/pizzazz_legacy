@@ -1,17 +1,18 @@
 import { delay } from 'redux-saga';
-import { put, take } from 'redux-saga/effects';
-import { RANDOM_LETTERS, START_GAME } from '../actions/actionTypes';
+import { put } from 'redux-saga/effects';
+import { RANDOM_LETTERS } from '../actions/actionTypes';
 import {
   getRandomAbc,
   makeRandomArray,
   makeZerosArray,
   isFinished,
   isKeyframe,
-  getNextIndex,
+  getNextLetter,
 } from '../clientLogic/transitionLogic';
+
 // duration must be a multiple of frameDuration
-const frameDuration = 25;
-const duration = frameDuration * 7;
+const frameDuration = 20;
+const duration = frameDuration * 8;
 
 function* orderedTransition(finalString) {
   const zerosPart = makeZerosArray(finalString);
@@ -23,29 +24,23 @@ function* orderedTransition(finalString) {
     yield delay(frameDuration);
     time += frameDuration;
 
-    const randomLetters = finalPart
-      .concat(randomPart)
-      .concat(zerosPart)
-      .join('');
-
-    yield put({ type: RANDOM_LETTERS, randomLetters });
+    yield put({
+      type: RANDOM_LETTERS,
+      randomLetters: finalPart
+        .concat(randomPart)
+        .concat(zerosPart)
+        .join(''),
+    });
 
     if (isFinished(finalPart, zerosPart)) {
       break;
     } else if (isKeyframe(time, duration)) {
-      const nextLetter = finalString[getNextIndex(time, duration)];
       randomPart = randomPart.slice(1);
-      finalPart = finalPart.concat(nextLetter);
+      finalPart = finalPart.concat(
+        finalString[getNextLetter(time, duration)],
+      );
     }
-
     randomPart = randomPart.map(getRandomAbc);
-  }
-}
-
-export function* watchStartGame() {
-  while (true) {
-    const action = yield take(START_GAME);
-    yield orderedTransition(action.game.randomLetters);
   }
 }
 
