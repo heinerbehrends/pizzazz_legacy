@@ -37,9 +37,9 @@ const makeRandomLetters = (nrOfLetters, charArr) => {
   const bagOfConsonants = charArr.filter(char => !vowels.includes(char));
   const nrOfVowels = Math.random() < 0.7 ? 3 : 2;
   const get8count = string => string.split('8').length - 1;
-  let randomString = '';
-
+  let randomString;
   do {
+    randomString = '';
     for (let i = 0; i < nrOfVowels; i += 1) {
       randomString = addRandomChar(randomString, bagOfVowels);
     }
