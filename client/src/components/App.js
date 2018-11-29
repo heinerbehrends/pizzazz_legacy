@@ -5,7 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import TouchBackend from 'react-dnd-touch-backend';
 import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend';
 import RandomLetters from './RandomLetters';
-import Countdown from './Countdown';
+import ProgressBar from './ProgressBar';
 import Interface from './Interface';
 import Message from './Message';
 import ScrabbleBoard from './ScrabbleBoard';
@@ -34,7 +34,7 @@ class App extends Component {
         <Message />
         <RandomLetters />
         <ScrabbleBoard />
-        <Countdown />
+        <ProgressBar />
         <Interface />
         <DragLayerTile />
       </AppWrapper>

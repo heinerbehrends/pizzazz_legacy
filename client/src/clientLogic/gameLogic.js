@@ -1,3 +1,5 @@
+// @flow
+
 import { letterValues } from '../Constants';
 
 export const replaceLetter = (string, letter, index) => string

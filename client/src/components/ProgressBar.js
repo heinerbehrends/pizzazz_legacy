@@ -3,22 +3,31 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Container, Bar } from './styled/ProgressBarStyled';
 
-class ProgressBar extends Component {
+class BarWrapper extends Component {
   shouldComponentUpdate() {
     return false;
   }
 
   render() {
-    const { duration, isCountdown } = this.props;
-    return isCountdown
-      ? (
-        <Container>
-          <Bar duration={duration} />
-        </Container>
-      )
-      : null;
+    const { duration } = this.props;
+    return (
+      <Container>
+        <Bar duration={duration} />
+      </Container>
+    );
   }
 }
+
+BarWrapper.propTypes = {
+  duration: PropTypes.number.isRequired,
+};
+
+/* eslint react/destructuring-assignment: off */
+const ProgressBar = props => (
+  props.isCountdown
+    ? <BarWrapper duration={props.duration} />
+    : null
+);
 
 ProgressBar.propTypes = {
   duration: PropTypes.number.isRequired,
