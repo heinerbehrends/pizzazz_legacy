@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import MessageDisplay from './MessageDisplay';
+import { MessageContainer, MessageStyled } from './styled/MessageStyled';
 
-const Message = props => (
-  <MessageDisplay message={props.message} /> // eslint-disable-line react/destructuring-assignment
+const Message = ({ message }) => (
+  <MessageContainer>
+    <MessageStyled>
+      {message}
+    </MessageStyled>
+  </MessageContainer>
 );
 
 Message.propTypes = {

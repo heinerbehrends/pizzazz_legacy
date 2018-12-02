@@ -22,10 +22,9 @@ BarWrapper.propTypes = {
   duration: PropTypes.number.isRequired,
 };
 
-/* eslint react/destructuring-assignment: off */
-const ProgressBar = props => (
-  props.isCountdown
-    ? <BarWrapper duration={props.duration} />
+const ProgressBar = ({ duration, isCountdown }) => (
+  isCountdown
+    ? <BarWrapper duration={duration} />
     : null
 );
 

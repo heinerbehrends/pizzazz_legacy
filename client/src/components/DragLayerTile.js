@@ -14,9 +14,7 @@ const layerStyles = {
   maxWidth: '500px',
 };
 
-function getPositionStyles(props) {
-  const { currentOffset } = props;
-
+function getPositionStyles({ currentOffset }) {
   if (!currentOffset) {
     return {
       display: 'none',

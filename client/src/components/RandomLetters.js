@@ -2,30 +2,32 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LetterContainer from './styled/RandomLettersStyled';
-import makeTilesArray from '../clientLogic/makeTilesArray';
+import LetterRow from './LetterRow';
 
 
 class RandomLetters extends PureComponent {
   render() {
-    const { isCountdown, randomLetters } = this.props;
-    const tilesArray = makeTilesArray(isCountdown, randomLetters, false, 'randomLetters');
-
+    const { isDraggable, randomLetters } = this.props;
     return (
       <LetterContainer>
-        { tilesArray }
+        <LetterRow
+          isDraggable={isDraggable}
+          letters={randomLetters}
+          parent="randomLetters"
+        />
       </LetterContainer>
     );
   }
 }
 
 RandomLetters.propTypes = {
-  isCountdown: PropTypes.bool.isRequired,
+  isDraggable: PropTypes.bool.isRequired,
   randomLetters: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   randomLetters: state.randomLetters,
-  isCountdown: state.isCountdown,
+  isDraggable: state.isCountdown,
 });
 
 

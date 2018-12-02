@@ -14,8 +14,7 @@ class ScreenName extends Component {
     this.sendScreenName = this.sendScreenName.bind(this);
   }
 
-  handleChange(event) {
-    const { value } = event.target;
+  handleChange({ target: { value } }) {
     this.setState({ screenName: value });
   }
 

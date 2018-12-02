@@ -44,10 +44,10 @@ class DraggableTile extends Component {
 }
 
 const letterSource = {
-  beginDrag(props) {
+  beginDrag({ letter, index }) {
     return {
-      sourceLetter: props.letter,
-      sourceIndex: props.index,
+      sourceLetter: letter,
+      sourceIndex: index,
     };
   },
   endDrag(props, monitor) {
@@ -59,10 +59,9 @@ const letterSource = {
   },
 };
 const letterTarget = {
-  drop(props) {
-    const {
-      letter, string, index, parent,
-    } = props;
+  drop({
+    letter, string, index, parent,
+  }) {
     return {
       targetLetter: letter,
       targetString: string,

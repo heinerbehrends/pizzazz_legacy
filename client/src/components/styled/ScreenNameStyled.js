@@ -47,7 +47,7 @@ const InputStyled = styled.input`
   }
 `;
 
-export const ButtonInput = styled(InputStyled)`
+export const ButtonStyled = styled(InputStyled)`
   border-radius: .3rem;
   text-align: center;
   :active {
@@ -55,7 +55,7 @@ export const ButtonInput = styled(InputStyled)`
   }
 `;
 
-export const ButtonForm = styled(ButtonInput)`
+export const ButtonForm = styled(ButtonStyled)`
   border-radius: 0 .3rem .3rem 0;
 `;
 

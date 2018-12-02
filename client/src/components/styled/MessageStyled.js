@@ -8,7 +8,7 @@ export const MessageContainer = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const Message = styled.span`
+export const MessageStyled = styled.span`
   font-size: 1.1rem;
   font-weight: 200;
   color: ${textColor};

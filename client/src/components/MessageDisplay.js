@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MessageContainer, Message } from './styled/MessageStyled';
 
-/* eslint react/destructuring-assignment: off */
-const MessageDisplay = props => (
+const MessageDisplay = ({ message }) => (
   <MessageContainer>
     <Message>
-      { props.message }
+      {message}
     </Message>
   </MessageContainer>
 );
