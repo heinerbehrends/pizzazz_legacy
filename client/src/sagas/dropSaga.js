@@ -8,9 +8,8 @@ import getIsValidIndex from '../clientLogic/getIsValidIndex';
 
 function* handleDrop() {
   while (true) {
-    const dropAction = yield take(END_DRAG);
+    const { props, target } = yield take(END_DRAG);
     const validWords = yield select(getValidWords);
-    const { props, target } = dropAction;
 
     const scrabbleBoard = updateLetters(props, target, 'scrabbleBoard');
     const randomLetters = updateLetters(props, target, 'randomLetters');

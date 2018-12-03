@@ -1,4 +1,9 @@
-const getIsValidIndexNoWildcard = (string, validWordsArray) => string.split('')
+// @flow
+const getIsValidIndexNoWildcard = (
+  string: string,
+  validWordsArray: Array<string>
+): number => string
+  .split('')
   .reduce(
     (acc, letter, i) => {
       const index = i + 1;
@@ -8,14 +13,18 @@ const getIsValidIndexNoWildcard = (string, validWordsArray) => string.split('')
         return index;
       }
       return Math.max(acc, 0);
-    },
+    }, 0
   );
 
-const getRegExp = string => new RegExp(`["](${string})["]`);
-const replace8withAtoZ = wildcardString => wildcardString.split('8').join('[a-z]');
-const buildRegExObject = wildcardString => getRegExp(replace8withAtoZ(wildcardString));
+const getRegExp = (string: string) => new RegExp(`["](${string})["]`);
+const replace8withAtoZ = (wildcardString: string) => wildcardString.split('8').join('[a-z]');
+const buildRegExObject = (wildcardString: string) => getRegExp(replace8withAtoZ(wildcardString));
 
-const getIsValidIndexWildcard = (wildcardString, validWordsArray) => wildcardString.split('')
+const getIsValidIndexWildcard = (
+  wildcardString: string,
+  validWordsArray: Array<string>
+): number => wildcardString
+  .split('')
   .reduce(
     (acc, letter, i) => {
       const index = i + 1;
@@ -30,10 +39,12 @@ const getIsValidIndexWildcard = (wildcardString, validWordsArray) => wildcardStr
         return index;
       }
       return acc;
-    },
+    }, 0
   );
 
-const getIsValidIndex = (validWordString, validWordsArray) => (
+const getIsValidIndex = (
+  validWordString: string,
+  validWordsArray: Array<string>): number => (
   validWordString.includes('8')
     ? getIsValidIndexWildcard(validWordString, validWordsArray)
     : getIsValidIndexNoWildcard(validWordString, validWordsArray)

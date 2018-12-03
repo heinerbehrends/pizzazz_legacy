@@ -1,4 +1,3 @@
-// @flow
 const getLetters = require('./serverLogic/randomLetters');
 const findValid = require('./serverLogic/findValidWords');
 
