@@ -1,3 +1,4 @@
+// @flow
 /* eslint react/prefer-stateless-function: off */
 // react dnd warning when using stateless component
 import React, { Component } from 'react';
@@ -11,6 +12,7 @@ import Message from './Message';
 import ScrabbleBoard from './ScrabbleBoard';
 import DragLayerTile from './DragLayerTile';
 import AppWrapper from './styled/AppStyled';
+import type { Node } from 'react';
 
 
 const HTML5toTouch = {
@@ -27,8 +29,8 @@ const HTML5toTouch = {
 };
 
 
-class App extends Component {
-  render() {
+class App extends Component<{}> {
+  render(): Node {
     return (
       <AppWrapper>
         <Message />

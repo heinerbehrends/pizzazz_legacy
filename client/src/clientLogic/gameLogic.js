@@ -1,42 +1,34 @@
 // @flow
 import { letterValues } from '../Constants';
+import type {
+  DropProps,
+  DropTarget,
+  Solution,
+  RandomOrValid,
+  } from '../actions/actionCreators';
 
 export const replaceLetter = (
-  string: string,
+  word: string,
   letter: string,
   index: number
   ): string =>
-    string
+    word
     .substring(0, index)
     .concat(letter)
-    .concat(string.substring(index + 1));
-
-type randomOrValid = 'randomLetters' | 'scrabbleBoard';
-
-type props = {
-  letter: string,
-  string: string,
-  index: number,
-  parent: randomOrValid,
-};
-
-type target = {
-  targetLetter: string,
-  targetString: string,
-  targetIndex: number,
-  targetParent: randomOrValid,
-};
+    .concat(word.substring(index + 1));
 
 const swapLetters = (
-  { letter, index }: props,
-  { targetLetter, targetString, targetIndex }: target
+  { letter, index }: DropProps,
+  { targetLetter, targetString, targetIndex }: DropTarget,
   ): string => {
   const firstMutation = replaceLetter(targetString, letter, targetIndex);
   return replaceLetter(firstMutation, targetLetter, index);
 };
 
 export const updateLetters = (
-  props: props, target: target, randomOrValid: randomOrValid
+  props: DropProps,
+  target: DropTarget,
+  randomOrValid: RandomOrValid
   ): string | false => {
   const {
     letter,
@@ -84,12 +76,7 @@ export const getMaxLengthScore = (wordArray: Array<string>): Array<string> => {
   return maxLength.filter(word => getScore(word, letterValues) === getMaxScore(maxLength));
 };
 
-type solution = {
-  solution: string,
-  name: string,
-}
-export const getWinnerSolution = (solutionArray: Array<solution>): solution => {
-  console.log(solutionArray);
+export const getWinnerSolution = (solutionArray: Array<Solution>): Solution => {
   const solutions = solutionArray.map(solution => solution.solution);
   const maxLength = solutions
     .filter(solution => solution.length === getMaxLength(solutions));
