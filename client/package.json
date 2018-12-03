@@ -1,25 +1,25 @@
 {
-  "name": "pizzazz",
+  "name": "client",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1",
     "ajv": "^6.2.1",
-    "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
-    "react": "^16.2.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
     "react-dnd-multi-backend": "^3.1.0",
     "react-dnd-touch-backend": "^0.5.1",
-    "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
-    "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "socket.io-client": "^2.1.1",
@@ -29,10 +29,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "jest": "^23.0.0-alpha.0"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
