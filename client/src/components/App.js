@@ -29,7 +29,7 @@ const HTML5toTouch = {
 };
 
 
-class App extends Component<{}> {
+export class App extends Component<{}> {
   render(): Node {
     return (
       <AppWrapper>

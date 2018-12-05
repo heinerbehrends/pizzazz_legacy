@@ -29,7 +29,7 @@ export const FormGroup = styled.div`
   -webkit-box-flex: 0;
 `;
 
-const InputStyled = styled.input`
+export const InputStyled = styled.input`
   display: inline-block;
   vertical-align: middle;
   width: auto;

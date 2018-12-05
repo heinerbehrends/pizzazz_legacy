@@ -4,7 +4,7 @@ import { getScore } from '../clientLogic/gameLogic';
 import { letterValues } from '../Constants';
 import { ButtonStyled } from './styled/ScreenNameStyled';
 
-const Button = ({ clickHandler, value }) => (
+export const Button = ({ clickHandler, value }) => (
   <ButtonStyled
     type="button"
     readOnly

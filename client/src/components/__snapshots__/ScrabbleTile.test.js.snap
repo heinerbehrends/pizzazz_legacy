@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrabbleTile /> matches the snapshot 1`] = `
+<styled.div
+  isValid={false}
+  letter="e"
+>
+  E
+  <styled.sub>
+    1
+  </styled.sub>
+</styled.div>
+`;

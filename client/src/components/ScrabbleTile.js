@@ -1,10 +1,16 @@
+// @flow
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import type { Node } from 'react';
 import { LetterStyled, NumberSub } from './styled/ScrabbleTileStyled';
 import { letterValues } from '../Constants';
 
-class ScrabbleTile extends PureComponent {
-  render() {
+type TileProps = {
+  isValid: boolean,
+  letter: string,
+};
+
+class ScrabbleTile extends PureComponent<TileProps> {
+  render(): Node {
     const { letter, isValid } = this.props;
 
     return (
@@ -17,10 +23,5 @@ class ScrabbleTile extends PureComponent {
     );
   }
 }
-
-ScrabbleTile.propTypes = {
-  isValid: PropTypes.bool.isRequired,
-  letter: PropTypes.string.isRequired,
-};
 
 export default ScrabbleTile;

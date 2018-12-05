@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { sendSolutionAction, joinGameAction } from '../actions/actionCreators';
@@ -16,7 +16,7 @@ const Interface = ({
   scrabbleBoard,
   sendSolution,
 }) => (
-  <div>
+  <Fragment>
     <ScreenName />
     <JoinButton
       canJoin={canJoin}
@@ -32,7 +32,7 @@ const Interface = ({
       scrabbleBoard={scrabbleBoard}
       sendSolution={sendSolution}
     />
-  </div>
+  </Fragment>
 );
 
 Interface.propTypes = {

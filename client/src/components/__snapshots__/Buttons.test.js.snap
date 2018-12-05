@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> matches the snapshot 1`] = `
+<Styled(styled.input)
+  autoFocus={true}
+  onClick={[MockFunction]}
+  readOnly={true}
+  type="button"
+  value="Go"
+/>
+`;
+
+exports[`<JoinButton> matches the snapshot 1`] = `
+<Button
+  clickHandler={[MockFunction]}
+  value="Join the current game"
+/>
+`;
