@@ -5,7 +5,7 @@ import {
 import { MESSAGE } from '../actions/actionTypes';
 import {
   getMaxLengthScore, getWinnerSolution,
-} from '../clientLogic/gameLogic';
+} from '../clientLogic/findWinner';
 import orderedTransition from './orderedTransition';
 
 const getSolutions = state => state.solutions;

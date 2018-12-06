@@ -1,12 +1,15 @@
 // @flow
 import { abc } from '../Constants';
-import { getRandomLetter } from './gameLogic';
+
+export const getRandomIndex = (strArr: string | Array<any>): number => Math.floor(Math.random() * strArr.length);
+
+export const getRandomLetter = (strArr: string): string => strArr[getRandomIndex(strArr)];
 
 export const getRandomAbc = (): string => getRandomLetter(abc);
 
-export const isKeyframe = (time: number, duration: number): boolean => Number.isInteger(time / duration);
+export const isKeyframe = (time: number, frameDuration: number): boolean => Number.isInteger(time / frameDuration);
 
-export const getNextLetter = (time: number, duration: number) => (time / duration) - 1;
+export const getNextLetter = (time: number, frameDuration: number) => (time / frameDuration) - 1;
 
 export const makeRandomArray = (string: string): Array<string> => string
   .split('').map(getRandomAbc);

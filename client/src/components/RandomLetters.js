@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LetterContainer from './styled/RandomLettersStyled';
+import RandomLettersStyled from './styled/RandomLettersStyled';
 import LetterRow from './LetterRow';
 
 
@@ -9,13 +9,13 @@ class RandomLetters extends PureComponent {
   render() {
     const { isDraggable, randomLetters } = this.props;
     return (
-      <LetterContainer>
+      <RandomLettersStyled>
         <LetterRow
           isDraggable={isDraggable}
           letters={randomLetters}
           parent="randomLetters"
         />
-      </LetterContainer>
+      </RandomLettersStyled>
     );
   }
 }

@@ -2,7 +2,7 @@ import { delay } from 'redux-saga';
 import { put, select, take, call } from 'redux-saga/effects'; // eslint-disable-line
 import { DECREMENT_COUNTDOWN, NEW_SOLUTION } from '../actions/actionTypes';
 import { messageAction } from '../actions/actionCreators';
-import { getMaxLength } from '../clientLogic/gameLogic';
+import { getMaxLength } from '../clientLogic/findWinner';
 
 // const getValidWords = state => state.gameData.validWords;
 const getCountdownValue = state => state.countdownValue;

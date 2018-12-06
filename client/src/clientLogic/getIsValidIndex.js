@@ -1,53 +1,39 @@
 // @flow
-const getIsValidIndexNoWildcard = (
-  string: string,
-  validWordsArray: Array<string>
-): number => string
-  .split('')
-  .reduce(
-    (acc, letter, i) => {
-      const index = i + 1;
-      if (index < 2) {
-        return 0;
-      } if (validWordsArray.includes(string.substring(0, index))) {
-        return index;
-      }
-      return Math.max(acc, 0);
-    }, 0
-  );
-
 const getRegExp = (string: string) => new RegExp(`["](${string})["]`);
-const replace8withAtoZ = (wildcardString: string) => wildcardString.split('8').join('[a-z]');
-const buildRegExObject = (wildcardString: string) => getRegExp(replace8withAtoZ(wildcardString));
+const replace8withAtoZ = (letters: string) => letters.split('8').join('[a-z]');
+const buildRegExObject = (letters: string) => getRegExp(replace8withAtoZ(letters));
+const isMatch = (wildcardLetters: string, validWords: Array<string>) => {
+  const validWordsString = JSON.stringify(validWords);
+  const potentialWords = buildRegExObject(wildcardLetters);
+  return validWordsString.match(potentialWords);
+};
 
-const getIsValidIndexWildcard = (
-  wildcardString: string,
-  validWordsArray: Array<string>
-): number => wildcardString
+// returns the 1-based index that matches the end of the longest valid word
+const getIsValidIndex = (
+  letters: string,
+  validWords: Array<string>
+): number => letters
   .split('')
   .reduce(
     (acc, letter, i) => {
       const index = i + 1;
-      if (index < 2) {
+      // don't look for 1-letter words
+      if (index <= 1) {
         return 0;
       }
-      const validWordsString = JSON.stringify(validWordsArray);
-      const substring = wildcardString.substring(0, index).toLowerCase();
-      const regEx = buildRegExObject(substring);
-      const result = validWordsString.match(regEx);
-      if (result) {
+      const potentialWord = letters.substring(0, index);
+      // if the substring includes the wildcard match it using regex
+      if (potentialWord.includes('8')) {
+        if (isMatch(potentialWord, validWords)) {
+          return index;
+        }
+      }
+      // else test if its a valid word with array.includes
+      if (validWords.includes(potentialWord)) {
         return index;
       }
       return acc;
     }, 0
   );
-
-const getIsValidIndex = (
-  validWordString: string,
-  validWordsArray: Array<string>): number => (
-  validWordString.includes('8')
-    ? getIsValidIndexWildcard(validWordString, validWordsArray)
-    : getIsValidIndexNoWildcard(validWordString, validWordsArray)
-);
 
 export default getIsValidIndex;

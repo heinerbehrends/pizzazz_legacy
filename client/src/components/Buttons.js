@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getScore } from '../clientLogic/gameLogic';
+import { getScore } from '../clientLogic/findWinner';
 import { letterValues } from '../Constants';
 import { ButtonStyled } from './styled/ScreenNameStyled';
 

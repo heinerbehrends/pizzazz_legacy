@@ -1,3 +1,4 @@
+// @flow
 export const RANDOM_LETTERS = 'RANDOM_LETTERS';
 export const END_DRAG = 'END_DRAG';
 export const REPLACE_LETTER = 'REPLACE_LETTER';

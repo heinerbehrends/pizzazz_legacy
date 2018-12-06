@@ -2,6 +2,7 @@
 /* eslint react/prefer-stateless-function: off */
 // react dnd warning when using stateless component
 import React, { Component } from 'react';
+import type { Node } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import TouchBackend from 'react-dnd-touch-backend';
@@ -12,7 +13,6 @@ import Message from './Message';
 import ScrabbleBoard from './ScrabbleBoard';
 import DragLayerTile from './DragLayerTile';
 import AppWrapper from './styled/AppStyled';
-import type { Node } from 'react';
 
 
 const HTML5toTouch = {

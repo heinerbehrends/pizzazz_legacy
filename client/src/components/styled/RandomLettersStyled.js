@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-const LetterContainer = styled.div`
+const RandomLettersStyled = styled.div`
   padding: 4.1px;
   margin: 0 auto 8vw auto;
   list-style: none;
@@ -14,4 +14,4 @@ const LetterContainer = styled.div`
   }
 `;
 
-export default LetterContainer;
+export default RandomLettersStyled;

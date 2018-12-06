@@ -16,3 +16,10 @@ exports[`<JoinButton> matches the snapshot 1`] = `
   value="Join the current game"
 />
 `;
+
+exports[`<SolutionButton /> matches the snapshot 1`] = `
+<Button
+  clickHandler={[Function]}
+  value="Play PIZZAZZ for 46 points"
+/>
+`;

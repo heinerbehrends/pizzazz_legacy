@@ -1,7 +1,7 @@
 import { put, select, take } from 'redux-saga/effects';
 import { END_DRAG } from '../actions/actionTypes';
 import { replaceLettersAction, isValidIndexAction } from '../actions/actionCreators';
-import { updateLetters } from '../clientLogic/gameLogic';
+import { updateLetters } from '../clientLogic/updateLetters';
 import { getValidWords } from './handleWinner';
 import getIsValidIndex from '../clientLogic/getIsValidIndex';
 

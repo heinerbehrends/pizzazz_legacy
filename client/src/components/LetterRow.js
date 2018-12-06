@@ -32,18 +32,6 @@ const LetterRow = ({
       </LetterContainer>
     ));
 };
-//     ? )
-//     : letters.split('')
-//       .map((letter, i) => (
-//         <LetterContainer key={i}>
-//           <ScrabbleTile
-//             letter={letter}
-//             index={i}
-//             isValid={false}
-//           />
-//         </LetterContainer>
-//       ))
-// );
 
 LetterRow.propTypes = {
   isDraggable: PropTypes.bool.isRequired,

@@ -18,14 +18,12 @@ export const startGameAction = (game: Game) => ({
 export type RandomOrValid = 'randomLetters' | 'scrabbleBoard';
 
 export type DropProps = {
-  letter: string,
   string: string,
   index: number,
   parent: RandomOrValid,
 };
 
 export type DropTarget = {
-  targetLetter: string,
   targetString: string,
   targetIndex: number,
   targetParent: RandomOrValid,

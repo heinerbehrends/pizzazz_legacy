@@ -6,7 +6,7 @@ import {
   FormContainer, Form, FormGroup, HiddenLabel, ButtonForm, TextInput,
 } from './styled/ScreenNameStyled';
 
-class ScreenName extends Component {
+export class ScreenName extends Component {
   constructor(props) {
     super(props);
     this.state = { screenName: '' };
@@ -38,7 +38,7 @@ class ScreenName extends Component {
           autoComplete="off"
           onSubmit={this.sendScreenName}
         >
-          <HiddenLabel htmlFor="enter-screen-name">Screen name</HiddenLabel>
+          <HiddenLabel htmlFor="enter-screen-name">Enter screen name</HiddenLabel>
           <FormGroup>
             <TextInput
               placeholder="Enter screen name to start"
