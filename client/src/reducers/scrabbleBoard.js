@@ -9,11 +9,11 @@ const scrabbleBoardReducer = (state = '0000000', action) => {
     case END_GAME:
       return '0000000';
     case REPLACE_LETTER:
-      return action.validWord ? action.validWord : state;
+      return action.scrabbleBoard ? action.scrabbleBoard : state;
     case SEND_SOLUTION:
       return state
         .split('')
-        .map((letter, i) => (i <= action.solution.length ? '0' : letter))
+        .map((letter, i) => (i < action.solution.length ? '0' : letter))
         .join('');
     default:
       return state;

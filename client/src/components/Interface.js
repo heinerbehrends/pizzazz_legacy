@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sendSolutionAction, joinGameAction } from '../actions/actionCreators';
+import { sendNameAction, sendSolutionAction, joinGameAction } from '../actions/actionCreators';
 import ScreenName from './ScreenName';
 import { JoinButton, SolutionButton } from './Buttons';
 import ProgressBar from './ProgressBar';
 
 const Interface = ({
+  sendName,
+  screenName,
   canJoin,
   countdownValue,
   joinGame,
@@ -17,7 +19,10 @@ const Interface = ({
   sendSolution,
 }) => (
   <Fragment>
-    <ScreenName />
+    <ScreenName
+      sendName={sendName}
+      screenName={screenName}
+    />
     <JoinButton
       canJoin={canJoin}
       countdownValue={countdownValue}
@@ -36,6 +41,8 @@ const Interface = ({
 );
 
 Interface.propTypes = {
+  screenName: PropTypes.string.isRequired,
+  sendName: PropTypes.func.isRequired,
   canJoin: PropTypes.bool.isRequired,
   countdownValue: PropTypes.number.isRequired,
   joinGame: PropTypes.func.isRequired,
@@ -47,6 +54,7 @@ Interface.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  screenName: state.screenName,
   canJoin: state.canJoin,
   countdownValue: state.countdownValue,
   duration: state.countdownValue,
@@ -56,6 +64,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  sendName: name => dispatch(sendNameAction(name)),
   joinGame: () => dispatch(joinGameAction()),
   sendSolution: (word, score, index) => dispatch(sendSolutionAction(word, score, index)),
 });

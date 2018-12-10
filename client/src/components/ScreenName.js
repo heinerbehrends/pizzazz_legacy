@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sendNameAction } from '../actions/actionCreators';
 import {
   FormContainer, Form, FormGroup, HiddenLabel, ButtonForm, TextInput,
 } from './styled/ScreenNameStyled';
 
-export class ScreenName extends Component {
+export default class ScreenName extends Component {
   constructor(props) {
     super(props);
     this.state = { screenName: '' };
@@ -60,13 +58,3 @@ ScreenName.propTypes = {
   sendName: PropTypes.func.isRequired,
   screenName: PropTypes.string.isRequired,
 };
-
-const mapStateToProps = state => ({
-  screenName: state.screenName,
-});
-
-const mapDispatchToProps = dispatch => ({
-  sendName: name => dispatch(sendNameAction(name)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScreenName);

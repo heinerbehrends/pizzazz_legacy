@@ -1,6 +1,12 @@
 import { START_GAME } from '../actions/actionTypes';
 
-const gameDataReducer = (state = { randomLetters: '', validWords: [] }, action) => {
+export const initialState = {
+  randomLetters: '',
+  validWords: [],
+  seconds: 0,
+};
+
+const gameDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_GAME:
       return action.game;

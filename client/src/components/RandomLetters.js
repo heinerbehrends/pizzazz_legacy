@@ -1,24 +1,18 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RandomLettersStyled from './styled/RandomLettersStyled';
 import LetterRow from './LetterRow';
 
-
-class RandomLetters extends PureComponent {
-  render() {
-    const { isDraggable, randomLetters } = this.props;
-    return (
-      <RandomLettersStyled>
-        <LetterRow
-          isDraggable={isDraggable}
-          letters={randomLetters}
-          parent="randomLetters"
-        />
-      </RandomLettersStyled>
-    );
-  }
-}
+const RandomLetters = ({ isDraggable, randomLetters }) => (
+  <RandomLettersStyled>
+    <LetterRow
+      isDraggable={isDraggable}
+      letters={randomLetters}
+      parent="randomLetters"
+    />
+  </RandomLettersStyled>
+);
 
 RandomLetters.propTypes = {
   isDraggable: PropTypes.bool.isRequired,

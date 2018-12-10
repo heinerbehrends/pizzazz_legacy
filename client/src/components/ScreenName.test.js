@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ScreenName } from './ScreenName';
+import ScreenName from './ScreenName';
 import 'jest-styled-components';
 
 describe('<ScreenName />', () => {

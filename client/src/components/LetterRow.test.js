@@ -15,7 +15,6 @@ describe('<LetterRow />', () => {
         isValidIndex={7}
       />),
     );
-    console.log(wrapper.find(ScrabbleTile).debug());
     expect(wrapper.find(ScrabbleTile)).toHaveLength(7);
   });
   it('renders DraggableTiles if isDraggable props is true', () => {

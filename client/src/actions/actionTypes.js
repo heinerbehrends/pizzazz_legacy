@@ -7,7 +7,6 @@ export const SEND_SOLUTION = 'SEND_SOLUTION';
 export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';
 export const JOIN_GAME = 'JOIN_GAME';
-export const SHOW_WINNER = 'SHOW_WINNER';
 export const DECREMENT_COUNTDOWN = 'DECREMENT_COUNTDOWN';
 export const NEW_SOLUTION = 'NEW_SOLUTION';
 export const SEND_NAME = 'SEND_NAME';

@@ -1,7 +1,7 @@
 // @flow
 import {
   REPLACE_LETTER, IS_VALID, SEND_SOLUTION, END_DRAG,
-  SHOW_WINNER, START_GAME, SEND_NAME, JOIN_GAME, MESSAGE,
+  START_GAME, SEND_NAME, JOIN_GAME, MESSAGE,
 } from './actionTypes';
 
 export type Game = {
@@ -35,10 +35,10 @@ export const endDragAction = (props: DropProps, target: DropTarget) => ({
   target,
 });
 
-export const replaceLettersAction = (randomLetters: string, validWord: string) => ({
+export const replaceLettersAction = (randomLetters: string, scrabbleBoard: string) => ({
   type: REPLACE_LETTER,
   randomLetters,
-  validWord,
+  scrabbleBoard,
 });
 
 export const isValidIndexAction = (index: number) => ({
@@ -55,12 +55,6 @@ export const sendSolutionAction = (solution: Solution) => ({
   type: SEND_SOLUTION,
   solution,
 });
-
-export const showWinnerAction = (game: Game) => ({
-  type: SHOW_WINNER,
-  game,
-});
-
 
 export const sendNameAction = (name: string) => ({
   type: SEND_NAME,
