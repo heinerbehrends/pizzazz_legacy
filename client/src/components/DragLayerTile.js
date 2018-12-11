@@ -14,21 +14,21 @@ const layerStyles = {
   maxWidth: '500px',
 };
 
-function getPositionStyles({ currentOffset }) {
-  if (!currentOffset) {
+export const getPositionStyles = ({ currentOffset }) => {
+  if (currentOffset) {
+    const { x, y } = currentOffset;
+    const transform = `translate(${x}px, ${y}px)`;
+
     return {
-      display: 'none',
+      transform,
+      WebkitTransform: transform,
+      width: '13.68%',
     };
   }
-  const { x, y } = currentOffset;
-  const transform = `translate(${x}px, ${y}px)`;
-
   return {
-    transform,
-    WebkitTransform: transform,
-    width: '13.68%',
+    display: 'none',
   };
-}
+};
 
 /* eslint react/prefer-stateless-function: off */
 class DragLayerTile extends Component {
@@ -36,16 +36,16 @@ class DragLayerTile extends Component {
     const { item, isDragging } = this.props;
     const positionStyles = getPositionStyles(this.props);
 
-    if (!isDragging) {
-      return null;
-    }
-    return (
-      <div style={layerStyles}>
-        <div style={positionStyles}>
-          <ScrabbleTile letter={item.sourceLetter} isValid={false} />
+    if (isDragging) {
+      return (
+        <div style={layerStyles}>
+          <div style={positionStyles}>
+            <ScrabbleTile letter={item.sourceLetter} isValid={false} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 
@@ -56,7 +56,6 @@ DragLayerTile.defaultProps = {
 
 DragLayerTile.propTypes = {
   item: PropTypes.shape({
-    sourceIndex: PropTypes.number.isRequired,
     sourceLetter: PropTypes.string.isRequired,
   }),
   currentOffset: PropTypes.shape({

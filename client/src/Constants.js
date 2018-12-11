@@ -6,3 +6,5 @@ export const letterValues = {
 };
 
 export const abc = 'abcdefghijklmnopqrstuvwxyz';
+
+export const gameDuration = 40;

@@ -8387,6 +8387,14 @@ react-dnd-preview@^3.1.11:
   dependencies:
     prop-types "^15.6.2"
 
+react-dnd-test-backend@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-dnd-test-backend/-/react-dnd-test-backend-7.0.2.tgz#b92171d1dc643ea1b19c867ceacaf7d2765c3d21"
+  integrity sha512-M5CuMEoaJecQNsvWKdzsWxtEsuCrI1w/JqU8/xbTKU0+/9p2xayzkb19m3MBalaCJtuRjmWLWl3bVfoF3efdXg==
+  dependencies:
+    dnd-core "^7.0.2"
+    lodash "^4.17.11"
+
 react-dnd-touch-backend@^0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-dnd-touch-backend/-/react-dnd-touch-backend-0.5.2.tgz#188759fc941f38bbadc7a7e2a733eccce23434cc"

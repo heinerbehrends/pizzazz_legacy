@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { gameDuration } from '../../Constants';
 import {
   white, beige, pink, spacer, shadow,
 } from './styleConstants';
@@ -24,7 +25,7 @@ export const Bar = styled.div`
   animation-timing-function: linear;
   animation-duration: ${props => props.duration}s;
   @keyframes status-bar {
-  from { width: ${props => 100 - props.duration * 2.5}%; }
-  to { width: 100%; }
+    from { width: ${props => 100 - (props.duration / gameDuration) * 100}%; }
+    to { width: 100%; }
   }
 `;

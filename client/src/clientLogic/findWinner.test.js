@@ -1,4 +1,3 @@
-// @flow
 import { letterValues } from '../Constants';
 import {
   getScore,
@@ -6,11 +5,10 @@ import {
   getMaxLength,
   getMaxLengthScore,
   getWinnerSolution,
-
 } from './findWinner';
 
 describe('getScore', () => {
-  it('return the correct score for a given word', () => {
+  it('returns the correct score for a given word', () => {
     expect(getScore('pizzazz', letterValues)).toEqual(46);
     expect(getScore('pizzzaz', letterValues)).toEqual(55);
   });

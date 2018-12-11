@@ -23,25 +23,27 @@ describe('<JoinButton>', () => {
     const wrapper = shallow((
       <JoinButton
         countdownValue={21}
-        canJoin={true}
+        canJoin
         joinGame={mockCallback}
       />
     ));
-    expect(wrapper.find(Button).exists()).toEqual(true);
+    expect(wrapper.find(Button)).toHaveLength(1);
   });
+
   it('renders a button with the right value when canJoin is true and countdownValue > 20', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <JoinButton
         countdownValue={21}
-        canJoin={true}
+        canJoin
         joinGame={mockCallback}
-        />
+      />
     ));
     expect(wrapper.dive().props().value).toEqual('Join the current game');
-  })
+  });
+
   it('renders nothing if canJoin is false', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <JoinButton
         countdownValue={21}
@@ -50,13 +52,14 @@ describe('<JoinButton>', () => {
       />
     ));
     expect(wrapper.type()).toEqual(null);
-  })
+  });
+
   it('renders nothing if countdownValue <= 20', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <JoinButton
         countdownValue={20}
-        canJoin={true}
+        canJoin
         joinGame={mockCallback}
       />
     ));
@@ -64,11 +67,11 @@ describe('<JoinButton>', () => {
   });
 
   it('matches the snapshot', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <JoinButton
         countdownValue={21}
-        canJoin={true}
+        canJoin
         joinGame={mockCallback}
       />
     ));
@@ -78,7 +81,7 @@ describe('<JoinButton>', () => {
 
 describe('<SolutionButton />', () => {
   it('renders a <Button /> with the valid word and its score', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <SolutionButton
         isValidIndex={7}
@@ -96,8 +99,9 @@ describe('<SolutionButton />', () => {
     expect(wrapper.dive().props().value).toEqual('Play PIZZAZZ for 46 points');
     expect(wrapper2.dive().props().value).toEqual('Play PIZZA for 26 points');
   });
+
   it('does not render a <Button /> when isValidIndex is zero', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <SolutionButton
         isValidIndex={0}
@@ -107,8 +111,9 @@ describe('<SolutionButton />', () => {
     ));
     expect(wrapper.find(Button).exists()).toEqual(false);
   });
+
   it('matches the snapshot', () => {
-    const mockCallback = jest.fn();
+    const mockCallback = el => el;
     const wrapper = shallow((
       <SolutionButton
         isValidIndex={7}

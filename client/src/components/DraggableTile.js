@@ -12,11 +12,10 @@ import { endDragAction } from '../actions/actionCreators';
 class DraggableTile extends Component {
   componentDidMount() {
     const { connectDragPreview } = this.props;
-    if (connectDragPreview) {
-      connectDragPreview(getEmptyImage(), {
-        captureDraggingState: true,
-      });
-    }
+    connectDragPreview(
+      getEmptyImage(),
+      { captureDraggingState: true },
+    );
   }
 
   render() {
@@ -47,7 +46,6 @@ const letterSource = {
   beginDrag({ letter, index }) {
     return {
       sourceLetter: letter,
-      sourceIndex: index,
     };
   },
   endDrag(props, monitor) {
@@ -58,12 +56,14 @@ const letterSource = {
     }
   },
 };
+
 const letterTarget = {
   drop({
-    letter, string, index, parent,
+    string,
+    index,
+    parent,
   }) {
     return {
-      targetLetter: letter,
       targetString: string,
       targetIndex: index,
       targetParent: parent,
@@ -97,6 +97,11 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(null, mapDispatchToProps),
+  DragSource('letter', letterSource, dragCollect),
+  DropTarget('letter', letterTarget, dropCollect),
+)(DraggableTile);
+
+export const UnconnectedDraggableTile = compose(
   DragSource('letter', letterSource, dragCollect),
   DropTarget('letter', letterTarget, dropCollect),
 )(DraggableTile);

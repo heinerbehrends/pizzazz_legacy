@@ -12,7 +12,7 @@ exports[`<Button /> matches the snapshot 1`] = `
 
 exports[`<JoinButton> matches the snapshot 1`] = `
 <Button
-  clickHandler={[MockFunction]}
+  clickHandler={[Function]}
   value="Join the current game"
 />
 `;

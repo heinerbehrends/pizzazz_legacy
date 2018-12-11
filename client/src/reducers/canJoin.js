@@ -1,4 +1,3 @@
-// @flow
 import { SEND_NAME, START_GAME } from '../actions/actionTypes';
 
 const canJoinReducer = (state = false, action) => {
