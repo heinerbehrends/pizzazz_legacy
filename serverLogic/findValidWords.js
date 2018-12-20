@@ -1,5 +1,4 @@
 const wordScoreDict = require('./word_score_dict.json');
-const getCombinations = require('./getCombinations');
 
 const sortString = string => string
   .split('')
@@ -31,6 +30,22 @@ const sortedWordsDict = getSortedWordsDict(wordScoreDict);
 /* input: a string to search for and a sorted key dictionary
 ouput: an array of all words in the dictionary that are combinations of the letters in the string */
 const findWords = (randomLetters, sortedDict) => {
+  const getCombinations = (string) => {
+    const combine = (active, rest, array) => {
+      if (!active && !rest) {
+        return null;
+      } if (!rest) {
+        array.push(active);
+      } else {
+        combine(active + rest[0], rest.slice(1), array);
+        combine(active, rest.slice(1), array);
+      }
+      const resultArray = array.filter(word => word.length > 1);
+      return [...new Set(resultArray)];
+    };
+    return combine('', string, []);
+  };
+
   const sortedRandomLetters = sortString(randomLetters);
   const sortedCombinations = getCombinations(sortedRandomLetters);
   const validWords = sortedCombinations

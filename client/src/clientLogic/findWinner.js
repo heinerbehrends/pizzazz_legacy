@@ -1,41 +1,35 @@
 // @flow
+import {
+  addIndex, curry, reduce, compose, map, add, prop, filter, equals, find, max
+} from 'ramda';
+import type { Solution } from '../actions/actionCreators';
 import { letterValues } from '../Constants';
-import type {
-  Solution,
-  } from '../actions/actionCreators';
 
-export const getScore = (
-  word: string,
-  letterValuesDict: { property: number }
-  ): number =>
-  word.split('')
-  .map((letter, index) => (index === 4 ? letterValuesDict[letter] * 2 : letterValuesDict[letter]))
-  .reduce((sum, element) => element + sum);
+const getLetterScore = curry((
+  letterValuesDict: { property: number },
+  letter: string,
+  index: number,
+): number => (index === 4 ? letterValuesDict[letter] * 2 : letterValuesDict[letter]));
 
-export const getMaxScore = (wordArray: Array<string>): number => wordArray
-  .map(word => getScore(word, letterValues))
-  .reduce((max, value) => Math.max(max, value));
+const getStdLetterScore = getLetterScore(letterValues);
+const mapI = addIndex(map);
+const mapScore = mapI(getStdLetterScore);
+const addScore = reduce(add, 0);
 
-export const getMaxLength = (wordArray: Array<string>): number => wordArray
-  .map(word => word.length)
-  .reduce((max, value) => Math.max(max, value));
+export const getScore = compose(addScore, mapScore);
+export const getMaxScore = compose(reduce(max, 0), map(getScore));
+export const getMaxLength = compose(reduce(max, 0), map(prop('length')));
 
-export const getMaxLengthScore = (wordArray: Array<string>): Array<string> => {
-  const maxLength = wordArray.filter(word => word.length === getMaxLength(wordArray));
-  return maxLength.filter(word => getScore(word, letterValues) === getMaxScore(maxLength));
-};
+const isMaxLength = curry((array, string) => equals(getMaxLength(array), prop('length', string)));
+const isMaxScore = curry((array, string) => equals(getMaxScore(array), getScore(string)));
 
-export const getWinnerSolution = (solutionArray: Array<Solution>): Solution => {
-  const solutions = solutionArray.map(solution => solution.solution);
-  const maxLengthSolutions = solutions.filter(
-    solution => solution.length === getMaxLength(solutions)
-  );
-  const maxLengthScoreSolution = maxLengthSolutions.filter(
-    word => getScore(word, letterValues) === getMaxScore(maxLengthSolutions)
-  );
-  const winnerSolution = solutionArray.filter(
-    solution => solution.solution === maxLengthScoreSolution[0]
-    );
+const filterMaxLength = (array: Array<string>): Array<string> => filter(isMaxLength(array), array);
+const filterMaxScore = (array: Array<string>): Array<string> => filter(isMaxScore(array), array);
 
-  return winnerSolution[0];
-};
+export const getMaxLengthScore = compose(filterMaxScore, filterMaxLength);
+
+const isWinnerSolution = curry((bestWords, solution) => bestWords.includes(solution.solution));
+const getBestSolutions = compose(getMaxLengthScore, map(prop('solution')));
+export const getWinnerSolution = (
+  solutions: Array<Solution>,
+): Solution => find(isWinnerSolution(getBestSolutions(solutions)), solutions);

@@ -4,9 +4,11 @@ import {
 } from 'redux-saga/effects';
 import { DECREMENT_COUNTDOWN } from '../actions/actionTypes';
 
+export const getCountdownValue = state => state.countdownValue;
+
 function* handleCountdown() {
   while (true) {
-    const value = yield select(state => state.countdownValue);
+    const value = yield select(getCountdownValue);
     if (value === 0) {
       return;
     }
