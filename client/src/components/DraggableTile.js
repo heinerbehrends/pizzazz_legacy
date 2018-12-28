@@ -59,10 +59,12 @@ const letterSource = {
 
 const letterTarget = {
   drop({
+    string,
     index,
     parent,
   }) {
     return {
+      targetString: string,
       targetIndex: index,
       targetParent: parent,
     };

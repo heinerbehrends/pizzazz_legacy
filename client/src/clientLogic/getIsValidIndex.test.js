@@ -1,4 +1,4 @@
-import getIsValidIndex from './getIsValidIndex'
+import getIsValidIndex from './getIsValidIndex';
 
 const validWordsArray = [
   'pizzazz',

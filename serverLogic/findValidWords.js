@@ -66,15 +66,14 @@ const findWordsWildcard = (wildcardString, sortedDict) => {
   const string = removeWildcard(wildcardString);
   const possibleStrings = addAtoZ(string);
   const validWords = possibleStrings
-    .map(sortedString => findWords(sortedString, sortedDict));
+    .map(letters => findWords(letters, sortedDict));
   return [...new Set([].concat(...validWords))];
 };
 
-/* eslint arrow-body-style: off */
-const findAllValidWords = (randomLetters, sortedDict) => {
-  return randomLetters.includes('8')
+const findAllValidWords = (randomLetters, sortedDict) => (
+  randomLetters.includes('8')
     ? findWordsWildcard(randomLetters, sortedDict)
-    : findWords(randomLetters, sortedDict);
-};
+    : findWords(randomLetters, sortedDict)
+);
 
 module.exports = { findAllValidWords, sortedWordsDict };
