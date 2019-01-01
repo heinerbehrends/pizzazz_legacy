@@ -1,6 +1,12 @@
 module.exports = {
-    "extends": "airbnb",
-    "rules": {
-      "react/jsx-filename-extension": "off",
-    }
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype",
+    "babel",
+    "jest"
+  ]
 };
