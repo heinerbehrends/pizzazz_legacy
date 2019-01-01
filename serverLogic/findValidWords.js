@@ -1,62 +1,60 @@
-const wordScoreDict = require('./word_score_dict.json');
+// @flow
+import fs from 'fs';
+import {
+  comparator, compose, join, sort, splitEvery,
+  append, reject, gt, length, toString,
+  split, filter, has, __, prop, map, flatten,
+} from 'ramda';
+import { getCombinations } from './helperFunctions';
 
-const sortString = string => string
-  .split('')
-  .sort()
-  .join('');
+const wordListFile = fs.readFileSync('serverLogic/twl2014');
 
-/* input: an object in which the keys are all valid words for the app.
-output: an object in which the keys are the words of the dictionary ordered
-alphabetically and the values are all valid words that are anagrams of the keys */
-const getSortedWordsDict = dict => Object.keys(dict)
-  .reduce((acc, word) => {
-    const sortedWord = sortString(word);
-    const sortedWordsDict = acc;
+const parseLimit7 = compose(
+  reject(el => gt(length(el), 7)),
+  split('\n'),
+  toString,
+);
 
-    if ((sortedWord in sortedWordsDict)) {
-      if (typeof sortedWordsDict[sortedWord] === 'string') {
-        sortedWordsDict[sortedWord] = [sortedWordsDict[sortedWord], word];
-      } else {
-        sortedWordsDict[sortedWord].push(word);
-      }
-    } else {
-      sortedWordsDict[sortedWord] = word;
-    }
-    return sortedWordsDict;
-  }, {});
+const wordList = parseLimit7(wordListFile);
 
-const sortedWordsDict = getSortedWordsDict(wordScoreDict);
+const byAlphabet = comparator((a, b) => a < b);
+const sortABC = compose(
+  join(''),
+  sort(byAlphabet),
+  splitEvery(1),
+);
 
+const associateSorted = (dict: Object, string: string): Object => {
+  const resultDict = dict;
+  resultDict[sortABC(string)] = append(string, dict[sortABC(string)]);
+  return resultDict;
+};
+const getSortedWordsDict = wordArray => (
+  wordArray.reduce(
+    associateSorted,
+    {},
+  )
+);
+
+const sortedWordsDict = getSortedWordsDict(wordList);
+
+const isInSortedDict = has(__, sortedWordsDict);
+const getUnsortedAnagrams = prop(__, sortedWordsDict);
 /* input: a string to search for and a sorted key dictionary
 ouput: an array of all words in the dictionary that are combinations of the letters in the string */
-const findWords = (randomLetters, sortedDict) => {
-  const getCombinations = (string) => {
-    const combine = (active, rest, array) => {
-      if (!active && !rest) {
-        return null;
-      } if (!rest) {
-        array.push(active);
-      } else {
-        combine(active + rest[0], rest.slice(1), array);
-        combine(active, rest.slice(1), array);
-      }
-      const resultArray = array.filter(word => word.length > 1);
-      return [...new Set(resultArray)];
-    };
-    return combine('', string, []);
-  };
+const findWords = compose(
+  flatten,
+  map(getUnsortedAnagrams),
+  filter(isInSortedDict),
+  getCombinations,
+  sortABC,
+);
 
-  const sortedRandomLetters = sortString(randomLetters);
-  const sortedCombinations = getCombinations(sortedRandomLetters);
-  const validWords = sortedCombinations
-    .filter(combination => combination in sortedDict)
-    .map(validCombination => sortedWordsDict[validCombination]);
-  return [].concat(...validWords);
-};
 
 const removeWildcard = string => string.split('8').join('');
 const abc = 'abcdefghijklmnopqrstuvwxyz';
-const addAtoZ = string => abc.split('')
+const addAtoZ = string => abc
+  .split('')
   .map(letter => `${string}${letter}`);
 
 /* removes the wildcard, adds all the letters and than runs findWords
@@ -70,10 +68,10 @@ const findWordsWildcard = (wildcardString, sortedDict) => {
   return [...new Set([].concat(...validWords))];
 };
 
-const findAllValidWords = (randomLetters, sortedDict) => (
+const findAllValidWords = (randomLetters: string, sortedDict: Array<string>): Array<string> => (
   randomLetters.includes('8')
     ? findWordsWildcard(randomLetters, sortedDict)
     : findWords(randomLetters, sortedDict)
 );
-
+console.log(findWords('pizzazz', sortedWordsDict))
 module.exports = { findAllValidWords, sortedWordsDict };
