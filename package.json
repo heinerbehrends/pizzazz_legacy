@@ -34,7 +34,8 @@
   },
   "scripts": {
     "flow": "flow",
-    "start": "nodemon --exec babel-node index",
+    "dev": "nodemon --exec babel-node index",
+    "start": "babel-node index",
     "heroku-postbuild": "cd client && yarn install && yarn build"
   }
 }
