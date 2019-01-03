@@ -5,3 +5,5 @@ export const letterDistributionStd = {
 };
 
 export const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+export const abc = 'abcdefghijklmnopqrstuvwxyz';

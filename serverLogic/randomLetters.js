@@ -1,8 +1,6 @@
 import {
-  compose, map, includes, __,
-  filter, complement, reject,
-  replace, equals, prop, countBy,
-  when, addIndex,
+  compose, map, includes, __, filter, complement, reject,
+  replace, equals, prop, countBy, when, addIndex,
 } from 'ramda';
 import { shuffle, makeBagOfLetters } from './helperFunctions';
 import { letterDistributionStd, vowels } from '../Constants';
@@ -11,19 +9,25 @@ const bagOfLetters = makeBagOfLetters(letterDistributionStd);
 
 const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
 const grabTwoOrThree = () => (Math.random() < 0.7 ? 3 : 2);
-
-const isVowel = includes(__, vowels);
 const grabRandom = array => array[getRandomIndex(array)];
 
 const getRandomVowel = () => compose(
   grabRandom,
-  filter(isVowel),
+  filter(includes(__, vowels)),
 )(bagOfLetters);
 
 const getRandomConsonant = () => compose(
   grabRandom,
-  filter(complement(isVowel)),
+  filter(complement(includes(__, vowels))),
 )(bagOfLetters);
+
+const grabTwoOrThreeVowels = (letter, index) => (
+  index < grabTwoOrThree()
+    ? getRandomVowel()
+    : getRandomConsonant()
+);
+
+const indexedMap = addIndex(map);
 
 const hasTwoWildcards = compose(
   equals(2),
@@ -31,15 +35,10 @@ const hasTwoWildcards = compose(
   countBy(el => equals(el, '8')),
 );
 
-const replaceWildcard = replace('8',
-  grabRandom(reject(el => el === '8', bagOfLetters)));
-
-const grabTwoOrThreeVowels = (letter, index) => (
-  index < grabTwoOrThree()
-    ? getRandomVowel()
-    : getRandomConsonant()
+const replaceWildcard = replace(
+  '8',
+  grabRandom(reject(el => el === '8', bagOfLetters)),
 );
-const indexedMap = addIndex(map);
 
 const makeRandomLetters = compose(
   when(hasTwoWildcards, replaceWildcard),
@@ -47,4 +46,4 @@ const makeRandomLetters = compose(
   () => indexedMap(grabTwoOrThreeVowels, Array(7)),
 );
 
-module.exports = { makeRandomLetters };
+export default makeRandomLetters;

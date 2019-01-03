@@ -1,11 +1,10 @@
-// @flow
 import {
   mapObjIndexed, compose, flatten,
   values, repeat, splitEvery,
 } from 'ramda';
 
 // Fisher-Yates algorithm
-export const shuffle = (arr: Array<string>): Array<string> => {
+export const shuffle = arr => {
   const array = arr;
   for (let i = 0; i < array.length; i += 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -25,7 +24,7 @@ export const makeBagOfLetters = compose(
   ),
 );
 
-export const getCombinations = (string: string) => {
+export const getCombinations = string => {
   const combine = (active, rest, array) => {
     if (!active && !rest) {
       return null;
