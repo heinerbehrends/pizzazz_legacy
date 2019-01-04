@@ -32,8 +32,12 @@
     "jest": "^23.6.0",
     "nodemon": "^1.18.9"
   },
+  "jest": {
+    "testPathIgnorePatterns": ["<rootDir>/client", "/node_modules/"]
+  },
   "scripts": {
     "flow": "flow",
+    "test": "jest",
     "start": "nodemon --exec babel-node index",
     "heroku-postbuild": "cd client && yarn install && yarn build"
   }
