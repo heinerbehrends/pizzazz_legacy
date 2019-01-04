@@ -1,7 +1,5 @@
-import {
-  compose, map, includes, __, filter, complement, reject,
-  replace, equals, prop, countBy, when, addIndex,
-} from 'ramda';
+/* eslint no-underscore-dangle: off */
+import * as R from 'ramda';
 import { shuffle, makeBagOfLetters } from './helperFunctions';
 import { letterDistributionStd, vowels } from '../Constants';
 
@@ -11,14 +9,14 @@ const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
 const grabTwoOrThree = () => (Math.random() < 0.7 ? 3 : 2);
 const grabRandom = array => array[getRandomIndex(array)];
 
-const getRandomVowel = () => compose(
+const getRandomVowel = () => R.pipe(
+  R.filter(R.includes(R.__, vowels)),
   grabRandom,
-  filter(includes(__, vowels)),
 )(bagOfLetters);
 
-const getRandomConsonant = () => compose(
+const getRandomConsonant = () => R.pipe(
+  R.filter(R.complement(R.includes(R.__, vowels))),
   grabRandom,
-  filter(complement(includes(__, vowels))),
 )(bagOfLetters);
 
 const grabTwoOrThreeVowels = (letter, index) => (
@@ -27,23 +25,24 @@ const grabTwoOrThreeVowels = (letter, index) => (
     : getRandomConsonant()
 );
 
-const indexedMap = addIndex(map);
+const indexedMap = R.addIndex(R.map);
 
-const hasTwoWildcards = compose(
-  equals(2),
-  prop('true'),
-  countBy(el => equals(el, '8')),
+const hasTwoWildcards = R.pipe(
+  R.countBy(el => R.equals(el, '8')),
+  R.prop('true'),
+  R.equals(2),
 );
 
-const replaceWildcard = replace(
+const replaceWildcard = R.replace(
   '8',
-  grabRandom(reject(el => el === '8', bagOfLetters)),
+  grabRandom(R.reject(el => el === '8', bagOfLetters)),
 );
 
-const makeRandomLetters = compose(
-  when(hasTwoWildcards, replaceWildcard),
-  shuffle,
+const makeRandomLetters = R.pipe(
   () => indexedMap(grabTwoOrThreeVowels, Array(7)),
+  shuffle,
+  R.join(''),
+  R.when(hasTwoWildcards, replaceWildcard),
 );
 
 export default makeRandomLetters;

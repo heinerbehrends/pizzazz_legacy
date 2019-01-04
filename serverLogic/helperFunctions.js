@@ -1,30 +1,28 @@
-import {
-  mapObjIndexed, compose, flatten,
-  values, repeat, splitEvery,
-} from 'ramda';
+import * as R from 'ramda';
 
-// Fisher-Yates algorithm
-export const shuffle = arr => {
-  const array = arr;
-  for (let i = 0; i < array.length; i += 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array.join('');
+export const shuffle = (arr) => {
+  if (arr.length === 1) return arr;
+  const rand = Math.floor(Math.random() * arr.length);
+  return [
+    arr[rand],
+    ...shuffle(arr.filter((_, i) => i !== rand)),
+  ];
 };
 
-export const makeBagOfLetters = compose(
-  flatten,
-  values,
-  mapObjIndexed(
-    compose(
-      splitEvery(1),
-      (number, letter) => repeat(letter, number),
+export const makeBagOfLetters = (
+  R.pipe(
+    R.mapObjIndexed(
+      R.pipe(
+        R.flip(R.repeat),
+        R.splitEvery(1),
+      ),
     ),
-  ),
+    R.values,
+    R.flatten,
+  )
 );
 
-export const getCombinations = string => {
+export const getCombinations = (string) => {
   const combine = (active, rest, array) => {
     if (!active && !rest) {
       return null;
@@ -34,8 +32,8 @@ export const getCombinations = string => {
       combine(active + rest[0], rest.slice(1), array);
       combine(active, rest.slice(1), array);
     }
-    const resultArray = array.filter(word => word.length > 1);
-    return [...new Set(resultArray)];
+    const combinations = array.filter(combination => combination.length > 1);
+    return [...new Set(combinations)];
   };
   return combine('', string, []);
 };

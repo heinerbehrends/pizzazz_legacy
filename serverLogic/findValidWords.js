@@ -1,37 +1,35 @@
-import {
-  compose, filter, has, __, prop, map, flatten,
-  replace, concat, uniq, ifElse, contains,
-} from 'ramda';
+/* eslint no-underscore-dangle: off */
+import * as R from 'ramda';
 import sortedWordsDict, { sortABC } from './createSortedDict';
 import { getCombinations } from './helperFunctions';
 import { abc } from '../Constants';
 
-const isInSortedDict = has(__, sortedWordsDict);
-const getValidAnagrams = prop(__, sortedWordsDict);
+const isInSortedDict = R.has(R.__, sortedWordsDict);
+const getValidAnagrams = R.prop(R.__, sortedWordsDict);
 
-const findWords = compose(
-  flatten,
-  map(getValidAnagrams),
-  filter(isInSortedDict),
-  getCombinations,
+const findWords = R.pipe(
   sortABC,
+  getCombinations,
+  R.filter(isInSortedDict),
+  R.map(getValidAnagrams),
+  R.flatten,
 );
 
-const addABC = string => map(concat(__, string), abc);
+const addABC = string => R.map(R.concat(R.__, string), abc);
 
 const findWordsWildcard = (
-  compose(
-    uniq,
-    flatten,
-    map(findWords),
+  R.pipe(
+    R.replace('8', ''),
     addABC,
-    replace('8', ''),
+    R.map(findWords),
+    R.flatten,
+    R.uniq,
   )
 );
 
 const findAllValidWords = (
-  ifElse(
-    contains('8'),
+  R.ifElse(
+    R.contains('8'),
     findWordsWildcard,
     findWords,
   )

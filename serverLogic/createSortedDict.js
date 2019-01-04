@@ -1,33 +1,30 @@
 import fs from 'fs';
-import {
-  comparator, compose, join, sort, splitEvery,
-  append, reject, gt, length, toString, split,
-} from 'ramda';
+import * as R from 'ramda';
 
 const wordListFile = fs.readFileSync('serverLogic/twl2014');
 
-const parseLimit7 = compose(
-  reject(el => gt(length(el), 7)),
-  split('\n'),
-  toString,
+export const parseLimit7 = R.pipe(
+  R.toString,
+  R.split('\n'),
+  R.reject(el => R.gt(R.length(el), 7)),
 );
 
-const wordList = parseLimit7(wordListFile);
+const wordList = parseLimit7((wordListFile: Buffer));
 
-const byAlphabet = comparator((a, b) => a < b);
-export const sortABC = compose(
-  join(''),
-  sort(byAlphabet),
-  splitEvery(1),
+const byAlphabet = R.comparator((a, b) => a < b);
+export const sortABC = R.pipe(
+  R.splitEvery(1),
+  R.sort(byAlphabet),
+  R.join(''),
 );
 
 const associateSorted = (dict, string) => {
   const resultDict = dict;
-  resultDict[sortABC(string)] = append(string, dict[sortABC(string)]);
+  resultDict[sortABC(string)] = R.append(string, dict[sortABC(string)]);
   return resultDict;
 };
 
-const getSortedWordsDict = wordArray => (
+export const getSortedWordsDict = (wordArray: Array<string>) => (
   wordArray.reduce(
     associateSorted,
     {},
