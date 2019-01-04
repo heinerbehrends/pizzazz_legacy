@@ -1,5 +1,5 @@
-const getLetters = require('./serverLogic/randomLetters');
-const findValid = require('./serverLogic/findValidWords');
+import makeRandomLetters from './serverLogic/randomLetters';
+import findAllValidWords from './serverLogic/findValidWords';
 
 const duration = 50;
 
@@ -12,18 +12,14 @@ let state = {
 const getState = () => state;
 
 function* gameFlow(io) {
-  const { makeRandomLetters, bagOfLetters } = getLetters;
-  const { findAllValidWords, sortedWordsDict } = findValid;
-
   while (true) {
-    const randomLetters = makeRandomLetters(7, bagOfLetters);
-    const validWords = findAllValidWords(randomLetters, sortedWordsDict);
+    const randomLetters = makeRandomLetters(7);
+    const validWords = findAllValidWords(randomLetters);
     state = {
       ...state,
       randomLetters,
       validWords,
     };
-
     yield io.emit('StartGame', state);
 
     while (true) {
