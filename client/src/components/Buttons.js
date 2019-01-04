@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getScore } from '../clientLogic/findWinner';
+import { getWordScore } from '../clientLogic/findWinner';
 import { letterValues } from '../Constants';
 import { ButtonStyled } from './styled/ScreenNameStyled';
 
@@ -40,7 +40,7 @@ JoinButton.propTypes = {
 export const SolutionButton = ({ isValidIndex, scrabbleBoard, sendSolution }) => {
   if (isValidIndex) {
     const solution = scrabbleBoard.substring(0, isValidIndex);
-    const potentialScore = getScore(solution, letterValues);
+    const potentialScore = getWordScore(solution, letterValues);
     const text = `Play ${solution.toUpperCase()} for ${potentialScore} points`;
     const clickHandler = () => sendSolution(solution, potentialScore, isValidIndex);
     return (

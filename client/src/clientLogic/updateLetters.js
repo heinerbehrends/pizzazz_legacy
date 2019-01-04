@@ -24,11 +24,12 @@ type SwapDrop = {
 }
 export const swapLetters = (
   { index }: SwapProp,
-  { targetLetter, targetString, targetIndex }: SwapDrop,
-  ): string => {
-  const firstMutation = replaceLetter(targetString, targetString[index], targetIndex);
-  return replaceLetter(firstMutation, targetString[targetIndex], index);
-};
+  { targetString, targetIndex }: SwapDrop,
+  ): string => (
+  replaceLetter(
+    replaceLetter(targetString, targetString[index], targetIndex),
+    targetString[targetIndex], index)
+);
 
 export const updateLetters = (
   props: DropProps,

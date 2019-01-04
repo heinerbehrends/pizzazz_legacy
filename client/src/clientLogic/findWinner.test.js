@@ -1,6 +1,5 @@
-import { letterValues } from '../Constants';
 import {
-  getScore,
+  getWordScore,
   getMaxScore,
   getMaxLength,
   getMaxLengthScore,
@@ -9,8 +8,8 @@ import {
 
 describe('getScore', () => {
   it('returns the correct score for a given word', () => {
-    expect(getScore('pizzazz', letterValues)).toEqual(46);
-    expect(getScore('pizzzaz', letterValues)).toEqual(55);
+    expect(getWordScore('pizzazz')).toEqual(46);
+    expect(getWordScore('pizzzaz')).toEqual(55);
   });
 });
 
@@ -49,7 +48,6 @@ describe('getMaxLengthScore', () => {
     expect(getMaxLengthScore([
       'zzzzzzz',
       'eeeeeee',
-      'aaaaaaa',
     ])).toEqual([
       'zzzzzzz',
     ]);
