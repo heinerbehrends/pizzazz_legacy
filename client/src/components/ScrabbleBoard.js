@@ -1,18 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ScrabbleBoardStyled from './styled/ScrabbleBoardStyled';
+import ScrabbleBoardStyled, { PizzazzBoardStyled, ScrabbleBoardContainer } from './styled/ScrabbleBoardStyled';
 import LetterRow from './LetterRow';
+import { ReactComponent as PizzazzBoard } from './pizzazzBoard.svg';
 
 const ScrabbleBoard = ({ scrabbleBoard, isValidIndex, isDraggable }) => (
-  <ScrabbleBoardStyled>
-    <LetterRow
-      isDraggable={isDraggable}
-      isValidIndex={isValidIndex}
-      letters={scrabbleBoard}
-      parent="scrabbleBoard"
-    />
-  </ScrabbleBoardStyled>
+  <ScrabbleBoardContainer>
+    <PizzazzBoardStyled>
+      <PizzazzBoard style={{ width: '100%', height: '100%' }} />
+    </PizzazzBoardStyled>
+    <ScrabbleBoardStyled>
+      <LetterRow
+        isDraggable={isDraggable}
+        isValidIndex={isValidIndex}
+        letters={scrabbleBoard}
+        parent="scrabbleBoard"
+      />
+    </ScrabbleBoardStyled>
+  </ScrabbleBoardContainer>
 );
 
 ScrabbleBoard.propTypes = {
