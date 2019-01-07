@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import {
-  textColor, fadedText, borderColor, white, blue, spacer, padding, shadow,
+  textColor, fadedText, borderColor, white, blue, spacer, padding, shadow, respText,
 } from './styleConstants';
 
 export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3em;
   box-sizing: border-box;
 `;
 
@@ -32,15 +31,18 @@ export const FormGroup = styled.div`
 export const InputStyled = styled.input`
   display: inline-block;
   vertical-align: middle;
-  width: auto;
-  font-size: 1.1rem;
+  font-size: ${respText};
   font-weight: 200;
-  padding: ${padding};
+  padding: 3vw 6vw;
   margin-bottom: ${spacer};
   color: ${textColor};
   border: .5px solid ${borderColor};
   background-color: ${white};
   box-shadow: ${shadow};
+  @media screen and (min-width: 445px) {
+    font-size: 1.1rem;
+    padding: ${padding};
+  };
   :focus {
     outline: 0;
     border: 1px solid ${blue};

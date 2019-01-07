@@ -1,22 +1,30 @@
 import styled from 'styled-components';
-import { white, shadow } from './styleConstants';
+import { white, shadow, bottomSpacer, centerH } from './styleConstants';
 
 const ScrabbleBoardStyled = styled.div`
-  background-image: url('images/pizzazzBoard.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: ${white};
+  ${centerH};
+  position: relative;
   padding: 1.1vw;
   box-shadow: ${shadow};
-  margin: 0 auto 40px auto;
   list-style: none;
   display: flex;
   justify-content: space-around;
   box-sizing: border-box;
-  max-width: 500px;
   @media screen and (min-width: 501px) {
-    padding: 4.1px;
+    padding: 0.25rem;
   }
 `;
+export const PizzazzBoardStyled = styled.div`
+  width: 100%;
+  position: absolute;
+`;
+export const ScrabbleBoardContainer = styled.div`
+  ${bottomSpacer};
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: ${white};
+`;
+
 
 export default ScrabbleBoardStyled;

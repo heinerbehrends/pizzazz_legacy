@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 import { gameDuration } from '../../Constants';
 import {
-  white, beige, pink, spacer, shadow,
+  white, beige, pink, shadow, centerH, bottomSpacer,
 } from './styleConstants';
 
 export const Container = styled.div`
+  ${bottomSpacer};
+  margin: 0 4.5px 0 4.5px;
   position: relative;
   height: 11px;
   background: ${white};
   padding: 4.5px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${spacer};
   box-shadow: ${shadow};
+  @media screen and (min-width: 501px) {
+    ${centerH};
+    margin-top: 0.5rem;
+  };
 `;
 
 export const Bar = styled.div`
