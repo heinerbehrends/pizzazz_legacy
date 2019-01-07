@@ -23,7 +23,7 @@ function* bestUserWord() {
     });
     yield fork(orderedTransition, solution);
   } else {
-    const message = 'No user solutions were received';
+    const message = 'No solutions were received';
     yield put({ type: MESSAGE, message });
   }
   yield call(delay, 4000);

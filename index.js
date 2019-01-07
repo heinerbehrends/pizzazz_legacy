@@ -1,11 +1,12 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import { gameFlow } from './gameFlow';
+import connectIO from './connectIO';
 
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const path = require('path');
-const { gameFlow } = require('./gameFlow');
-const connectIO = require('./connectIO');
+
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {

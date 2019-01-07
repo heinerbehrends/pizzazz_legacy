@@ -9,7 +9,7 @@ export const parseLimit7 = R.pipe(
   R.reject(el => R.gt(R.length(el), 7)),
 );
 
-const wordList = parseLimit7((wordListFile: Buffer));
+const wordList = parseLimit7(wordListFile);
 
 const byAlphabet = R.comparator((a, b) => a < b);
 export const sortABC = R.pipe(
