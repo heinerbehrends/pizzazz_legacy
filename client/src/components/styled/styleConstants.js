@@ -18,6 +18,9 @@ export const respSpacer = '9vw';
 export const shadow = '1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)';
 // text
 export const respText = '4vw';
+export const textSize = '1.1rem';
+// border
+export const border = `.5px solid ${borderColor}`;
 // helpers
 export const bottomSpacer = `
   margin-bottom: ${respSpacer};

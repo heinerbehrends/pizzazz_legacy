@@ -5,11 +5,7 @@ import handleDrop from './dropSaga';
 import handleWinner from './handleWinner';
 import handleCountdown from './countdownSaga';
 import orderedTransition from './orderedTransition';
-import {
-  handleStartMessages,
-  handleWaitingMessage,
-  handleSolutions,
-} from './messages';
+import * as m from './messages';
 import {
   START_GAME, SET_COUNTDOWN, END_GAME,
 } from '../actions/actionTypes';
@@ -20,7 +16,7 @@ function* handleEntry() {
   const { value } = countdown;
   yield all([
     put({ type: SET_COUNTDOWN, value }),
-    fork(handleWaitingMessage),
+    fork(m.handleWaitingMessage),
     fork(handleCountdown),
   ]);
 }
@@ -30,9 +26,9 @@ function* handleGame(game) {
   yield all([
     fork(orderedTransition, randomLetters),
     fork(handleCountdown),
-    fork(handleStartMessages, validWords),
+    fork(m.handleStartMessages, validWords),
     fork(handleDrop),
-    fork(handleSolutions),
+    fork(m.handleSolutions),
   ]);
 }
 

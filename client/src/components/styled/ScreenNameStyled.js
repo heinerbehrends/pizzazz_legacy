@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import {
-  textColor, fadedText, borderColor, white, blue, spacer, padding, shadow, respText,
-} from './styleConstants';
+import * as style from './styleConstants';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -31,21 +29,22 @@ export const FormGroup = styled.div`
 export const InputStyled = styled.input`
   display: inline-block;
   vertical-align: middle;
-  font-size: ${respText};
+  font-size: ${style.respText};
   font-weight: 200;
   padding: 3vw 6vw;
-  margin-bottom: ${spacer};
-  color: ${textColor};
-  border: .5px solid ${borderColor};
-  background-color: ${white};
-  box-shadow: ${shadow};
+  margin-bottom: ${style.respSpacer};
+  color: ${style.textColor};
+  border: .5px solid ${style.borderColor};
+  background-color: ${style.white};
+  box-shadow: ${style.shadow};
   @media screen and (min-width: 445px) {
+    margin-bottom: ${style.spacer};
     font-size: 1.1rem;
-    padding: ${padding};
+    padding: ${style.padding};
   };
   :focus {
     outline: 0;
-    border: 1px solid ${blue};
+    border: 1px solid ${style.blue};
   }
 `;
 
@@ -53,7 +52,7 @@ export const ButtonStyled = styled(InputStyled)`
   border-radius: .3rem;
   text-align: center;
   :active {
-    box-shadow: inset ${shadow};
+    box-shadow: inset ${style.shadow};
   }
 `;
 
@@ -65,11 +64,11 @@ export const TextInput = styled(InputStyled)`
   text-align: left;
   border-radius: .3rem 0 0 .3rem;
   ::placeholder {
-    color: ${textColor};
+    color: ${style.textColor};
   }
   :focus {
     ::placeholder {
-      color: ${fadedText};
+      color: ${style.fadedText};
     }
   }
 `;

@@ -24,7 +24,7 @@ const associateSorted = (dict, string) => {
   return resultDict;
 };
 
-export const getSortedWordsDict = (wordArray: Array<string>) => (
+export const getSortedWordsDict = wordArray => (
   wordArray.reduce(
     associateSorted,
     {},

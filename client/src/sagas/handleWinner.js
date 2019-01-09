@@ -2,7 +2,7 @@ import { delay } from 'redux-saga';
 import {
   put, select, call, fork,
 } from 'redux-saga/effects';
-import { MESSAGE } from '../actions/actionTypes';
+import * as create from '../actions/actionCreators';
 import {
   getMaxLengthScore, getWinnerSolution,
 } from '../clientLogic/findWinner';
@@ -15,25 +15,21 @@ export const getValidWords = state => state.gameData.validWords;
 function* bestUserWord() {
   const solutions = yield select(getSolutions);
   if (solutions.length) {
-    const winnerSolution = getWinnerSolution(solutions);
-    const { name, solution } = winnerSolution;
-    yield put({
-      type: MESSAGE,
-      message: `The winner ${name.toUpperCase()} played`,
-    });
+    const { name, solution } = getWinnerSolution(solutions);
+    yield put(create.messageAction(`The winner ${name.toUpperCase()} played`));
     yield fork(orderedTransition, solution);
+    yield put(create.lookupAction(solution));
   } else {
-    const message = 'No solutions were received';
-    yield put({ type: MESSAGE, message });
+    yield put(create.messageAction('No solutions were received'));
   }
   yield call(delay, 4000);
 }
 
 function* bestWord() {
   const validWords = yield select(getValidWords);
-  const message = 'The best word was';
-  yield put({ type: MESSAGE, message });
+  yield put(create.messageAction('The best word was'));
   const bestSolution = getMaxLengthScore(validWords)[0];
+  yield put(create.lookupAction(bestSolution));
   yield call(orderedTransition, bestSolution);
 }
 
