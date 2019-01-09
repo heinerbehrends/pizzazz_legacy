@@ -1,21 +1,18 @@
 import styled from 'styled-components';
-import {
-  textColor, borderColor, padding,
-  respText, respPad, bottomSpacer,
-} from './styleConstants';
+import * as style from './styleConstants';
 
 export const MessageContainer = styled.div`
-  ${bottomSpacer}
+  ${style.bottomSpacer}
 `;
 
 export const MessageStyled = styled.span`
-  font-size: ${respText};
+  font-size: ${style.respText};
   font-weight: 200;
-  color: ${textColor};
-  padding: ${respPad};
-  border-bottom: .5px solid ${borderColor};
+  color: ${style.textColor};
+  padding: ${style.respPad};
+  border-bottom: ${style.border};
   @media screen and (min-width: 445px) {
     font-size: 1.1rem;
-    padding: ${padding};
+    padding: ${style.padding};
   };
 `;

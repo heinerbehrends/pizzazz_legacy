@@ -1,8 +1,5 @@
 // @flow
-import {
-  REPLACE_LETTER, IS_VALID, SEND_SOLUTION, END_DRAG,
-  START_GAME, SEND_NAME, JOIN_GAME, MESSAGE,
-} from './actionTypes';
+import * as t from './actionTypes';
 
 export type Game = {
   randomLetters: string,
@@ -11,7 +8,7 @@ export type Game = {
 }
 
 export const startGameAction = (game: Game) => ({
-  type: START_GAME,
+  type: t.START_GAME,
   game,
 });
 
@@ -30,19 +27,19 @@ export type DropTarget = {
 };
 
 export const endDragAction = (props: DropProps, target: DropTarget) => ({
-  type: END_DRAG,
+  type: t.END_DRAG,
   props,
   target,
 });
 
 export const replaceLettersAction = (randomLetters: string, scrabbleBoard: string) => ({
-  type: REPLACE_LETTER,
+  type: t.REPLACE_LETTER,
   randomLetters,
   scrabbleBoard,
 });
 
-export const isValidIndexAction = (index: number) => ({
-  type: IS_VALID,
+export const isValidAction = (index: number) => ({
+  type: t.IS_VALID,
   index,
 });
 
@@ -52,20 +49,40 @@ export type Solution = {
 }
 
 export const sendSolutionAction = (solution: Solution) => ({
-  type: SEND_SOLUTION,
+  type: t.SEND_SOLUTION,
   solution,
 });
 
 export const sendNameAction = (name: string) => ({
-  type: SEND_NAME,
+  type: t.SEND_NAME,
   name,
 });
 
 export const joinGameAction = () => ({
-  type: JOIN_GAME,
+  type: t.JOIN_GAME,
 });
 
 export const messageAction = (message: string) => ({
-  type: MESSAGE,
+  type: t.MESSAGE,
   message,
+});
+
+export const lookupAction = (word: string) => ({
+  type: t.LOOK_UP,
+  word,
+});
+
+export const definitionAction = (definition: string) => ({
+  type: t.DEFINE,
+  definition,
+});
+
+export const countdownAction = (value: number) => ({
+  type: t.COUNTDOWN,
+  value,
+});
+
+export const newSolutionAction = (solution: string) => ({
+  type: t.NEW_SOLUTION,
+  solution,
 });

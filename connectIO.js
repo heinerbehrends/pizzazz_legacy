@@ -1,4 +1,5 @@
-const { getState } = require('./gameFlow');
+import dictionary from './serverLogic/parseDict';
+import { getState } from './gameFlow';
 
 const connect = io => io.on('connection', (socket) => {
   console.log('A user connected');
@@ -13,6 +14,10 @@ const connect = io => io.on('connection', (socket) => {
   socket.on('sendSolution', (solution) => {
     socket.emit('newSolution', solution);
     socket.broadcast.emit('newSolution', solution);
+  });
+  socket.on('lookUp', ({ word }) => {
+    console.log(dictionary[word]);
+    socket.emit('definition', dictionary[word]);
   });
   socket.on('disconnect', () => {
     console.log('A user disconnected');

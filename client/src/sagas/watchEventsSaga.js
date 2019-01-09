@@ -3,9 +3,8 @@ import { eventChannel } from 'redux-saga';
 import {
   put, take, call, fork, select, cancel,
 } from 'redux-saga/effects';
-import {
-  START_GAME, SEND_SOLUTION, NEW_SOLUTION, DISCONNECT, SEND_NAME, JOIN_GAME,
-} from '../actions/actionTypes';
+import * as t from '../actions/actionTypes';
+import * as create from '../actions/actionCreators';
 
 const connect = () => {
   const socket = io();
@@ -19,12 +18,13 @@ const connect = () => {
 function subscribe(socket) {
   return eventChannel((emit) => {
     socket.on('StartGame', (game) => {
-      emit({ type: START_GAME, game });
+      emit(create.startGameAction(game));
     });
     socket.on('EndGame', action => emit(action));
-    socket.on('countdown', value => emit({ type: 'COUNTDOWN', value }));
-    socket.on('newSolution', solution => emit({ type: NEW_SOLUTION, solution }));
-    socket.on('disconnect', emit({ type: DISCONNECT }));
+    socket.on('countdown', value => emit(create.countdownAction(value)));
+    socket.on('newSolution', solution => emit(create.newSolutionAction(solution)));
+    socket.on('definition', def => emit(create.definitionAction(def)));
+    socket.on('disconnect', emit({ type: t.DISCONNECT }));
 
     return () => {};
   });
@@ -33,25 +33,37 @@ function subscribe(socket) {
 const getScreenName = state => state.screenName;
 
 function* sendSolution(socket) {
-  const action = yield take(SEND_SOLUTION);
-  const { solution } = action;
-  const name = yield select(getScreenName);
-  socket.emit('sendSolution', { solution, name });
+  while (true) {
+    const action = yield take(t.SEND_SOLUTION);
+    const { solution } = action;
+    const name = yield select(getScreenName);
+    socket.emit('sendSolution', { solution, name });
+  }
 }
 
 function* sendName(socket) {
-  const action = yield take(SEND_NAME);
+  const action = yield take(t.SEND_NAME);
   const { name } = action;
   socket.emit('sendName', { name });
 }
 
 function* joinGame(socket) {
-  yield take(JOIN_GAME);
+  yield take(t.JOIN_GAME);
   socket.emit('joinGame');
 }
 
+function* lookUp(socket) {
+  while (true) {
+    console.log('yeah');
+    const action = yield take(t.LOOK_UP);
+    console.log(action);
+    const { word } = action;
+    socket.emit('lookUp', { word });
+  }
+}
+
 function* read(socket) {
-  yield take(SEND_NAME);
+  yield take(t.SEND_NAME);
   const channel = yield call(subscribe, socket);
   while (true) {
     const action = yield take(channel);
@@ -61,12 +73,10 @@ function* read(socket) {
 
 function* write(socket) {
   yield call(sendName, socket);
-  yield fork(joinGame, socket);
-  while (true) {
-    yield call(sendSolution, socket);
-  }
+  yield call(joinGame, socket);
+  yield fork(sendSolution, socket);
+  yield fork(lookUp, socket);
 }
-
 
 function* handleIO(socket) {
   yield fork(read, socket);
@@ -77,7 +87,7 @@ function* watchEvents() {
   while (true) {
     const socket = yield call(connect);
     const task = yield fork(handleIO, socket);
-    yield take(DISCONNECT);
+    yield take(t.DISCONNECT);
     yield cancel(task);
   }
 }

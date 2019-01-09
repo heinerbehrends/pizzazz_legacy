@@ -5,6 +5,7 @@ import { sendNameAction, sendSolutionAction, joinGameAction } from '../actions/a
 import ScreenName from './ScreenName';
 import { JoinButton, SolutionButton } from './Buttons';
 import ProgressBar from './ProgressBar';
+import Definitions from './Definitions'
 
 const Interface = ({
   sendName,
@@ -17,6 +18,7 @@ const Interface = ({
   isValidIndex,
   scrabbleBoard,
   sendSolution,
+  definition,
 }) => (
   <Fragment>
     <ScreenName
@@ -37,6 +39,9 @@ const Interface = ({
       scrabbleBoard={scrabbleBoard}
       sendSolution={sendSolution}
     />
+    <Definitions
+      definition={definition}
+    />
   </Fragment>
 );
 
@@ -51,6 +56,7 @@ Interface.propTypes = {
   scrabbleBoard: PropTypes.string.isRequired,
   isValidIndex: PropTypes.number.isRequired,
   sendSolution: PropTypes.func.isRequired,
+  definition: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -61,6 +67,7 @@ const mapStateToProps = state => ({
   isCountdown: state.isCountdown,
   scrabbleBoard: state.scrabbleBoard,
   isValidIndex: state.isValidIndex,
+  definition: state.definition,
 });
 
 const mapDispatchToProps = dispatch => ({

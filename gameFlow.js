@@ -9,9 +9,9 @@ let state = {
   seconds: duration,
 };
 
-const getState = () => state;
+export const getState = () => state;
 
-function* gameFlow(io) {
+export function* gameFlow(io) {
   while (true) {
     const randomLetters = makeRandomLetters(7);
     const validWords = findAllValidWords(randomLetters);
@@ -35,5 +35,3 @@ function* gameFlow(io) {
     }
   }
 }
-
-module.exports = { gameFlow, getState };

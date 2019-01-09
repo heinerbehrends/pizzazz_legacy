@@ -9,6 +9,7 @@ import countdownValueReducer from './countdownValue';
 import solutionsReducer from './solutions';
 import gameDataReducer from './gameData';
 import canJoinReducer from './canJoin';
+import definitionReducer from './definition';
 
 const rootReducer = combineReducers({
   randomLetters: randomLettersReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   solutions: solutionsReducer,
   gameData: gameDataReducer,
   canJoin: canJoinReducer,
+  definition: definitionReducer,
 });
 
 export default rootReducer;
