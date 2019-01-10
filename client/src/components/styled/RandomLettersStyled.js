@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { bottomSpacer, centerH } from './styleConstants';
+import { halfBottomSpacer, centerH } from './styleConstants';
 
 const RandomLettersStyled = styled.div`
-  ${bottomSpacer};
+  ${halfBottomSpacer};
   ${centerH};
   padding: 4.1px;
   list-style: none;

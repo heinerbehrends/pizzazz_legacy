@@ -1,15 +1,15 @@
 import * as t from '../actions/actionTypes';
 
-const definitionReducer = (state = '', action) => {
+const definitionReducer = (state = '...', action) => {
   switch (action.type) {
     case t.DEFINE:
       return action.definition;
     case t.END_GAME:
-      return '';
+      return '...';
     case t.START_GAME:
-      return '';
+      return '...';
     case t.SEND_SOLUTION:
-      return '';
+      return '...';
     default:
       return state;
   }

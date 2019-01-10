@@ -21,7 +21,7 @@ function* handleDrop() {
 
       if (isValidIndex) {
         yield put(create.lookupAction(scrabbleBoard.slice(0, isValidIndex)));
-      } yield put(create.definitionAction(''));
+      } yield put(create.definitionAction('... '));
     }
   }
 }

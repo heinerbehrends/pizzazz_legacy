@@ -5,7 +5,7 @@ import { sendNameAction, sendSolutionAction, joinGameAction } from '../actions/a
 import ScreenName from './ScreenName';
 import { JoinButton, SolutionButton } from './Buttons';
 import ProgressBar from './ProgressBar';
-import Definitions from './Definitions'
+import Definitions from './Definitions';
 
 const Interface = ({
   sendName,
@@ -21,6 +21,9 @@ const Interface = ({
   definition,
 }) => (
   <Fragment>
+    <Definitions
+      definition={definition}
+    />
     <ScreenName
       sendName={sendName}
       screenName={screenName}
@@ -38,9 +41,6 @@ const Interface = ({
       isValidIndex={isValidIndex}
       scrabbleBoard={scrabbleBoard}
       sendSolution={sendSolution}
-    />
-    <Definitions
-      definition={definition}
     />
   </Fragment>
 );

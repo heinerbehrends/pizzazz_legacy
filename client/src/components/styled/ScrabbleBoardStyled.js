@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white, shadow, bottomSpacer, centerH } from './styleConstants';
+import { white, shadow, halfBottomSpacer, centerH } from './styleConstants';
 
 const ScrabbleBoardStyled = styled.div`
   ${centerH};
@@ -19,7 +19,7 @@ export const PizzazzBoardStyled = styled.div`
   position: absolute;
 `;
 export const ScrabbleBoardContainer = styled.div`
-  ${bottomSpacer};
+  ${halfBottomSpacer};
   position: relative;
   margin-left: auto;
   margin-right: auto;
