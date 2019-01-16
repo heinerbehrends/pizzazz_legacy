@@ -1,6 +1,6 @@
 import * as t from '../actions/actionTypes';
 
-const definitionReducer = (state = '...', action) => {
+const definitionReducer = (state = 'a micro-scrabble word game', action) => {
   switch (action.type) {
     case t.DEFINE:
       return action.definition;

@@ -1,46 +1,35 @@
 import { delay } from 'redux-saga';
 import { put } from 'redux-saga/effects';
-import { RANDOM_LETTERS } from '../actions/actionTypes';
-import {
-  getRandomAbc,
-  makeRandomArray,
-  makeZerosArray,
-  isFinished,
-  isKeyframe,
-  getNextLetter,
-} from '../clientLogic/transitionLogic';
+import * as R from 'ramda';
+import { randomLettersAction } from '../actions/actionCreators';
+import { abc } from '../Constants';
 
-// duration must be a multiple of frameDuration
 const frameDuration = 20;
 const duration = frameDuration * 8;
 
-function* orderedTransition(finalString) {
-  const zerosPart = makeZerosArray(finalString);
-  let randomPart = makeRandomArray(finalString);
-  let finalPart = [];
-  let time = 0;
+const getRandomIndex = strArr => Math.floor(Math.random() * strArr.length);
+const getRandomLetter = strArr => strArr[getRandomIndex(strArr)];
+const getRandomAbc = () => getRandomLetter(abc);
+const getIndex = (time, letterDuration) => Math.floor(time / letterDuration);
 
-  while (true) {
+const randomizeEnd = (string, index) => (
+  R.concat(
+    R.slice(0, index)(string),
+    R.pipe(
+      R.map(getRandomAbc),
+      R.join(''),
+    )(Array(R.length(string) - index)),
+  )
+);
+
+function* orderedTransition(final) {
+  let time = 0;
+  while (time < duration * R.length(final)) {
     yield delay(frameDuration);
     time += frameDuration;
-
-    yield put({
-      type: RANDOM_LETTERS,
-      randomLetters: finalPart
-        .concat(randomPart)
-        .concat(zerosPart)
-        .join(''),
-    });
-
-    if (isFinished(finalPart, zerosPart)) {
-      break;
-    } else if (isKeyframe(time, duration)) {
-      randomPart = randomPart.slice(1);
-      finalPart = finalPart.concat(
-        finalString[getNextLetter(time, duration)],
-      );
-    }
-    randomPart = randomPart.map(getRandomAbc);
+    yield put(randomLettersAction(
+      randomizeEnd(final, getIndex(time, duration)),
+    ));
   }
 }
 

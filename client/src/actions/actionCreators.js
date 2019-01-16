@@ -32,6 +32,11 @@ export const endDragAction = (props: DropProps, target: DropTarget) => ({
   target,
 });
 
+export const randomLettersAction = randomLetters => ({
+  type: t.RANDOM_LETTERS,
+  randomLetters,
+})
+
 export const replaceLettersAction = (randomLetters: string, scrabbleBoard: string) => ({
   type: t.REPLACE_LETTER,
   randomLetters,
