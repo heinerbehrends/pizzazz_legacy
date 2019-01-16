@@ -54,9 +54,7 @@ function* joinGame(socket) {
 
 function* lookUp(socket) {
   while (true) {
-    console.log('yeah');
     const action = yield take(t.LOOK_UP);
-    console.log(action);
     const { word } = action;
     socket.emit('lookUp', { word });
   }
@@ -73,7 +71,7 @@ function* read(socket) {
 
 function* write(socket) {
   yield call(sendName, socket);
-  yield call(joinGame, socket);
+  yield fork(joinGame, socket);
   yield fork(sendSolution, socket);
   yield fork(lookUp, socket);
 }
