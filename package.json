@@ -38,7 +38,7 @@
   "scripts": {
     "flow": "flow",
     "test": "jest",
-    "start": "nodemon --exec babel-node index",
+    "start": "cd server && nodemon --exec babel-node index",
     "heroku-postbuild": "cd client && yarn install && yarn build"
   }
 }

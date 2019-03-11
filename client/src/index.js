@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from './components/Root';
+import Root from './Root/Root';
 import configureStore from './configureStore';
 // import registerServiceWorker from './registerServiceWorker';
 import 'normalize.css';
