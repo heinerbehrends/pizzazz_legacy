@@ -23,7 +23,7 @@ describe('<ScrabbleTileStyled />', () => {
     expect(wrapper).toHaveStyleRule('background-color', yellow);
   });
   it('renders a green background when isValid is true', () => {
-    const wrapper = renderer.create(<LetterStyled letter="8" isValid={true} />).toJSON();
+    const wrapper = renderer.create(<LetterStyled letter="8" isValid />).toJSON();
     expect(wrapper).toHaveStyleRule('background-color', green);
   });
 
