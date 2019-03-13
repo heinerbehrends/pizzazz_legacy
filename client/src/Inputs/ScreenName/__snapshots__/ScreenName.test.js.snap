@@ -1,0 +1,786 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScreenName /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ScreenName
+    screenName=""
+    sendName={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <ForwardRef
+        autoComplete="off"
+        id="screenName"
+        name="screenName"
+        onSubmit={[Function]}
+      >
+        <ForwardRef
+          htmlFor="enter-screen-name"
+        >
+          Enter screen name
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            autoFocus={true}
+            id="enter-screen-name"
+            name="screenName"
+            onChange={[Function]}
+            placeholder="Enter screen name to start"
+            type="text"
+          />
+          <ForwardRef
+            type="submit"
+            value="Go"
+          />
+        </ForwardRef>
+      </ForwardRef>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "autoComplete": "off",
+        "children": Array [
+          <ForwardRef
+            htmlFor="enter-screen-name"
+          >
+            Enter screen name
+          </ForwardRef>,
+          <ForwardRef>
+            <ForwardRef
+              autoFocus={true}
+              id="enter-screen-name"
+              name="screenName"
+              onChange={[Function]}
+              placeholder="Enter screen name to start"
+              type="text"
+            />
+            <ForwardRef
+              type="submit"
+              value="Go"
+            />
+          </ForwardRef>,
+        ],
+        "id": "screenName",
+        "name": "screenName",
+        "onSubmit": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "Enter screen name",
+            "htmlFor": "enter-screen-name",
+          },
+          "ref": null,
+          "rendered": "Enter screen name",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": true,
+              "rules": Array [
+                "
+  display: none!important;
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <ForwardRef
+                autoFocus={true}
+                id="enter-screen-name"
+                name="screenName"
+                onChange={[Function]}
+                placeholder="Enter screen name to start"
+                type="text"
+              />,
+              <ForwardRef
+                type="submit"
+                value="Go"
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "autoFocus": true,
+                "id": "enter-screen-name",
+                "name": "screenName",
+                "onChange": [Function],
+                "placeholder": "Enter screen name to start",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-gzVnrw",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+                    "4vw",
+                    ";
+  font-weight: ",
+                    "300",
+                    ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+                    "9vw",
+                    ";
+  color: ",
+                    "#7A828A",
+                    ";
+  border: .5px solid ",
+                    "#CED4DA",
+                    ";
+  background-color: ",
+                    "#FFF",
+                    ";
+  box-shadow: ",
+                    "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                    ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+                    "3rem",
+                    ";
+    font-size: 1.1rem;
+    padding: ",
+                    "0.8rem 1.6rem",
+                    ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+                    "#BDEAFE",
+                    ";
+  }
+",
+                    "
+  text-align: left;
+  border-radius: .3rem 0 0 .3rem;
+  ::placeholder {
+    color: ",
+                    "#7A828A",
+                    ";
+  }
+  :focus {
+    ::placeholder {
+      color: ",
+                    "#AAB0B5",
+                    ";
+    }
+  }
+",
+                  ],
+                },
+                "displayName": "Styled(styled.input)",
+                "foldedComponentIds": Array [
+                  "sc-bdVaJa",
+                ],
+                "render": [Function],
+                "styledComponentId": "sc-gzVnrw",
+                "target": "input",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "type": "submit",
+                "value": "Go",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bZQynM",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+                    "4vw",
+                    ";
+  font-weight: ",
+                    "300",
+                    ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+                    "9vw",
+                    ";
+  color: ",
+                    "#7A828A",
+                    ";
+  border: .5px solid ",
+                    "#CED4DA",
+                    ";
+  background-color: ",
+                    "#FFF",
+                    ";
+  box-shadow: ",
+                    "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                    ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+                    "3rem",
+                    ";
+    font-size: 1.1rem;
+    padding: ",
+                    "0.8rem 1.6rem",
+                    ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+                    "#BDEAFE",
+                    ";
+  }
+",
+                    "
+  border-radius: .3rem;
+  text-align: center;
+  :active {
+    box-shadow: inset ",
+                    "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                    ";
+  }
+",
+                    "
+  border-radius: 0 .3rem .3rem 0;
+",
+                  ],
+                },
+                "displayName": "Styled(Styled(styled.input))",
+                "foldedComponentIds": Array [
+                  "sc-bdVaJa",
+                  "sc-bwzfXH",
+                ],
+                "render": [Function],
+                "styledComponentId": "sc-bZQynM",
+                "target": "input",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-EHOje",
+              "isStatic": true,
+              "rules": Array [
+                "
+  flex: 0 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-flex: 0;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-EHOje",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bxivhb",
+          "isStatic": true,
+          "rules": Array [
+            "
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+",
+          ],
+        },
+        "displayName": "styled.form",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bxivhb",
+        "target": "form",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": true,
+        "rules": Array [
+          "
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <ForwardRef
+          autoComplete="off"
+          id="screenName"
+          name="screenName"
+          onSubmit={[Function]}
+        >
+          <ForwardRef
+            htmlFor="enter-screen-name"
+          >
+            Enter screen name
+          </ForwardRef>
+          <ForwardRef>
+            <ForwardRef
+              autoFocus={true}
+              id="enter-screen-name"
+              name="screenName"
+              onChange={[Function]}
+              placeholder="Enter screen name to start"
+              type="text"
+            />
+            <ForwardRef
+              type="submit"
+              value="Go"
+            />
+          </ForwardRef>
+        </ForwardRef>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "autoComplete": "off",
+          "children": Array [
+            <ForwardRef
+              htmlFor="enter-screen-name"
+            >
+              Enter screen name
+            </ForwardRef>,
+            <ForwardRef>
+              <ForwardRef
+                autoFocus={true}
+                id="enter-screen-name"
+                name="screenName"
+                onChange={[Function]}
+                placeholder="Enter screen name to start"
+                type="text"
+              />
+              <ForwardRef
+                type="submit"
+                value="Go"
+              />
+            </ForwardRef>,
+          ],
+          "id": "screenName",
+          "name": "screenName",
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "Enter screen name",
+              "htmlFor": "enter-screen-name",
+            },
+            "ref": null,
+            "rendered": "Enter screen name",
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-ifAKCX",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  display: none!important;
+",
+                ],
+              },
+              "displayName": "styled.label",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-ifAKCX",
+              "target": "label",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <ForwardRef
+                  autoFocus={true}
+                  id="enter-screen-name"
+                  name="screenName"
+                  onChange={[Function]}
+                  placeholder="Enter screen name to start"
+                  type="text"
+                />,
+                <ForwardRef
+                  type="submit"
+                  value="Go"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "autoFocus": true,
+                  "id": "enter-screen-name",
+                  "name": "screenName",
+                  "onChange": [Function],
+                  "placeholder": "Enter screen name to start",
+                  "type": "text",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gzVnrw",
+                    "isStatic": true,
+                    "rules": Array [
+                      "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+                      "4vw",
+                      ";
+  font-weight: ",
+                      "300",
+                      ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+                      "9vw",
+                      ";
+  color: ",
+                      "#7A828A",
+                      ";
+  border: .5px solid ",
+                      "#CED4DA",
+                      ";
+  background-color: ",
+                      "#FFF",
+                      ";
+  box-shadow: ",
+                      "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                      ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+                      "3rem",
+                      ";
+    font-size: 1.1rem;
+    padding: ",
+                      "0.8rem 1.6rem",
+                      ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+                      "#BDEAFE",
+                      ";
+  }
+",
+                      "
+  text-align: left;
+  border-radius: .3rem 0 0 .3rem;
+  ::placeholder {
+    color: ",
+                      "#7A828A",
+                      ";
+  }
+  :focus {
+    ::placeholder {
+      color: ",
+                      "#AAB0B5",
+                      ";
+    }
+  }
+",
+                    ],
+                  },
+                  "displayName": "Styled(styled.input)",
+                  "foldedComponentIds": Array [
+                    "sc-bdVaJa",
+                  ],
+                  "render": [Function],
+                  "styledComponentId": "sc-gzVnrw",
+                  "target": "input",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                },
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "type": "submit",
+                  "value": "Go",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bZQynM",
+                    "isStatic": true,
+                    "rules": Array [
+                      "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+                      "4vw",
+                      ";
+  font-weight: ",
+                      "300",
+                      ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+                      "9vw",
+                      ";
+  color: ",
+                      "#7A828A",
+                      ";
+  border: .5px solid ",
+                      "#CED4DA",
+                      ";
+  background-color: ",
+                      "#FFF",
+                      ";
+  box-shadow: ",
+                      "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                      ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+                      "3rem",
+                      ";
+    font-size: 1.1rem;
+    padding: ",
+                      "0.8rem 1.6rem",
+                      ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+                      "#BDEAFE",
+                      ";
+  }
+",
+                      "
+  border-radius: .3rem;
+  text-align: center;
+  :active {
+    box-shadow: inset ",
+                      "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+                      ";
+  }
+",
+                      "
+  border-radius: 0 .3rem .3rem 0;
+",
+                    ],
+                  },
+                  "displayName": "Styled(Styled(styled.input))",
+                  "foldedComponentIds": Array [
+                    "sc-bdVaJa",
+                    "sc-bwzfXH",
+                  ],
+                  "render": [Function],
+                  "styledComponentId": "sc-bZQynM",
+                  "target": "input",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                },
+              },
+            ],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-EHOje",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  flex: 0 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-flex: 0;
+",
+                ],
+              },
+              "displayName": "styled.div",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-EHOje",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bxivhb",
+            "isStatic": true,
+            "rules": Array [
+              "
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+",
+            ],
+          },
+          "displayName": "styled.form",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bxivhb",
+          "target": "form",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-htpNat",
+          "isStatic": true,
+          "rules": Array [
+            "
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+",
+          ],
+        },
+        "displayName": "styled.div",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-htpNat",
+        "target": "div",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

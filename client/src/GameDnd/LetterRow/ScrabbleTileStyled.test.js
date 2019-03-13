@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import { LetterStyled } from './ScrabbleTileStyled';
-import { green, yellow, letterColor } from './styleConstants';
+import { green, yellow, letterColor } from '../../styleConstants';
 
 describe('<ScrabbleTileStyled />', () => {
   it('renders a dark gray letter when the letter is not 8 or 0', () => {

@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrabbleTile /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ScrabbleTile
+    isValid={false}
+    letter="e"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        "E",
+        <ForwardRef>
+          1
+        </ForwardRef>,
+      ],
+      "isValid": false,
+      "letter": "e",
+    },
+    "ref": null,
+    "rendered": Array [
+      "E",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": 1,
+        },
+        "ref": null,
+        "rendered": 1,
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htpNat",
+            "isStatic": true,
+            "rules": Array [
+              "
+  line-height: normal;
+  font-size: 2.6vw;
+  font-weight: 400;
+  vertical-align: -25%;
+  @media screen and (min-width: 501px) {
+    font-size:14.5px;
+  }
+",
+            ],
+          },
+          "displayName": "styled.sub",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htpNat",
+          "target": "sub",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+    ],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  opacity: ",
+          [Function],
+          ";
+  user-select: none;
+  border: 1px solid ",
+          "#CED4DA",
+          ";
+  border-radius: 0.5vw;
+  color: ",
+          [Function],
+          ";
+  background-color: ",
+          [Function],
+          ";
+  font-weight: 400;
+  font-size: 8vw;
+  text-align: center;
+  line-height: 12.2vw;
+  box-shadow: ",
+          "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+          ";
+  @media screen and (min-width: 501px) {
+      font-size: 40px;
+      line-height: 65px;
+      border-radius: 4px;
+  }
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          "E",
+          <ForwardRef>
+            1
+          </ForwardRef>,
+        ],
+        "isValid": false,
+        "letter": "e",
+      },
+      "ref": null,
+      "rendered": Array [
+        "E",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": 1,
+          },
+          "ref": null,
+          "rendered": 1,
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": true,
+              "rules": Array [
+                "
+  line-height: normal;
+  font-size: 2.6vw;
+  font-weight: 400;
+  vertical-align: -25%;
+  @media screen and (min-width: 501px) {
+    font-size:14.5px;
+  }
+",
+              ],
+            },
+            "displayName": "styled.sub",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": "sub",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bwzfXH",
+          "isStatic": false,
+          "rules": Array [
+            "
+  opacity: ",
+            [Function],
+            ";
+  user-select: none;
+  border: 1px solid ",
+            "#CED4DA",
+            ";
+  border-radius: 0.5vw;
+  color: ",
+            [Function],
+            ";
+  background-color: ",
+            [Function],
+            ";
+  font-weight: 400;
+  font-size: 8vw;
+  text-align: center;
+  line-height: 12.2vw;
+  box-shadow: ",
+            "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+            ";
+  @media screen and (min-width: 501px) {
+      font-size: 40px;
+      line-height: 65px;
+      border-radius: 4px;
+  }
+",
+          ],
+        },
+        "displayName": "styled.div",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bwzfXH",
+        "target": "div",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

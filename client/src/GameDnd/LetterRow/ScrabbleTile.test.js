@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ScrabbleTile from './ScrabbleTile';
-import { LetterStyled, NumberSub } from './styled/ScrabbleTileStyled';
-import { letterValues } from '../Constants';
+import { LetterStyled, NumberSub } from './ScrabbleTileStyled';
+import { letterValues } from '../../Constants';
 
 describe('<ScrabbleTile />', () => {
   it('renders the letter in uppercase', () => {

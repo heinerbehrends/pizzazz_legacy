@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    clickHandler={[MockFunction]}
+    value="Go"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "autoFocus": true,
+      "onClick": [MockFunction],
+      "readOnly": true,
+      "type": "button",
+      "value": "Go",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": true,
+        "rules": Array [
+          "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+          "4vw",
+          ";
+  font-weight: ",
+          "300",
+          ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+          "9vw",
+          ";
+  color: ",
+          "#7A828A",
+          ";
+  border: .5px solid ",
+          "#CED4DA",
+          ";
+  background-color: ",
+          "#FFF",
+          ";
+  box-shadow: ",
+          "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+          ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+          "3rem",
+          ";
+    font-size: 1.1rem;
+    padding: ",
+          "0.8rem 1.6rem",
+          ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+          "#BDEAFE",
+          ";
+  }
+",
+          "
+  border-radius: .3rem;
+  text-align: center;
+  :active {
+    box-shadow: inset ",
+          "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+          ";
+  }
+",
+        ],
+      },
+      "displayName": "Styled(styled.input)",
+      "foldedComponentIds": Array [
+        "sc-bdVaJa",
+      ],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": "input",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "autoFocus": true,
+        "onClick": [MockFunction],
+        "readOnly": true,
+        "type": "button",
+        "value": "Go",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bwzfXH",
+          "isStatic": true,
+          "rules": Array [
+            "
+  display: inline-block;
+  vertical-align: middle;
+  font-size: ",
+            "4vw",
+            ";
+  font-weight: ",
+            "300",
+            ";
+  padding: 3vw 6vw;
+  margin-bottom: ",
+            "9vw",
+            ";
+  color: ",
+            "#7A828A",
+            ";
+  border: .5px solid ",
+            "#CED4DA",
+            ";
+  background-color: ",
+            "#FFF",
+            ";
+  box-shadow: ",
+            "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+            ";
+  @media screen and (min-width: 445px) {
+    margin-bottom: ",
+            "3rem",
+            ";
+    font-size: 1.1rem;
+    padding: ",
+            "0.8rem 1.6rem",
+            ";
+  };
+  :focus {
+    outline: 0;
+    border: 1px solid ",
+            "#BDEAFE",
+            ";
+  }
+",
+            "
+  border-radius: .3rem;
+  text-align: center;
+  :active {
+    box-shadow: inset ",
+            "1.8px 2.4px 1.8px rgba(0, 0, 0, 0.05)",
+            ";
+  }
+",
+          ],
+        },
+        "displayName": "Styled(styled.input)",
+        "foldedComponentIds": Array [
+          "sc-bdVaJa",
+        ],
+        "render": [Function],
+        "styledComponentId": "sc-bwzfXH",
+        "target": "input",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`<JoinButton> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <JoinButton
+    canJoin={true}
+    countdownValue={21}
+    joinGame={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "clickHandler": [Function],
+      "value": "Join the current game",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "clickHandler": [Function],
+        "value": "Join the current game",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`<SolutionButton /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SolutionButton
+    isValidIndex={7}
+    scrabbleBoard="pizzazz"
+    sendSolution={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "clickHandler": [Function],
+      "value": "Play PIZZAZZ for 46 points",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "clickHandler": [Function],
+        "value": "Play PIZZAZZ for 46 points",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

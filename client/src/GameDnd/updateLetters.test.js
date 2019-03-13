@@ -1,8 +1,4 @@
-import {
-  replaceLetter,
-  swapLetters,
-  updateLetters,
-} from './updateLetters';
+import updateLetters, { replaceLetter, swapLetters } from './updateLetters';
 
 
 describe('replaceLetter', () => {

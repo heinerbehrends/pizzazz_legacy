@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import LetterRow from './LetterRow';
-import DraggableTile from './DraggableTile';
+import DraggableTile from './DraggableTile/DraggableTile';
 import ScrabbleTile from './ScrabbleTile';
 
 describe('<LetterRow />', () => {

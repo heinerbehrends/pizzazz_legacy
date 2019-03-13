@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import { Button, JoinButton, SolutionButton } from './Buttons';
+import Button from './Button';
+import JoinButton from './JoinButton';
+import SolutionButton from './SolutionButton';
 
 describe('<Button />', () => {
   it('calls the clickHandler function on click', () => {

@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LetterRow /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <LetterRow
+    isDraggable={true}
+    isValidIndex={7}
+    letters="pizzazz"
+    parent="randomLetters"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": "0",
+    "nodeType": "class",
+    "props": Object {
+      "index": 0,
+      "isValid": true,
+      "letter": "p",
+      "parent": "randomLetters",
+      "string": "pizzazz",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": "0",
+      "nodeType": "class",
+      "props": Object {
+        "index": 0,
+        "isValid": true,
+        "letter": "p",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "1",
+      "nodeType": "class",
+      "props": Object {
+        "index": 1,
+        "isValid": true,
+        "letter": "i",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "2",
+      "nodeType": "class",
+      "props": Object {
+        "index": 2,
+        "isValid": true,
+        "letter": "z",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "3",
+      "nodeType": "class",
+      "props": Object {
+        "index": 3,
+        "isValid": true,
+        "letter": "z",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "4",
+      "nodeType": "class",
+      "props": Object {
+        "index": 4,
+        "isValid": true,
+        "letter": "a",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "5",
+      "nodeType": "class",
+      "props": Object {
+        "index": 5,
+        "isValid": true,
+        "letter": "z",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    Object {
+      "instance": null,
+      "key": "6",
+      "nodeType": "class",
+      "props": Object {
+        "index": 6,
+        "isValid": true,
+        "letter": "z",
+        "parent": "randomLetters",
+        "string": "pizzazz",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

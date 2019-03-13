@@ -1,41 +1,18 @@
-// @flow
-import type {
-  DropProps,
-  DropTarget,
-  RandomOrValid,
-} from '../actions/actionCreators';
-
-export const replaceLetter = (
-  word: string,
-  letter: string,
-  index: number
-  ): string =>
-    word
+export const replaceLetter = (word, letter, index) => (
+  word
     .substring(0, index)
     .concat(letter)
-    .concat(word.substring(index + 1));
-
-type SwapProp = {
-  index: number,
-}
-type SwapDrop = {
-  targetString: string,
-  targetIndex: number
-}
-export const swapLetters = (
-  { index }: SwapProp,
-  { targetString, targetIndex }: SwapDrop,
-  ): string => (
-  replaceLetter(
-    replaceLetter(targetString, targetString[index], targetIndex),
-    targetString[targetIndex], index)
+    .concat(word.substring(index + 1))
 );
 
-const updateLetters = (
-  props: DropProps,
-  target: DropTarget,
-  randomOrValid: RandomOrValid
-  ): string | false => {
+export const swapLetters = ({ index }, { targetString, targetIndex }) => (
+  replaceLetter(
+    replaceLetter(targetString, targetString[index], targetIndex),
+    targetString[targetIndex], index,
+  )
+);
+
+const updateLetters = (props, target, randomOrValid) => {
   const {
     string,
     index,

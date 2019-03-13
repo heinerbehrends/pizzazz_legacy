@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import DragLayerTile, { getPositionStyles } from './DragLayerTile';
-import ScrabbleTile from './ScrabbleTile';
+import ScrabbleTile from './LetterRow/ScrabbleTile';
 
 describe('<DragLayerTile />', () => {
   it('renders one ScrabbleTile', () => {
