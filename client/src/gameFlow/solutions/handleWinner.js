@@ -1,9 +1,11 @@
 import { delay } from 'redux-saga';
-import { put, select, call, fork, all } from 'redux-saga/effects';
+import {
+  put, select, call, fork, all,
+} from 'redux-saga/effects';
 import { getMaxLengthScore, getWinnerSolution } from './findWinner';
 import { messageAction } from '../../Message/messageState';
 import { lookupAction } from '../../Definitions/definitionsState';
-import transition from '../../GameDnd/RandomLetters/transition';
+import transition from '../../GameDnd/LetterDisplay/transition';
 
 const getSolutions = state => state.solutions;
 export const getValidWords = state => state.gameData.validWords;
@@ -15,7 +17,7 @@ function* bestUserWord() {
     yield all([
       put(messageAction(`The winner ${name.toUpperCase()} played`)),
       fork(transition, solution),
-      put(lookupAction(solution))
+      put(lookupAction(solution)),
     ]);
   } else {
     yield put(messageAction('No solutions were received'));
@@ -29,7 +31,7 @@ function* bestWord() {
     put(lookupAction(bestSolution)),
     put(messageAction('The best word was')),
     call(transition, bestSolution),
-  ])
+  ]);
 }
 
 function* handleWinner() {

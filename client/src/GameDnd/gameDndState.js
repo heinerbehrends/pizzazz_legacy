@@ -1,4 +1,6 @@
-import { put, select, take, call } from 'redux-saga/effects';
+import {
+  put, select, take, call,
+} from 'redux-saga/effects';
 import { isValidAction } from './ScrabbleBoard/scrabbleBoardState';
 import { lookupScrabbleBoard } from '../Definitions/definitionsState';
 import updateLetters from './updateLetters';
@@ -15,23 +17,22 @@ export const endDragAction = (props, target) => ({
   target,
 });
 
-export const replaceLettersAction = (randomLetters, scrabbleBoard) => ({
+export const replaceLettersAction = (letterDisplay, scrabbleBoard) => ({
   type: REPLACE_LETTER,
-  randomLetters,
+  letterDisplay,
   scrabbleBoard,
 });
 
 function* handleDrop() {
   while (true) {
     const { props, target } = yield take(END_DRAG);
-    const randomLetters = updateLetters(props, target, 'randomLetters');
+    const letterDisplay = updateLetters(props, target, 'letterDisplay');
     const scrabbleBoard = updateLetters(props, target, 'scrabbleBoard');
 
     yield put(replaceLettersAction(
-      randomLetters,
+      letterDisplay,
       scrabbleBoard,
-      ));
-      
+    ));
     if (scrabbleBoard) {
       const validWords = yield select(getValidWords);
       const isValidIndex = getIsValidIndex(scrabbleBoard, validWords);

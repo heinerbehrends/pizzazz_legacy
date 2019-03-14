@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { halfBottomSpacer, centerH } from '../../styleConstants';
 
-const RandomLettersStyled = styled.div`
+const LetterDisplayStyled = styled.div`
   ${halfBottomSpacer};
   ${centerH};
   padding: 4.1px;
@@ -11,4 +11,4 @@ const RandomLettersStyled = styled.div`
   box-sizing: border-box;
 `;
 
-export default RandomLettersStyled;
+export default LetterDisplayStyled;

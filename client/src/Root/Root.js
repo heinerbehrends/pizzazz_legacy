@@ -11,7 +11,7 @@ const Root = ({ store }) => (
 
 Root.propTypes = {
   store: PropTypes.shape({
-    randomLetters: PropTypes.string,
+    letterDisplay: PropTypes.string,
     scrabbleBoard: PropTypes.string,
     isValidIndex: PropTypes.number,
     screenName: PropTypes.string,

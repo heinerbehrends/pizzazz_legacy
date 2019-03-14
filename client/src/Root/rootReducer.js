@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { randomLettersReducer } from '../GameDnd/RandomLetters/randomLettersState';
+import { letterDisplayReducer } from '../GameDnd/LetterDisplay/letterDisplayState';
 import scrabbleBoardReducer, { isValidIndexReducer } from '../GameDnd/ScrabbleBoard/scrabbleBoardState';
 import { screenNameReducer } from '../Inputs/ScreenName/screenNameState';
 import { canJoinReducer } from '../Inputs/Buttons/buttonsState';
@@ -10,7 +10,7 @@ import gameDataReducer from '../gameFlow/gameFlowState';
 import { definitionReducer } from '../Definitions/definitionsState';
 
 const rootReducer = combineReducers({
-  randomLetters: randomLettersReducer,
+  letterDisplay: letterDisplayReducer,
   scrabbleBoard: scrabbleBoardReducer,
   isValidIndex: isValidIndexReducer,
   screenName: screenNameReducer,

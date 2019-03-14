@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 import socketIO from '../socketIO/socketIO';
 import gameSaga from '../gameFlow/gameSaga';
-import transition from '../GameDnd/RandomLetters/transition';
+import transition from '../GameDnd/LetterDisplay/transition';
 
 
 function* rootSaga() {

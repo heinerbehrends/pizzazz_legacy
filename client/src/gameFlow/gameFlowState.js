@@ -2,7 +2,7 @@ export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';
 
 export const initialState = {
-  randomLetters: '',
+  letterDisplay: '',
   validWords: [],
   seconds: 0,
 };

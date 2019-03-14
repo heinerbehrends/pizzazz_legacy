@@ -3,7 +3,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import TouchBackend from 'react-dnd-touch-backend';
 import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend';
-import RandomLetters from './RandomLetters/RandomLetters';
+import LetterDisplay from './LetterDisplay/LetterDisplay';
 import ScrabbleBoard from './ScrabbleBoard/ScrabbleBoard';
 import DragLayerTile from './DragLayerTile';
 
@@ -24,7 +24,7 @@ class GameDnd extends Component {
   render() {
     return (
       <>
-        <RandomLetters />
+        <LetterDisplay />
         <ScrabbleBoard />
         <DragLayerTile />
       </>
