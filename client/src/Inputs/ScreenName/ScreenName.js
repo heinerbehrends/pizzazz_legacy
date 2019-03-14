@@ -4,9 +4,8 @@ import {
   FormContainer, Form, FormGroup, HiddenLabel, ButtonForm, TextInput,
 } from './ScreenNameStyled';
 
-const ScreenName = (props) => {
+const ScreenName = ({ sendName, screenName }) => {
   const [input, setInput] = useState('');
-  const { sendName, screenName } = props;
 
   const handleChange = ({ target: { value } }) => setInput(value);
 

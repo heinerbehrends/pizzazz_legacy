@@ -9,12 +9,12 @@ const initialState = {
   seconds: duration,
 };
 
-const useState = (initial) => {
+function useState(initial) {
   let state = initial;
   const getState = () => state;
   const setState = (newState) => { state = newState; };
   return Object.freeze({ getState, setState });
-};
+}
 
 const { getState, setState } = useState(initialState);
 
