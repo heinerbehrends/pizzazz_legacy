@@ -33,8 +33,13 @@
     "nodemon": "^1.18.9"
   },
   "jest": {
-    "testPathIgnorePatterns": ["<rootDir>/client", "/node_modules/"],
-    "setupFiles" : ["<rootDir>/client/setupTests.js"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/client",
+      "/node_modules/"
+    ],
+    "setupFiles": [
+      "<rootDir>/client/setupTests.js"
+    ]
   },
   "scripts": {
     "flow": "flow",
