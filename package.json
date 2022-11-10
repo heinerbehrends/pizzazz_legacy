@@ -9,7 +9,7 @@
     "yarn": "1.22.19"
   },
   "dependencies": {
-    "express": "4.16.4",
+    "express": "4.18.2",
     "ramda": "^0.26.1",
     "socket.io": "^2.4.0"
   },
