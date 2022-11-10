@@ -45,6 +45,6 @@
     "flow": "flow",
     "test": "jest",
     "start": "cd server && node --exec babel-node index",
-    "heroku-postbuild": "cd client && yarn install && yarn build"
+    "build": "cd client && yarn install && yarn build"
   }
 }
