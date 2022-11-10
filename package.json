@@ -11,7 +11,7 @@
   "dependencies": {
     "express": "4.16.4",
     "ramda": "^0.26.1",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
