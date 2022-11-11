@@ -5,7 +5,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
-    "ajv": "^6.2.1",
+    "ajv": "^6.12.3",
     "babel-plugin-styled-components": "^1.9.2",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
