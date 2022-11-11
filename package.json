@@ -44,7 +44,7 @@
   "scripts": {
     "flow": "flow",
     "test": "jest",
-    "start": "cd server && nodemon --exec babel-node index",
+    "start": "cd server && node --exec babel-node index",
     "build": "cd client && yarn install && yarn build"
   }
 }
