@@ -7,7 +7,6 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/build/public/index.html'));
@@ -22,3 +21,6 @@ connect(io);
 
 const gameGenerator = gameFlow(io);
 setInterval(() => gameGenerator.next(), 1000);
+
+const used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
