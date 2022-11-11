@@ -12,27 +12,23 @@ const findWords = R.pipe(
   getCombinations,
   R.filter(isInSortedDict),
   R.map(getValidAnagrams),
+  R.flatten
+);
+
+const addABC = (string) => R.map(R.concat(R.__, string), abc);
+
+const findWordsWildcard = R.pipe(
+  R.replace('8', ''),
+  addABC,
+  R.map(findWords),
   R.flatten,
+  R.uniq
 );
 
-const addABC = string => R.map(R.concat(R.__, string), abc);
-
-const findWordsWildcard = (
-  R.pipe(
-    R.replace('8', ''),
-    addABC,
-    R.map(findWords),
-    R.flatten,
-    R.uniq,
-  )
-);
-
-const findAllValidWords = (
-  R.ifElse(
-    R.contains('8'),
-    findWordsWildcard,
-    findWords,
-  )
+const findAllValidWords = R.ifElse(
+  R.includes('8'),
+  findWordsWildcard,
+  findWords
 );
 
 export default findAllValidWords;
