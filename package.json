@@ -30,7 +30,7 @@
     "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.87.0",
     "jest": "^24.1.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.19.1"
   },
   "jest": {
     "testPathIgnorePatterns": [
