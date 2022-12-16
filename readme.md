@@ -1,6 +1,6 @@
 # PIZZAZZ Word Game App
 A multiplayer online micro scrabble game. All players receive the same random letters at the same time. When the time is up the player that played the longest valid word with the highest score wins.
-Check out the [heroku app here](https://pizzazz-micro-scrabble.herokuapp.com "Pizzazz-micro-scrabble-app")
+[Check out the railway app here](https://pizzazz-production.up.railway.app "Pizzazz-micro-scrabble-app")
 ### Run pizzazz app on your local machine
 ```
 $ git clone https://github.com/heinerbehrends/pizzazz.git
