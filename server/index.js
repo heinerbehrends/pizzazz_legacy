@@ -6,6 +6,9 @@ import connect from './connectIO';
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const compression = require('compression');
+
+app.use(compression());
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
