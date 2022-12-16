@@ -4,7 +4,7 @@
   "description": "a micro scrabble game",
   "license": "MIT",
   "engines": {
-    "node": "16.17.0",
+    "node": "16.18.1s",
     "npm": "6.4.1",
     "yarn": "1.22.19"
   },
